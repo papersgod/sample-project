@@ -1,9 +1,4 @@
 $(document).ready(function () {
-  ($("#testUrl").attr("href", "/"),
-    $("#demoTestUrl").attr(
-      "href",
-      "http://server1.actfltesting.org/IopicTesteeDemo/IopicTesteeDemo.html",
-    ));
   var e,
     s,
     t,
