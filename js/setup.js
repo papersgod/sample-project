@@ -1,248 +1,416 @@
 $(function () {
-  var e,
-    i,
-    t,
-    o,
-    s,
-    n = {},
-    c = !1,
-    a = $("#start"),
-    r = $("#stop"),
-    l = $("#view"),
-    p = $("#recordingStatus"),
-    d = $("#uploading-alert"),
-    u = $("#btnNext"),
-    h =
-      (ltiOpic.settings.deviceInfo.browser.toString().toLowerCase(),
-      $("#errorModal")),
-    g = $("#errorModal .modal-body");
-  $("#errorModal .modal-footer button");
-  function m() {
-    var i = {
-      readyListener: function () {
-        ((e = questionsApp.question(
-          "setup-" + ltiOpic.settings.learnosity.responseId,
-        )),
-          $(".lrn_audiomiclevel_image").attr("alt", ""),
-          $(".lrn_position").attr("aria-role", "region"),
-          a.click(function () {
-            $("#btnReplay").hide();
-            ((n.lastMicAccessRequest = Date.now()),
-              (n.showMicAccessTimeout = setTimeout(function () {
-                ($("#setupArea").hide(), $("#micAccessMessage").show());
-              }, 500)),
-              c
-                ? (p.prop("hidden", !1),
-                  f(),
-                  e.recording.start(),
-                  ltiOpic.audioInputDevice.enableSensor(
-                    "#setup-" +
-                      ltiOpic.settings.learnosity.responseId +
-                      " .lrn_audiomiclevelmask",
-                  ),
-                  l.prop("disabled", !0),
-                  r.prop("disabled", !1),
-                  a.hide(),
-                  r.show(),
-                  p.show())
-                : navigator.mediaDevices
-                    .getUserMedia({ audio: !0, video: !1 })
-                    .then(function (i) {
-                      ((c = !0),
-                        (n.audioInputDevice = i.getAudioTracks()[0].label),
-                        p.prop("hidden", !1),
-                        f(),
-                        e.recording.start(),
-                        ltiOpic.audioInputDevice.enableSensor(
-                          "#setup-" +
-                            ltiOpic.settings.learnosity.responseId +
-                            " .lrn_audiomiclevelmask",
-                        ),
-                        l.prop("disabled", !0),
-                        r.prop("disabled", !1),
-                        a.hide(),
-                        r.show(),
-                        p.show());
-                    })
-                    .catch(function (e) {
-                      checkDeviceSupport(function () {
-                        hasMicrophone
-                          ? isMicrophoneAlreadyCaptured ||
-                            (clearTimeout(n.showMicAccessTimeout),
-                            (n.showMicAccessTimeout = null),
-                            $("#setupArea").hide(),
-                            $("#micAccessMessage").hide(),
-                            $("#btnNext").hide(),
-                            Date.now() - n.lastMicAccessRequest < 400
-                              ? $("#accessBlockedMessage").show()
-                              : $("#accessDeniedMessage").show())
-                          : v();
-                      });
-                    }));
-          }),
-          r.click(function () {
-            e.recording.stop();
-          }),
-          e.on("recording:stopped", function () {
-            (ltiOpic.audioInputDevice.disableSensor(),
-              (audioQuality = e.response.audioQualityCheck()));
-            var t = 0.05;
-            ("iOS" == ltiOpic.settings.deviceInfo.os && (t = 0.025),
-              $("#test_clippingSamples").html(
-                audioQuality.detail.numberOfClippingSamples,
-              ),
-              $("#test_rmsEnergy").html(audioQuality.detail.maxRmsEnergy),
-              audioQuality.detail.numberOfClippingSamples > 40 &&
-              !ltiOpic.settings.micError
-                ? (g.html(
-                    ltiOpic.settings.text.tooMuchNoise +
-                      " <br />" +
-                      ltiOpic.settings.text.recordAgain,
-                  ),
-                  h.modal("show"),
-                  a.prop("disabled", !1),
-                  a.show())
-                : audioQuality.detail.maxRmsEnergy < t &&
-                    !ltiOpic.settings.micError
-                  ? (g.html(
-                      ltiOpic.settings.text.tooLow +
-                        " <br />" +
-                        ltiOpic.settings.text.recordAgain,
-                    ),
-                    h.modal("show"),
-                    a.prop("disabled", !1),
-                    a.show())
-                  : (ltiOpic.demo &&
-                    "function" == typeof ltiOpic.demo &&
-                    ltiOpic.demo()
-                      ? setTimeout(function () {
-                          (l.prop("disabled", !1), d.hide());
-                        }, 1500)
-                      : questionsApp.save(i),
-                    a.prop("disabled", !0),
-                    a.show(),
-                    d.show()),
-              r.prop("disabled", !0),
-              r.hide(),
-              p.hide());
-          }),
-          l.click(function () {
-            (l.prop("disabled", !0),
-              u.prop("disabled", !1),
-              r.prop("disabled", !1),
-              e.response.play(),
-              e.on("playback:complete", function () {
-                (l.toggleClass("waiting-btn", "play-sound-btn"),
-                  l.html(
-                    "<span>" + ltiOpic.settings.text.playRecording + "</span>",
-                  ),
-                  $(".lrn_position.lrn_wfblock").width("0px"),
-                  $("#btnReplay").show());
-              }));
-          }));
-        var i = {
-          success: function (e) {
-            (l.prop("disabled", !1), d.hide());
+  // ─── State ──────────────────────────────────────────────────────────────────
+  var videoPlayer,        // video.js instance
+    playlistLength,       // number of playlist items
+    playlistIndex,        // current playlist index
+    state = {},           // misc state (timers, device label, etc.)
+    micGranted = false,   // whether mic permission has been granted
+
+    // Native recording state
+    mediaRecorder = null,
+    audioChunks = [],
+    audioBlob = null,
+    audioObjectUrl = null,
+    audioElement = null,  // <audio> element used for playback
+
+    // jQuery element shortcuts
+    $start = $("#start"),
+    $stop = $("#stop"),
+    $view = $("#view"),
+    $recordingStatus = $("#recordingStatus"),
+    $uploadingAlert = $("#uploading-alert"),
+    $btnNext = $("#btnNext"),
+    $errorModal = $("#errorModal"),
+    $errorBody = $("#errorModal .modal-body");
+
+  // ─── Audio quality helpers (replaces Learnosity audioQualityCheck) ──────────
+
+  /**
+   * Decode an AudioBlob and return { numberOfClippingSamples, maxRmsEnergy }.
+   * Mirrors the metrics Learnosity exposed on e.response.audioQualityCheck().
+   */
+  function analyzeAudioBlob(blob, callback) {
+    var fileReader = new FileReader();
+    fileReader.onload = function (ev) {
+      var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      audioCtx.decodeAudioData(ev.target.result, function (buffer) {
+        var channelData = buffer.getChannelData(0); // analyse first channel
+        var frameCount = channelData.length;
+
+        var clippingCount = 0;
+        var maxRms = 0;
+
+        // Walk through in 1024-sample windows for RMS; count |sample| >= 0.99 as clipping
+        var windowSize = 1024;
+        for (var i = 0; i < frameCount; i += windowSize) {
+          var end = Math.min(i + windowSize, frameCount);
+          var sumSq = 0;
+          for (var j = i; j < end; j++) {
+            var s = channelData[j];
+            if (Math.abs(s) >= 0.99) clippingCount++;
+            sumSq += s * s;
+          }
+          var rms = Math.sqrt(sumSq / (end - i));
+          if (rms > maxRms) maxRms = rms;
+        }
+
+        audioCtx.close();
+        callback({
+          detail: {
+            numberOfClippingSamples: clippingCount,
+            maxRmsEnergy: maxRms,
           },
-          error: function (e) {},
-          progress: function (e) {},
-        };
-      },
-      errorListener: function (e) {
-        var i = e.code.toString();
-        "10011" == i || "10012" == i
-          ? v()
-          : "10015" == i || "10018" == i
-            ? ($("#setupArea").hide(),
-              $("#btnNext").hide(),
-              $("#browserNotSupportedMessage").show())
-            : ($("#setupArea").hide(),
-              $("#btnNext").hide(),
-              $("#serverErrorMessage").show());
-      },
-      saveSuccess: function (e) {},
-      prevent_flash: !0,
+        });
+      }, function () {
+        // decode error — treat as silent recording
+        callback({ detail: { numberOfClippingSamples: 0, maxRmsEnergy: 0 } });
+      });
     };
-    window.questionsApp = LearnosityApp.init(
-      ltiOpic.settings.learnosity.signedRequest,
-      i,
-    );
+    fileReader.readAsArrayBuffer(blob);
   }
-  function b() {
-    i.on("ended", function () {
-      (a.prop("disabled", !1), $("#btnReplay").show(), i.hasStarted(!1));
-      (["Chrome Dev", "Chrome"].includes(ltiOpic.settings.deviceInfo.browser) &&
-        (this.src({
+
+  // ─── UI helpers ─────────────────────────────────────────────────────────────
+
+  /** Show the main setup area and hide the mic-access overlay. */
+  function showSetupArea() {
+    $("#setupArea").show();
+    $("#micAccessMessage").hide();
+    clearTimeout(state.showMicAccessTimeout);
+    state.showMicAccessTimeout = null;
+  }
+
+  /** Show "no microphone found" message and hide action buttons. */
+  function showNoMicMessage() {
+    clearTimeout(state.showMicAccessTimeout);
+    state.showMicAccessTimeout = null;
+    $("#setupArea").hide();
+    $("#micAccessMessage").hide();
+    $("#noMicMessage").show();
+    $btnNext.hide();
+  }
+
+  // ─── Recording logic ─────────────────────────────────────────────────────────
+
+  /**
+   * Called when the recording stops (either by user or device-change watchdog).
+   * Mirrors the Learnosity "recording:stopped" handler.
+   */
+  function onRecordingStopped() {
+    ltiOpic.audioInputDevice.disableSensor();
+
+    // Assemble the recorded audio into a single Blob
+    audioBlob = new Blob(audioChunks, { type: "audio/webm" });
+    audioChunks = [];
+
+    // Release any previous object URL
+    if (audioObjectUrl) URL.revokeObjectURL(audioObjectUrl);
+    audioObjectUrl = URL.createObjectURL(audioBlob);
+
+    // Run quality analysis
+    analyzeAudioBlob(audioBlob, function (audioQuality) {
+      var clippingSamples = audioQuality.detail.numberOfClippingSamples;
+      var rmsEnergy = audioQuality.detail.maxRmsEnergy;
+
+      // Expose for debugging (mirrors original DOM output)
+      $("#test_clippingSamples").html(clippingSamples);
+      $("#test_rmsEnergy").html(rmsEnergy);
+
+      // iOS threshold is more lenient
+      var rmsThreshold = ("iOS" === ltiOpic.settings.deviceInfo.os) ? 0.025 : 0.05;
+
+      if (clippingSamples > 40 && !ltiOpic.settings.micError) {
+        // Too much noise
+        $errorBody.html(
+          ltiOpic.settings.text.tooMuchNoise + " <br />" + ltiOpic.settings.text.recordAgain
+        );
+        $errorModal.modal("show");
+        $start.prop("disabled", false).show();
+
+      } else if (rmsEnergy < rmsThreshold && !ltiOpic.settings.micError) {
+        // Too quiet
+        $errorBody.html(
+          ltiOpic.settings.text.tooLow + " <br />" + ltiOpic.settings.text.recordAgain
+        );
+        $errorModal.modal("show");
+        $start.prop("disabled", false).show();
+
+      } else {
+        // Recording is good — enable playback / next
+        if (ltiOpic.demo && typeof ltiOpic.demo === "function" && ltiOpic.demo()) {
+          setTimeout(function () {
+            $view.prop("disabled", false);
+            $uploadingAlert.hide();
+          }, 1500);
+        } else {
+          // Persist the audio blob via the app's save mechanism if available
+          if (typeof ltiOpic.saveRecording === "function") {
+            ltiOpic.saveRecording(audioBlob);
+          }
+          $view.prop("disabled", false);
+          $uploadingAlert.hide();
+        }
+        $start.prop("disabled", true).show();
+        $uploadingAlert.show();
+      }
+
+      $stop.prop("disabled", true).hide();
+      $recordingStatus.hide();
+    });
+  }
+
+  /**
+   * Start recording using the MediaRecorder API.
+   * Wires up the native recording and the Learnosity-compatible UI state.
+   */
+  function startRecording(stream) {
+    // Attempt to use a broadly-supported audio format
+    var mimeType = "";
+    ["audio/webm;codecs=opus", "audio/webm", "audio/ogg;codecs=opus", "audio/ogg"].forEach(function (t) {
+      if (!mimeType && MediaRecorder.isTypeSupported(t)) mimeType = t;
+    });
+
+    mediaRecorder = mimeType
+      ? new MediaRecorder(stream, { mimeType: mimeType })
+      : new MediaRecorder(stream);
+
+    audioChunks = [];
+
+    mediaRecorder.addEventListener("dataavailable", function (e) {
+      if (e.data && e.data.size > 0) audioChunks.push(e.data);
+    });
+
+    mediaRecorder.addEventListener("stop", function () {
+      onRecordingStopped();
+    });
+
+    mediaRecorder.start(100); // collect data every 100 ms
+
+    // Drive the audio-level visualiser if the host provides one
+    ltiOpic.audioInputDevice.enableSensor(stream);
+
+    $recordingStatus.prop("hidden", false).show();
+    $view.prop("disabled", true);
+    $stop.prop("disabled", false).show();
+    $start.hide();
+  }
+
+  /**
+   * Called once the mic permission is already granted (or just granted).
+   * Starts recording and updates UI.
+   */
+  function beginRecording(stream) {
+    $("#btnReplay").hide();
+    showSetupArea();
+    micGranted = true;
+    state.audioInputDevice = stream.getAudioTracks()[0].label;
+    startRecording(stream);
+  }
+
+  // ─── Mic initialisation ──────────────────────────────────────────────────────
+
+  function initMicButtons() {
+    $start.click(function () {
+      $("#btnReplay").hide();
+      state.lastMicAccessRequest = Date.now();
+
+      // Show mic-access overlay after 500 ms if permission dialog is slow
+      state.showMicAccessTimeout = setTimeout(function () {
+        $("#setupArea").hide();
+        $("#micAccessMessage").show();
+      }, 500);
+
+      if (micGranted) {
+        // Mic already unlocked — open a fresh stream and record
+        navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+          .then(function (stream) {
+            showSetupArea();
+            startRecording(stream);
+          })
+          .catch(function () {
+            showNoMicMessage();
+          });
+      } else {
+        navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+          .then(function (stream) {
+            beginRecording(stream);
+          })
+          .catch(function () {
+            checkDeviceSupport(function () {
+              if (hasMicrophone) {
+                if (!isMicrophoneAlreadyCaptured) {
+                  clearTimeout(state.showMicAccessTimeout);
+                  state.showMicAccessTimeout = null;
+                  $("#setupArea").hide();
+                  $("#micAccessMessage").hide();
+                  $btnNext.hide();
+                  if (Date.now() - state.lastMicAccessRequest < 400) {
+                    $("#accessBlockedMessage").show();
+                  } else {
+                    $("#accessDeniedMessage").show();
+                  }
+                }
+              } else {
+                showNoMicMessage();
+              }
+            });
+          });
+      }
+    });
+
+    $stop.click(function () {
+      if (mediaRecorder && mediaRecorder.state !== "inactive") {
+        mediaRecorder.stop();
+      }
+    });
+
+    $view.click(function () {
+      $view.prop("disabled", true);
+      $btnNext.prop("disabled", false);
+      $stop.prop("disabled", false);
+
+      // Create / reuse a hidden <audio> element for playback
+      if (!audioElement) {
+        audioElement = new Audio();
+        audioElement.style.display = "none";
+        document.body.appendChild(audioElement);
+      }
+
+      audioElement.src = audioObjectUrl;
+
+      // Mimic the waveform / progress bar behaviour the old code did with video.js
+      $(".lrn_position.lrn_wfblock").width("0px");
+
+      audioElement.onended = function () {
+        $view.toggleClass("waiting-btn", false).toggleClass("play-sound-btn", true);
+        $view.html("<span>" + ltiOpic.settings.text.playRecording + "</span>");
+        $("#btnReplay").show();
+      };
+
+      audioElement.play();
+    });
+  }
+
+  // ─── Error listener ──────────────────────────────────────────────────────────
+
+  /**
+   * Handle errors that previously came from Learnosity's errorListener.
+   * Maps equivalent conditions to the same UI responses.
+   */
+  function handleAppError(code) {
+    var c = code.toString();
+    if (c === "10011" || c === "10012") {
+      showNoMicMessage();
+    } else if (c === "10015" || c === "10018") {
+      $("#setupArea").hide();
+      $btnNext.hide();
+      $("#browserNotSupportedMessage").show();
+    } else {
+      $("#setupArea").hide();
+      $btnNext.hide();
+      $("#serverErrorMessage").show();
+    }
+  }
+
+  // ─── Device-change watchdog ──────────────────────────────────────────────────
+
+  function checkDeviceStillPresent() {
+    navigator.mediaDevices.enumerateDevices().then(function (devices) {
+      var found = false;
+      devices.forEach(function (d) {
+        if (d.label === state.audioInputDevice) found = true;
+      });
+      if (!found) {
+        ltiOpic.settings.micError = true;
+        if (mediaRecorder && mediaRecorder.state !== "inactive") {
+          mediaRecorder.stop();
+        }
+        showNoMicMessage();
+      }
+    });
+  }
+
+  // ─── Video setup ──────────────────────────────────────────────────────────────
+
+  function setupVideoEndBehaviour() {
+    videoPlayer.on("ended", function () {
+      $start.prop("disabled", false);
+      $("#btnReplay").show();
+      videoPlayer.hasStarted(false);
+
+      if (["Chrome Dev", "Chrome"].includes(ltiOpic.settings.deviceInfo.browser)) {
+        this.src({
           type: "application/x-mpegURL",
           src: ltiOpic.settings.video.src,
-        }),
-        this.poster(ltiOpic.settings.video.poster)),
-        this.bigPlayButton.addClass("vjs-refresh"),
-        i.bigPlayButton.on("click", function () {
-          i.playlist.first();
-        }));
+        });
+        this.poster(ltiOpic.settings.video.poster);
+      }
+
+      videoPlayer.bigPlayButton.addClass("vjs-refresh");
+      videoPlayer.bigPlayButton.on("click", function () {
+        videoPlayer.playlist.first();
+      });
     });
   }
-  function f() {
-    ($("#setupArea").show(),
-      $("#micAccessMessage").hide(),
-      clearTimeout(n.showMicAccessTimeout),
-      (n.showMicAccessTimeout = null));
-  }
-  function v() {
-    (clearTimeout(n.showMicAccessTimeout),
-      (n.showMicAccessTimeout = null),
-      $("#setupArea").hide(),
-      $("#micAccessMessage").hide(),
-      $("#noMicMessage").show(),
-      $("#btnNext").hide());
-  }
-  function w() {
-    navigator.mediaDevices.enumerateDevices().then(function (i) {
-      var t = !1;
-      (i.forEach(function (e) {
-        e.label == n.audioInputDevice && (t = !0);
-      }),
-        t || ((ltiOpic.settings.micError = !0), e.recording.stop(), v()));
-    });
-  }
-  ((i = videojs("setup-video", {
-    controls: !1,
-    autoplay: !1,
+
+  // ─── Bootstrap ───────────────────────────────────────────────────────────────
+
+  // Initialise video.js player
+  videoPlayer = videojs("setup-video", {
+    controls: false,
+    autoplay: false,
     preload: "auto",
-    html5: { hls: { overrideNative: !0 } },
-  })),
-    (t = [
-      {
-        sources: [
-          { type: "application/x-mpegURL", src: ltiOpic.settings.video.src },
-        ],
-        poster: ltiOpic.settings.video.poster,
-      },
-    ]),
-    i.playlist(t),
-    i.playlist.autoadvance(0),
-    1 === (o = t.length)
-      ? b()
-      : o >= 1 &&
-        i.on("playlistitem", function () {
-          ((s = this.playlist.currentItem()), o === s + 1 && b());
-        }),
-    i.removeChild("ControlBar"),
-    m(),
-    (navigator.mediaDevices.ondevicechange = function (e) {
-      w();
-    }),
-    $(".refreshButton").on("click", function () {
-      location.reload();
-    }),
-    $(".logoutButton").on("click", function () {
-      window.location = "/logout";
-    }),
-    $("#btnPlay").on("click", function () {
-      ($("#btnPlay").hide(), i.play());
-    }),
-    $("#btnReplay").on("click", function () {
-      ($("#btnReplay").hide(), i.play(), a.prop("disabled", !0));
-    }));
+    html5: { hls: { overrideNative: true } },
+  });
+
+  var playlist = [
+    {
+      sources: [{ type: "application/x-mpegURL", src: ltiOpic.settings.video.src }],
+      poster: ltiOpic.settings.video.poster,
+    },
+  ];
+
+  videoPlayer.playlist(playlist);
+  videoPlayer.playlist.autoadvance(0);
+
+  playlistLength = playlist.length;
+  if (playlistLength === 1) {
+    setupVideoEndBehaviour();
+  } else {
+    videoPlayer.on("playlistitem", function () {
+      playlistIndex = this.playlist.currentItem();
+      if (playlistLength === playlistIndex + 1) {
+        setupVideoEndBehaviour();
+      }
+    });
+  }
+
+  videoPlayer.removeChild("ControlBar");
+
+  // Wire up mic buttons (replaces the Learnosity readyListener)
+  initMicButtons();
+
+  // Watch for device changes
+  navigator.mediaDevices.ondevicechange = function () {
+    checkDeviceStillPresent();
+  };
+
+  // Global button handlers
+  $(".refreshButton").on("click", function () {
+    location.reload();
+  });
+
+  $(".logoutButton").on("click", function () {
+    window.location = "/logout";
+  });
+
+  $("#btnPlay").on("click", function () {
+    $("#btnPlay").hide();
+    videoPlayer.play();
+  });
+
+  $("#btnReplay").on("click", function () {
+    $("#btnReplay").hide();
+    videoPlayer.play();
+    $start.prop("disabled", true);
+  });
 });

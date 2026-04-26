@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>
+
+        Begin |
+        OPIcDemo
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="./assets/favicon.gif">
+
+    <link rel="stylesheet" href="./font-awesome-4.5.0-master/css/font-awesome.min.css">
+    <link href="./js/video-js.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/master.css">
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/mic-perm.js"></script>
+    <style>
+        /**
+       * Session Timeout Dialog Styles
+       */
+        #session-timeout-dialog-logout {
+            display: none;
+        }
+
+        /**
+       * Following styles are used on the Setup page, Sample Question page, and  Test page.
+       */
+
+        /**
+       * Used display: inline-block to get the video element and the volume-indicator wrapper side by side.
+       * *** I also added the mx-md-0 class to help with the positioning.
+       */
+        #setup-video,
+        #opic-video {
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body cz-shortcut-listen="true">
+
+    <div id="contentDiv">
+        <div class="container-fluid">
+            <div id="actfl-test-container" class="actfl-test-container mx-auto">
+
+                <!-- Content begins here -->
+                <div class="row">
+                    <div class="col-12 text-right">
+                        <div class="block-upper-right mt-1">
+                            <a href="index.html" class="sign-out"><span>Sign
+                                    Out</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    $(document).ready(function () {
+                        const signOutButton = document.querySelector('.sign-out');
+
+                        signOutButton.addEventListener('keydown', function (event) {
+                            if (event.code === 'Space' || event.key === ' ') {
+                                event.preventDefault();
+                                signOutButton.click();
+                            }
+                        });
+                    });
+                </script>
+                <div class="row">
+                    <div class="col">
+
+                        <div class="block-steps mt-1" role="group" aria-label="Step Indicator. Step 4 of 4: Begin Test">
+                            <ul class="steps-4">
+                                <li class="checked" aria-current="false">
+                                    <div class="step-content">
+                                        <div class="sr-only">completed</div>
+                                        <h3>1</h3>
+                                        <p>Background Survey</p>
+                                    </div>
+                                </li>
+                                <li class="checked" aria-current="false">
+                                    <div class="step-content">
+                                        <div class="sr-only">completed</div>
+                                        <h3>2</h3>
+                                        <p>Self Assessment</p>
+                                    </div>
+                                </li>
+                                <li class="checked before-selected" aria-current="false">
+                                    <div class="step-content">
+                                        <div class="sr-only">completed</div>
+                                        <h3>3</h3>
+                                        <p>Setup</p>
+                                    </div>
+                                </li>
+                                <li class="selected" aria-current="step">
+                                    <div class="step-content">
+                                        <div class="sr-only"> </div>
+                                        <h3>4</h3>
+                                        <p>Begin Test</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="block-begin-test">
+                            <h2 class="opic-header-plain header-instructions text-center mt-6 mb-3">Before we start...
+                            </h2>
+                            <div class="row row-instructions">
+                                <div class="col-lg-3 col-sm-6 block-instructions-msg" style="margin-top: 25px">
+                                    <img src="./assets/icon-instructions-screen-shut-down.png" alt="">
+                                    <h4>Remain on the Test Page</h4>
+                                    <p>Do not open any other site, page, or program while the test is in progress, or
+                                        the test will close, and you will have to go through the log-in process again.
+                                    </p>
+                                </div>
+                                <div class="col-lg-3 col-sm-6 block-instructions-msg">
+                                    <img src="./assets/icon-instructions-screen-no-refresh.png" alt="">
+                                    <h4>Do not Refresh or Go Back</h4>
+                                    <p>If you refresh the page or click on the <strong>Back</strong> button during the
+                                        assessment, the test will close, and you will have to go through the log-in
+                                        process again.</p>
+                                </div>
+                                <div class="col-lg-3 col-sm-6 block-instructions-msg">
+                                    <img src="./assets/icon-instructions-screen-speaking.png" alt="">
+                                    <h4>Speaking</h4>
+                                    <p>Give a very detailed<br>response to each question to<br>show how great you are!
+                                    </p>
+                                </div>
+                                <div class="col-lg-3 col-sm-6 block-instructions-msg">
+                                    <img src="./assets/icon-instructions-screen-test-time.png" alt="">
+                                    <h4>Time is Precious</h4>
+                                    <p>You have 30 minutes to<br>complete this test. The clock<br>starts after clicking
+                                        <b>Begin</b>.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-2"></div>
+                                <div class="col-12 col-md-8">
+                                    <div class="alert-purple mt-4">
+                                        <p>If you experience technical difficulties, relax. You can always sign back in
+                                            within 2 hours.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-2"></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col text-center">
+                                    <div class="form-group text-center">
+                                        <h3 class="message-begin mt-6 mb-3 test-not-ready" hidden="hidden"
+                                            style="display: none;">Preparing Questions...</h3>
+                                        <div class="message-begin fa-3x test-not-ready" hidden="hidden"
+                                            style="display: none;">
+                                            <i class="fa fa-spinner fa-pulse"></i>
+                                        </div>
+                                        <h3 class="message-begin mt-6 mb-3 test-ready" style="display: block;">Are you
+                                            ready?</h3>
+                                        <form id="formNext" action="question.html" method="get">
+                                            <div class="form-group">
+                                                <button id="btnNext" class="btn btn-primary test-ready" type="button"
+                                                    name="button"
+                                                    style="display: inline-block;"><span>Begin</span></button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- end block-instructions -->
+
+                    </div>
+                </div>
+
+                <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body text-center">
+                                <p>There was an error preparing the questions for your test. If this problem persists,
+                                    contact technical support.</p>
+                            </div>
+                            <div class="modal-footer text-center">
+                                <button type="button" class="btn btn-primary mx-auto" data-dismiss="modal">Try
+                                    Again</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script src="./js/jquery.html5.hide-show.js"></script>
+                <script type="text/javascript">
+                    $(function () {
+
+                        $.ajaxSetup({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                        });
+
+                        $(document).ready(function () {
+                            $("#errorModal").on('hidden.bs.modal', function () {
+                                location.reload();
+                            })
+
+                            $.ajax({
+                                method: "POST",
+                                url: "https://opicdemo.actfltesting.org/test/generate-prompts"
+                            }).done(function (msg) {
+                                if (msg.success) {
+                                    $(".test-ready").show();
+                                    $(".test-not-ready").hide();
+                                    $("#btnNext").prop("disabled", false);
+                                } else {
+                                    $("#errorModal").modal('show');
+                                }
+                            });
+                        });
+
+                    });
+                </script>
+
+                <!-- Content ends here -->
+
+            </div><!-- end actfl-test-container -->
+        </div><!-- end container-fluid -->
+    </div><!-- end  contentDiv -->
+
+    <script src="./js/popper.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/jquery.html5.hide-show.js"></script>
+
+    <script src="./js/common.js" charset="utf-8"></script>
+    <script src="./js/common-demo.js" charset="utf-8"></script>
+
+    <script src="./js/bootstrap-session-timeout.js"></script>
+
+</body>
+
+</html>

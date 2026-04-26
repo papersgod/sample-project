@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>
+
+        Background Survey |
+        OPIcDemo
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="./assets/favicon.gif">
+
+    <link rel="stylesheet" href="./font-awesome-4.5.0-master/css/font-awesome.min.css">
+    <link href="./js/video-js.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/master.css">
+    <script type="text/javascript" async="" src="./js/analytics.js"></script>
+    <!-- <script type="text/javascript" async="" src="./js/js"></script> -->
+    <script src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/mic-perm.js"></script>
+    <style>
+        /**
+       * Session Timeout Dialog Styles
+       */
+        #session-timeout-dialog-logout {
+            display: none;
+        }
+
+        /**
+       * Following styles are used on the Setup page, Sample Question page, and  Test page.
+       */
+
+        /**
+       * Used display: inline-block to get the video element and the volume-indicator wrapper side by side.
+       * *** I also added the mx-md-0 class to help with the positioning.
+       */
+        #setup-video,
+        #opic-video {
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body cz-shortcut-listen="true">
+
+    <div id="contentDiv">
+        <div class="container-fluid">
+            <div id="actfl-test-container" class="actfl-test-container mx-auto">
+
+                <!-- Content begins here -->
+                <div class="row">
+                    <div class="col-12 text-right">
+                        <div class="block-upper-right mt-1">
+                            <a href="index.html" class="sign-out"><span>Sign
+                                    Out</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    $(document).ready(function () {
+                        const signOutButton = document.querySelector('.sign-out');
+
+                        signOutButton.addEventListener('keydown', function (event) {
+                            if (event.code === 'Space' || event.key === ' ') {
+                                event.preventDefault();
+                                signOutButton.click();
+                            }
+                        });
+                    });
+                </script>
+                <div class="row">
+                    <div class="col">
+                        <div class="block-steps mt-1" role="group"
+                            aria-label="Step Indicator. Step 1 of 4: Background Survey">
+                            <ul class="steps-4">
+                                <li class="selected" aria-current="step">
+                                    <div class="step-content">
+                                        <div class="sr-only"> </div>
+                                        <h3>1</h3>
+                                        <p>Background Survey</p>
+                                    </div>
+                                </li>
+                                <li class="" aria-current="false">
+                                    <div class="step-content">
+                                        <div class="sr-only">no completed</div>
+                                        <h3>2</h3>
+                                        <p>Self Assessment</p>
+                                    </div>
+                                </li>
+                                <li class="" aria-current="false">
+                                    <div class="step-content">
+                                        <div class="sr-only">no completed</div>
+                                        <h3>3</h3>
+                                        <p>Setup</p>
+                                    </div>
+                                </li>
+                                <li class="" aria-current="false">
+                                    <div class="step-content">
+                                        <div class="sr-only">no completed</div>
+                                        <h3>4</h3>
+                                        <p>Begin Test</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="block-survey">
+                            <h2 class="header-primary">Background Survey</h2>
+                            <p class="instructions-survey">
+                                Answer as accurately as possible. This test will be based on your responses. </p>
+                            <h2 id="survey-progress">Part 2 of 4</h2>
+                            <ul id="survey-questions" class="list-plain">
+                                <li class="survey-question step-1 question-137" data-question-min="1"
+                                    style="display: none;" hidden="hidden">
+                                    <p class="background-survey-question">What best describes your field of work?</p>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-137" data-option-id="1727"
+                                                data-subquestion-id="138" type="radio" class="form-check-input">
+                                            Business / Corporation
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-137" data-option-id="1728"
+                                                data-subquestion-id="139" type="radio" class="form-check-input">
+                                            Home Business
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-137" data-option-id="1729"
+                                                data-subquestion-id="161" type="radio" class="form-check-input">
+                                            Teacher / Educator
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-137" data-option-id="1730"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            No work experience
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="survey-question step-2 question-178" data-question-min="1"
+                                    style="display: list-item;">
+                                    <p class="background-survey-question">Are you currently going to school?</p>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-178" data-option-id="1971"
+                                                data-subquestion-id="176" type="radio" class="form-check-input">
+                                            Yes, Full-time or Part-time
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-178" data-option-id="1972"
+                                                data-subquestion-id="177" type="radio" class="form-check-input">
+                                            No
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="survey-question step-3 question-155" data-question-min="1"
+                                    style="display:none" hidden="hidden">
+                                    <p class="background-survey-question">Where do you live?</p>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-155" data-option-id="1705"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            I live alone in a house or an apartment.
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-155" data-option-id="1706"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            I live with non-family members in a house or an apartment.
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-155" data-option-id="1707"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            I live with family members in a house or an apartment.
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-155" data-option-id="1708"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            I live in a school dormitory.
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-155" data-option-id="1709"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            I live in military barracks.
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="survey-question step-4 question-156" data-question-min="2"
+                                    style="display:none" hidden="hidden">
+                                    <p class="instructions-survey">Select a total of at least six (6) options across the
+                                        various sections below.
+                                        <span class="selection-count" style="float:right" data-group-min="6">
+                                            <span></span>
+                                            0 Items Selected
+                                        </span>
+                                    </p>
+                                    <p class="background-survey-question">What activities do you do?</p>
+                                    <div class="question-error-msg">Please select at least 2 activities.</div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-156" data-option-id="1753"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            go to the movies
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-156" data-option-id="1754"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            go to clubs/nightclubs
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-156" data-option-id="1755"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            go to the theater
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-156" data-option-id="1756"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            go to concerts
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-156" data-option-id="1757"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            go to museums
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-156" data-option-id="1758"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            go to parks
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-156" data-option-id="1759"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            go camping
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-156" data-option-id="1760"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            go to the beach
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-156" data-option-id="1761"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            watch professional sports
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-156" data-option-id="1762"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            watch your children play sports
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-156" data-option-id="1763"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            coach sports
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-156" data-option-id="1764"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            play games by yourself (cards, video games, etc.)
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-156" data-option-id="1765"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            play games with adults (cards, billiards, board games, etc.)
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-156" data-option-id="1766"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            play games with children (cards, board games, etc.)
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-156" data-option-id="1767"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            help your children with school assignments
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-156" data-option-id="1768"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            do home improvement projects
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-156" data-option-id="1769"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            maintain your car
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="survey-question step-4 question-157" data-question-min="1"
+                                    style="display:none" hidden="hidden">
+                                    <p class="background-survey-question">What interests or hobbies do you enjoy?</p>
+                                    <div class="question-error-msg">Please select at least 1 interest.</div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-157" data-option-id="1770"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            read to children
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-157" data-option-id="1771"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            listen to music
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-157" data-option-id="1772"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            play a musical instrument
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-157" data-option-id="1773"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            sing alone
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-157" data-option-id="1774"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            sing with a group
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-157" data-option-id="1775"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            take dance class/lessons
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-157" data-option-id="1776"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            go out dancing
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-157" data-option-id="1777"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            write creatively (letters, short stories, poetry)
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-157" data-option-id="1778"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            draw, paint
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-157" data-option-id="1779"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            sew, embroider
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-157" data-option-id="1780"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            knit, crochet
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-157" data-option-id="1781"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            cook
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-157" data-option-id="1782"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            garden
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-157" data-option-id="1783"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            have pets
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="survey-question step-4 question-158" data-question-min="1"
+                                    style="display:none" hidden="hidden">
+                                    <p class="background-survey-question">What sports or physical activities do you
+                                        participate in?</p>
+                                    <div class="question-error-msg">Please select at least 1 from sports.</div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-158" data-option-id="1784"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            play basketball
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-158" data-option-id="1785"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            play baseball/softball
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-158" data-option-id="1786"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            play soccer
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-158" data-option-id="1787"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            play football
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-158" data-option-id="1788"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            play rugby
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-158" data-option-id="1789"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            play ice hockey
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-158" data-option-id="1790"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            play field hockey
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-158" data-option-id="1791"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            play cricket
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-158" data-option-id="1792"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            play golf
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-158" data-option-id="1793"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            play volleyball
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-158" data-option-id="1794"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            play tennis
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-158" data-option-id="1795"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            play badminton
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-158" data-option-id="1796"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            play table tennis
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-158" data-option-id="1797"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            swim
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-158" data-option-id="1798"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            bike
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-158" data-option-id="1799"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            ride a motorcycle
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-158" data-option-id="1800"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            scuba dive/snorkel
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-158" data-option-id="1801"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            ski/snowboard
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-158" data-option-id="1802"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            waterski
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-158" data-option-id="1803"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            ice skate
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-158" data-option-id="1804"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            inline skate
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-158" data-option-id="1805"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            go horseback riding
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-158" data-option-id="1806"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            jog
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-158" data-option-id="1807"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            walk
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-158" data-option-id="1808"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            do martial arts
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-158" data-option-id="1809"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            do yoga
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-158" data-option-id="1810"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            go hiking/trekking
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-158" data-option-id="1811"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            go fishing
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-158" data-option-id="1812"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            go boating
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-158" data-option-id="1813"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            go to a health club or gym
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-158" data-option-id="1814"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            exercise
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-158" data-option-id="1815"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            do not participate in sports or physical activities
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="survey-question step-4 question-159" data-question-min="1"
+                                    style="display:none" hidden="hidden">
+                                    <p class="background-survey-question">What types of vacation or travel do you do?
+                                    </p>
+                                    <div class="question-error-msg">Please select at least 1 from travel.</div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-159" data-option-id="1816"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            travel for business domestically
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-159" data-option-id="1817"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            travel for business internationally
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-159" data-option-id="1818"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            stay at home for vacation
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-159" data-option-id="1819"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            take vacation domestically
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-159" data-option-id="1820"
+                                                data-subquestion-id="null" type="checkbox" class="form-check-input">
+                                            take vacation internationally
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="survey-question question-138 subQuestion-137" style="display:none"
+                                    hidden="hidden">
+                                    <p class="background-survey-question">Are you currently working?</p>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-138" data-option-id="1241"
+                                                data-subquestion-id="144" type="radio" class="form-check-input">
+                                            Yes
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-138" data-option-id="1242"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            No
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="survey-question question-144 subQuestion-138" style="display:none"
+                                    hidden="hidden">
+                                    <p class="background-survey-question">What best describes your work experience?</p>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-144" data-option-id="1731"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            This is my first job - less than 2 months
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-144" data-option-id="1732"
+                                                data-subquestion-id="148" type="radio" class="form-check-input">
+                                            This is my first job - more than 2 months
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-144" data-option-id="1733"
+                                                data-subquestion-id="148" type="radio" class="form-check-input">
+                                            Not my first job - more work experience
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="survey-question question-148 subQuestion-144" style="display:none"
+                                    hidden="hidden">
+                                    <p class="background-survey-question">Are you a manager/director who supervises
+                                        other people?</p>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-148" data-option-id="1692"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            Yes
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-148" data-option-id="1693"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            No
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="survey-question question-139 subQuestion-137" style="display: none;"
+                                    hidden="hidden">
+                                    <p class="background-survey-question">Are you currently working?</p>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-139" data-option-id="1256"
+                                                data-subquestion-id="143" type="radio" class="form-check-input">
+                                            Yes
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-139" data-option-id="1257"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            No
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="survey-question question-143 subQuestion-139" style="display:none"
+                                    hidden="hidden">
+                                    <p class="background-survey-question">What best describes your work experience?</p>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-143" data-option-id="1836"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            This is my first job - less than 2 months
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-143" data-option-id="1837"
+                                                data-subquestion-id="149" type="radio" class="form-check-input">
+                                            This is my first job - more than 2 months
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-143" data-option-id="1838"
+                                                data-subquestion-id="149" type="radio" class="form-check-input">
+                                            Not my first job - more work experience
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="survey-question question-149 subQuestion-143" style="display:none"
+                                    hidden="hidden">
+                                    <p class="background-survey-question">Are you a manager/director who supervises
+                                        other people? </p>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-149" data-option-id="1710"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            Yes
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-149" data-option-id="1711"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            No
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="survey-question question-161 subQuestion-137" style="display:none"
+                                    hidden="hidden">
+                                    <p class="background-survey-question">What level do you teach?</p>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-161" data-option-id="1741"
+                                                data-subquestion-id="140" type="radio" class="form-check-input">
+                                            Higher Education / University
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-161" data-option-id="1742"
+                                                data-subquestion-id="141" type="radio" class="form-check-input">
+                                            Secondary / Elementary Education
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-161" data-option-id="1743"
+                                                data-subquestion-id="142" type="radio" class="form-check-input">
+                                            Continuing Education
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="survey-question question-140 subQuestion-161" style="display:none"
+                                    hidden="hidden">
+                                    <p class="background-survey-question">Are you currently working?</p>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-140" data-option-id="1313"
+                                                data-subquestion-id="145" type="radio" class="form-check-input">
+                                            Yes
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-140" data-option-id="1314"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            No
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="survey-question question-145 subQuestion-140" style="display:none"
+                                    hidden="hidden">
+                                    <p class="background-survey-question">How long have you been teaching?</p>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-145" data-option-id="1747"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            Fewer than 2 months; this is my first job.
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-145" data-option-id="1748"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            Fewer than 2 months; this is my first job teaching, but I have other work
+                                            experience.
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-145" data-option-id="1749"
+                                                data-subquestion-id="150" type="radio" class="form-check-input">
+                                            I have been teaching for more than 2 months.
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="survey-question question-150 subQuestion-145" style="display:none"
+                                    hidden="hidden">
+                                    <p class="background-survey-question">Are you a manager/director who supervises
+                                        other people?</p>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-150" data-option-id="1719"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            Yes
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-150" data-option-id="1720"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            No
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="survey-question question-141 subQuestion-161" style="display:none"
+                                    hidden="hidden">
+                                    <p class="background-survey-question">Are you currently working?</p>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-141" data-option-id="1280"
+                                                data-subquestion-id="146" type="radio" class="form-check-input">
+                                            Yes
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-141" data-option-id="1281"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            No
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="survey-question question-146 subQuestion-141" style="display:none"
+                                    hidden="hidden">
+                                    <p class="background-survey-question">How long have you been teaching?</p>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-146" data-option-id="1750"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            Fewer than 2 months; this is my first job.
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-146" data-option-id="1751"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            Fewer than 2 months; this is my first job teaching, but I have other work
+                                            experience.
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-146" data-option-id="1752"
+                                                data-subquestion-id="151" type="radio" class="form-check-input">
+                                            I have been teaching for more than 2 months.
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="survey-question question-151 subQuestion-146" style="display:none"
+                                    hidden="hidden">
+                                    <p class="background-survey-question">Are you a manager/director who supervises
+                                        other people?</p>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-151" data-option-id="1721"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            Yes
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-151" data-option-id="1722"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            No
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="survey-question question-142 subQuestion-161" style="display:none"
+                                    hidden="hidden">
+                                    <p class="background-survey-question">Are you currently working?</p>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-142" data-option-id="1737"
+                                                data-subquestion-id="147" type="radio" class="form-check-input">
+                                            Yes
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-142" data-option-id="1738"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            No
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="survey-question question-147 subQuestion-142" style="display:none"
+                                    hidden="hidden">
+                                    <p class="background-survey-question">How long have you been teaching?</p>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-147" data-option-id="1323"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            Fewer than 2 months; this is my first job.
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-147" data-option-id="1324"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            Fewer than 2 months; this is my first job teaching, but I have other work
+                                            experience.
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-147" data-option-id="1325"
+                                                data-subquestion-id="152" type="radio" class="form-check-input">
+                                            I have been teaching for more than 2 months.
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="survey-question question-152 subQuestion-147" style="display:none"
+                                    hidden="hidden">
+                                    <p class="background-survey-question">Are you a manager/director who supervises
+                                        other people?</p>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-152" data-option-id="1739"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            Yes
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-152" data-option-id="1740"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            No
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="survey-question question-176 subQuestion-178" style="display:none"
+                                    hidden="hidden">
+                                    <p class="background-survey-question">What best describes the classes you are
+                                        taking?</p>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-176" data-option-id="1964"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            College or university to earn a degree
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-176" data-option-id="1965"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            Continuing education to improve professional skills
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-176" data-option-id="1966"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            Language classes
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="survey-question question-177 subQuestion-178" style="display: list-item;">
+                                    <p class="background-survey-question">What best describes your last educational
+                                        experience?</p>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-177" data-option-id="1967"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            College or university to earn a degree
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-177" data-option-id="1968"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            Continuing education to improve professional skills
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-177" data-option-id="1969"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            Language classes
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="surveyOption-177" data-option-id="1970"
+                                                data-subquestion-id="null" type="radio" class="form-check-input">
+                                            It has been more than 5 years since I took a class.
+                                        </label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div><!-- end block-survey -->
+
+                        <div class="row mt-4">
+                            <div class="col text-right">
+                                <form id="formNext" action="self-assessment.html" method="get">
+                                    <div class="form-group">
+                                        <button id="btnNext" class="btn btn-primary" type="button" name="button"
+                                            disabled=""><span>Next</span></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Content ends here -->
+
+            </div><!-- end actfl-test-container -->
+        </div><!-- end container-fluid -->
+    </div><!-- end  contentDiv -->
+
+    <script src="./js/popper.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/jquery.html5.hide-show.js"></script>
+
+    <script src="./js/common.js" charset="utf-8"></script>
+    <script src="./js/common-demo.js" charset="utf-8"></script>
+
+    <script type="text/javascript">
+        var questions = [{ "sortOrder": "1", "sortorder": "1", "sequence": "1", "SurveyId": "42", "GroupId": "69", "GroupName": "ACTFL Work", "GroupMinSelection": "0", "GroupMaxSelection": "0", "GroupInstructionText": null, "GroupValidationText": null, "QuestionId": "137", "QuestionText": "What best describes your field of work?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1727", "OptionText": "Business \/ Corporation", "MappedSubquestion": "138", "SkipGroup": "0" }, { "sortOrder": "1", "sortorder": "1", "sequence": "2", "SurveyId": "42", "GroupId": "69", "GroupName": "ACTFL Work", "GroupMinSelection": "0", "GroupMaxSelection": "0", "GroupInstructionText": null, "GroupValidationText": null, "QuestionId": "137", "QuestionText": "What best describes your field of work?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1728", "OptionText": "Home Business", "MappedSubquestion": "139", "SkipGroup": "0" }, { "sortOrder": "1", "sortorder": "1", "sequence": "3", "SurveyId": "42", "GroupId": "69", "GroupName": "ACTFL Work", "GroupMinSelection": "0", "GroupMaxSelection": "0", "GroupInstructionText": null, "GroupValidationText": null, "QuestionId": "137", "QuestionText": "What best describes your field of work?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1729", "OptionText": "Teacher \/ Educator", "MappedSubquestion": "161", "SkipGroup": "0" }, { "sortOrder": "1", "sortorder": "1", "sequence": "4", "SurveyId": "42", "GroupId": "69", "GroupName": "ACTFL Work", "GroupMinSelection": "0", "GroupMaxSelection": "0", "GroupInstructionText": null, "GroupValidationText": null, "QuestionId": "137", "QuestionText": "What best describes your field of work?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1730", "OptionText": "No work experience", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "2", "sortorder": "1", "sequence": "1", "SurveyId": "42", "GroupId": "84", "GroupName": "School", "GroupMinSelection": "0", "GroupMaxSelection": "0", "GroupInstructionText": null, "GroupValidationText": null, "QuestionId": "178", "QuestionText": "Are you currently going to school?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1971", "OptionText": "Yes, Full-time or Part-time", "MappedSubquestion": "176", "SkipGroup": "0" }, { "sortOrder": "2", "sortorder": "1", "sequence": "2", "SurveyId": "42", "GroupId": "84", "GroupName": "School", "GroupMinSelection": "0", "GroupMaxSelection": "0", "GroupInstructionText": null, "GroupValidationText": null, "QuestionId": "178", "QuestionText": "Are you currently going to school?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1972", "OptionText": "No", "MappedSubquestion": "177", "SkipGroup": "0" }, { "sortOrder": "3", "sortorder": "1", "sequence": "1", "SurveyId": "42", "GroupId": "72", "GroupName": "Home", "GroupMinSelection": "0", "GroupMaxSelection": "0", "GroupInstructionText": null, "GroupValidationText": null, "QuestionId": "155", "QuestionText": "Where do you live?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1705", "OptionText": "I live alone in a house or an apartment.", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "3", "sortorder": "1", "sequence": "2", "SurveyId": "42", "GroupId": "72", "GroupName": "Home", "GroupMinSelection": "0", "GroupMaxSelection": "0", "GroupInstructionText": null, "GroupValidationText": null, "QuestionId": "155", "QuestionText": "Where do you live?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1706", "OptionText": "I live with non-family members in a house or an apartment.", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "3", "sortorder": "1", "sequence": "3", "SurveyId": "42", "GroupId": "72", "GroupName": "Home", "GroupMinSelection": "0", "GroupMaxSelection": "0", "GroupInstructionText": null, "GroupValidationText": null, "QuestionId": "155", "QuestionText": "Where do you live?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1707", "OptionText": "I live with family members in a house or an apartment.", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "3", "sortorder": "1", "sequence": "4", "SurveyId": "42", "GroupId": "72", "GroupName": "Home", "GroupMinSelection": "0", "GroupMaxSelection": "0", "GroupInstructionText": null, "GroupValidationText": null, "QuestionId": "155", "QuestionText": "Where do you live?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1708", "OptionText": "I live in a school dormitory.", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "3", "sortorder": "1", "sequence": "5", "SurveyId": "42", "GroupId": "72", "GroupName": "Home", "GroupMinSelection": "0", "GroupMaxSelection": "0", "GroupInstructionText": null, "GroupValidationText": null, "QuestionId": "155", "QuestionText": "Where do you live?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1709", "OptionText": "I live in military barracks.", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "1", "sequence": "1", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "156", "QuestionText": "What activities do you do?", "QuestionMinSelection": "2", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 2 activities.", "OptionId": "1753", "OptionText": "go to the movies", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "1", "sequence": "2", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "156", "QuestionText": "What activities do you do?", "QuestionMinSelection": "2", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 2 activities.", "OptionId": "1754", "OptionText": "go to clubs\/nightclubs", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "1", "sequence": "3", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "156", "QuestionText": "What activities do you do?", "QuestionMinSelection": "2", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 2 activities.", "OptionId": "1755", "OptionText": "go to the theater", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "1", "sequence": "4", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "156", "QuestionText": "What activities do you do?", "QuestionMinSelection": "2", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 2 activities.", "OptionId": "1756", "OptionText": "go to concerts", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "1", "sequence": "5", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "156", "QuestionText": "What activities do you do?", "QuestionMinSelection": "2", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 2 activities.", "OptionId": "1757", "OptionText": "go to museums", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "1", "sequence": "6", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "156", "QuestionText": "What activities do you do?", "QuestionMinSelection": "2", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 2 activities.", "OptionId": "1758", "OptionText": "go to parks", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "1", "sequence": "7", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "156", "QuestionText": "What activities do you do?", "QuestionMinSelection": "2", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 2 activities.", "OptionId": "1759", "OptionText": "go camping", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "1", "sequence": "8", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "156", "QuestionText": "What activities do you do?", "QuestionMinSelection": "2", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 2 activities.", "OptionId": "1760", "OptionText": "go to the beach", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "1", "sequence": "9", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "156", "QuestionText": "What activities do you do?", "QuestionMinSelection": "2", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 2 activities.", "OptionId": "1761", "OptionText": "watch professional sports", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "1", "sequence": "10", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "156", "QuestionText": "What activities do you do?", "QuestionMinSelection": "2", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 2 activities.", "OptionId": "1762", "OptionText": "watch your children play sports", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "1", "sequence": "11", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "156", "QuestionText": "What activities do you do?", "QuestionMinSelection": "2", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 2 activities.", "OptionId": "1763", "OptionText": "coach sports", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "1", "sequence": "12", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "156", "QuestionText": "What activities do you do?", "QuestionMinSelection": "2", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 2 activities.", "OptionId": "1764", "OptionText": "play games by yourself (cards, video games, etc.)", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "1", "sequence": "13", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "156", "QuestionText": "What activities do you do?", "QuestionMinSelection": "2", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 2 activities.", "OptionId": "1765", "OptionText": "play games with adults (cards, billiards, board games, etc.)", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "1", "sequence": "14", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "156", "QuestionText": "What activities do you do?", "QuestionMinSelection": "2", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 2 activities.", "OptionId": "1766", "OptionText": "play games with children (cards, board games, etc.)", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "1", "sequence": "15", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "156", "QuestionText": "What activities do you do?", "QuestionMinSelection": "2", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 2 activities.", "OptionId": "1767", "OptionText": "help your children with school assignments", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "1", "sequence": "16", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "156", "QuestionText": "What activities do you do?", "QuestionMinSelection": "2", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 2 activities.", "OptionId": "1768", "OptionText": "do home improvement projects", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "1", "sequence": "17", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "156", "QuestionText": "What activities do you do?", "QuestionMinSelection": "2", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 2 activities.", "OptionId": "1769", "OptionText": "maintain your car", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "2", "sequence": "1", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "157", "QuestionText": "What interests or hobbies do you enjoy?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 interest.", "OptionId": "1770", "OptionText": "read to children", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "2", "sequence": "2", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "157", "QuestionText": "What interests or hobbies do you enjoy?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 interest.", "OptionId": "1771", "OptionText": "listen to music", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "2", "sequence": "3", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "157", "QuestionText": "What interests or hobbies do you enjoy?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 interest.", "OptionId": "1772", "OptionText": "play a musical instrument", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "2", "sequence": "4", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "157", "QuestionText": "What interests or hobbies do you enjoy?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 interest.", "OptionId": "1773", "OptionText": "sing alone", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "2", "sequence": "5", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "157", "QuestionText": "What interests or hobbies do you enjoy?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 interest.", "OptionId": "1774", "OptionText": "sing with a group", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "2", "sequence": "6", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "157", "QuestionText": "What interests or hobbies do you enjoy?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 interest.", "OptionId": "1775", "OptionText": "take dance class\/lessons", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "2", "sequence": "7", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "157", "QuestionText": "What interests or hobbies do you enjoy?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 interest.", "OptionId": "1776", "OptionText": "go out dancing", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "2", "sequence": "8", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "157", "QuestionText": "What interests or hobbies do you enjoy?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 interest.", "OptionId": "1777", "OptionText": "write creatively (letters, short stories, poetry)", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "2", "sequence": "9", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "157", "QuestionText": "What interests or hobbies do you enjoy?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 interest.", "OptionId": "1778", "OptionText": "draw, paint", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "2", "sequence": "10", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "157", "QuestionText": "What interests or hobbies do you enjoy?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 interest.", "OptionId": "1779", "OptionText": "sew, embroider", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "2", "sequence": "11", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "157", "QuestionText": "What interests or hobbies do you enjoy?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 interest.", "OptionId": "1780", "OptionText": "knit, crochet", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "2", "sequence": "12", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "157", "QuestionText": "What interests or hobbies do you enjoy?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 interest.", "OptionId": "1781", "OptionText": "cook ", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "2", "sequence": "13", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "157", "QuestionText": "What interests or hobbies do you enjoy?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 interest.", "OptionId": "1782", "OptionText": "garden", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "2", "sequence": "14", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "157", "QuestionText": "What interests or hobbies do you enjoy?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 interest.", "OptionId": "1783", "OptionText": "have pets", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "3", "sequence": "1", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "158", "QuestionText": "What sports or physical activities do you participate in?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from sports.", "OptionId": "1784", "OptionText": "play basketball", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "3", "sequence": "2", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "158", "QuestionText": "What sports or physical activities do you participate in?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from sports.", "OptionId": "1785", "OptionText": "play baseball\/softball", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "3", "sequence": "3", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "158", "QuestionText": "What sports or physical activities do you participate in?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from sports.", "OptionId": "1786", "OptionText": "play soccer", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "3", "sequence": "4", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "158", "QuestionText": "What sports or physical activities do you participate in?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from sports.", "OptionId": "1787", "OptionText": "play football", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "3", "sequence": "5", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "158", "QuestionText": "What sports or physical activities do you participate in?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from sports.", "OptionId": "1788", "OptionText": "play rugby", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "3", "sequence": "6", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "158", "QuestionText": "What sports or physical activities do you participate in?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from sports.", "OptionId": "1789", "OptionText": "play ice hockey", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "3", "sequence": "7", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "158", "QuestionText": "What sports or physical activities do you participate in?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from sports.", "OptionId": "1790", "OptionText": "play field hockey", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "3", "sequence": "8", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "158", "QuestionText": "What sports or physical activities do you participate in?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from sports.", "OptionId": "1791", "OptionText": "play cricket", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "3", "sequence": "9", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "158", "QuestionText": "What sports or physical activities do you participate in?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from sports.", "OptionId": "1792", "OptionText": "play golf", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "3", "sequence": "10", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "158", "QuestionText": "What sports or physical activities do you participate in?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from sports.", "OptionId": "1793", "OptionText": "play volleyball", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "3", "sequence": "11", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "158", "QuestionText": "What sports or physical activities do you participate in?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from sports.", "OptionId": "1794", "OptionText": "play tennis", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "3", "sequence": "12", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "158", "QuestionText": "What sports or physical activities do you participate in?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from sports.", "OptionId": "1795", "OptionText": "play badminton", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "3", "sequence": "13", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "158", "QuestionText": "What sports or physical activities do you participate in?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from sports.", "OptionId": "1796", "OptionText": "play table tennis", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "3", "sequence": "14", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "158", "QuestionText": "What sports or physical activities do you participate in?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from sports.", "OptionId": "1797", "OptionText": "swim", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "3", "sequence": "15", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "158", "QuestionText": "What sports or physical activities do you participate in?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from sports.", "OptionId": "1798", "OptionText": "bike", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "3", "sequence": "16", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "158", "QuestionText": "What sports or physical activities do you participate in?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from sports.", "OptionId": "1799", "OptionText": "ride a motorcycle", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "3", "sequence": "17", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "158", "QuestionText": "What sports or physical activities do you participate in?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from sports.", "OptionId": "1800", "OptionText": "scuba dive\/snorkel", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "3", "sequence": "18", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "158", "QuestionText": "What sports or physical activities do you participate in?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from sports.", "OptionId": "1801", "OptionText": "ski\/snowboard", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "3", "sequence": "19", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "158", "QuestionText": "What sports or physical activities do you participate in?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from sports.", "OptionId": "1802", "OptionText": "waterski", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "3", "sequence": "20", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "158", "QuestionText": "What sports or physical activities do you participate in?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from sports.", "OptionId": "1803", "OptionText": "ice skate", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "3", "sequence": "21", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "158", "QuestionText": "What sports or physical activities do you participate in?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from sports.", "OptionId": "1804", "OptionText": "inline skate", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "3", "sequence": "22", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "158", "QuestionText": "What sports or physical activities do you participate in?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from sports.", "OptionId": "1805", "OptionText": "go horseback riding", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "3", "sequence": "23", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "158", "QuestionText": "What sports or physical activities do you participate in?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from sports.", "OptionId": "1806", "OptionText": "jog", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "3", "sequence": "24", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "158", "QuestionText": "What sports or physical activities do you participate in?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from sports.", "OptionId": "1807", "OptionText": "walk", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "3", "sequence": "25", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "158", "QuestionText": "What sports or physical activities do you participate in?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from sports.", "OptionId": "1808", "OptionText": "do martial arts", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "3", "sequence": "26", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "158", "QuestionText": "What sports or physical activities do you participate in?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from sports.", "OptionId": "1809", "OptionText": "do yoga", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "3", "sequence": "27", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "158", "QuestionText": "What sports or physical activities do you participate in?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from sports.", "OptionId": "1810", "OptionText": "go hiking\/trekking", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "3", "sequence": "28", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "158", "QuestionText": "What sports or physical activities do you participate in?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from sports.", "OptionId": "1811", "OptionText": "go fishing", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "3", "sequence": "29", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "158", "QuestionText": "What sports or physical activities do you participate in?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from sports.", "OptionId": "1812", "OptionText": "go boating", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "3", "sequence": "30", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "158", "QuestionText": "What sports or physical activities do you participate in?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from sports.", "OptionId": "1813", "OptionText": "go to a health club or gym", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "3", "sequence": "31", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "158", "QuestionText": "What sports or physical activities do you participate in?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from sports.", "OptionId": "1814", "OptionText": "exercise", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "3", "sequence": "32", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "158", "QuestionText": "What sports or physical activities do you participate in?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from sports.", "OptionId": "1815", "OptionText": "do not participate in sports or physical activities", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "4", "sequence": "1", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "159", "QuestionText": "What types of vacation or travel do you do?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from travel.", "OptionId": "1816", "OptionText": "travel for business domestically", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "4", "sequence": "2", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "159", "QuestionText": "What types of vacation or travel do you do?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from travel.", "OptionId": "1817", "OptionText": "travel for business internationally", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "4", "sequence": "3", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "159", "QuestionText": "What types of vacation or travel do you do?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from travel.", "OptionId": "1818", "OptionText": "stay at home for vacation", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "4", "sequence": "4", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "159", "QuestionText": "What types of vacation or travel do you do?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from travel.", "OptionId": "1819", "OptionText": "take vacation domestically", "MappedSubquestion": null, "SkipGroup": "0" }, { "sortOrder": "4", "sortorder": "4", "sequence": "5", "SurveyId": "42", "GroupId": "68", "GroupName": "Free Time", "GroupMinSelection": "6", "GroupMaxSelection": "99", "GroupInstructionText": "Select a total of at least six (6) options across the various sections below.", "GroupValidationText": "Select a total of at least six (6) options across the various sections below.", "QuestionId": "159", "QuestionText": "What types of vacation or travel do you do?", "QuestionMinSelection": "1", "QuestionMaxSelection": "99", "QuestionInstructionText": "", "QuestionValidationText": "Please select at least 1 from travel.", "OptionId": "1820", "OptionText": "take vacation internationally", "MappedSubquestion": null, "SkipGroup": "0" }];
+        var subQuestions = [{ "QuestionId": "138", "QuestionText": "Are you currently working?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1241", "OptionText": "Yes", "MappedSubquestion": "144", "SkipGroup": "0" }, { "QuestionId": "144", "QuestionText": "What best describes your work experience?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1731", "OptionText": "This is my first job - less than 2 months", "MappedSubquestion": null, "SkipGroup": "0" }, { "QuestionId": "144", "QuestionText": "What best describes your work experience?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1732", "OptionText": "This is my first job - more than 2 months", "MappedSubquestion": "148", "SkipGroup": "0" }, { "QuestionId": "148", "QuestionText": "Are you a manager\/director who supervises other people?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1692", "OptionText": "Yes", "MappedSubquestion": null, "SkipGroup": "0" }, { "QuestionId": "148", "QuestionText": "Are you a manager\/director who supervises other people?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1693", "OptionText": "No", "MappedSubquestion": null, "SkipGroup": "0" }, { "QuestionId": "144", "QuestionText": "What best describes your work experience?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1733", "OptionText": "Not my first job - more work experience", "MappedSubquestion": "148", "SkipGroup": "0" }, { "QuestionId": "138", "QuestionText": "Are you currently working?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1242", "OptionText": "No", "MappedSubquestion": null, "SkipGroup": "0" }, { "QuestionId": "139", "QuestionText": "Are you currently working?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1256", "OptionText": "Yes", "MappedSubquestion": "143", "SkipGroup": "0" }, { "QuestionId": "143", "QuestionText": "What best describes your work experience?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1836", "OptionText": "This is my first job - less than 2 months", "MappedSubquestion": null, "SkipGroup": "0" }, { "QuestionId": "143", "QuestionText": "What best describes your work experience?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1837", "OptionText": "This is my first job - more than 2 months", "MappedSubquestion": "149", "SkipGroup": "0" }, { "QuestionId": "149", "QuestionText": "Are you a manager\/director who supervises other people? ", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1710", "OptionText": "Yes", "MappedSubquestion": null, "SkipGroup": "0" }, { "QuestionId": "149", "QuestionText": "Are you a manager\/director who supervises other people? ", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1711", "OptionText": "No", "MappedSubquestion": null, "SkipGroup": "0" }, { "QuestionId": "143", "QuestionText": "What best describes your work experience?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1838", "OptionText": "Not my first job - more work experience", "MappedSubquestion": "149", "SkipGroup": "0" }, { "QuestionId": "139", "QuestionText": "Are you currently working?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1257", "OptionText": "No", "MappedSubquestion": null, "SkipGroup": "0" }, { "QuestionId": "161", "QuestionText": "What level do you teach?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1741", "OptionText": "Higher Education \/ University", "MappedSubquestion": "140", "SkipGroup": "0" }, { "QuestionId": "140", "QuestionText": "Are you currently working?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1313", "OptionText": "Yes", "MappedSubquestion": "145", "SkipGroup": "0" }, { "QuestionId": "145", "QuestionText": "How long have you been teaching?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1747", "OptionText": "Fewer than 2 months; this is my first job.", "MappedSubquestion": null, "SkipGroup": "0" }, { "QuestionId": "145", "QuestionText": "How long have you been teaching?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1748", "OptionText": "Fewer than 2 months; this is my first job teaching, but I have other work experience.", "MappedSubquestion": null, "SkipGroup": "0" }, { "QuestionId": "145", "QuestionText": "How long have you been teaching?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1749", "OptionText": "I have been teaching for more than 2 months.", "MappedSubquestion": "150", "SkipGroup": "0" }, { "QuestionId": "150", "QuestionText": "Are you a manager\/director who supervises other people?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1719", "OptionText": "Yes", "MappedSubquestion": null, "SkipGroup": "0" }, { "QuestionId": "150", "QuestionText": "Are you a manager\/director who supervises other people?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1720", "OptionText": "No", "MappedSubquestion": null, "SkipGroup": "0" }, { "QuestionId": "140", "QuestionText": "Are you currently working?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1314", "OptionText": "No", "MappedSubquestion": null, "SkipGroup": "0" }, { "QuestionId": "161", "QuestionText": "What level do you teach?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1742", "OptionText": "Secondary \/ Elementary Education", "MappedSubquestion": "141", "SkipGroup": "0" }, { "QuestionId": "141", "QuestionText": "Are you currently working?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1280", "OptionText": "Yes", "MappedSubquestion": "146", "SkipGroup": "0" }, { "QuestionId": "146", "QuestionText": "How long have you been teaching?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1750", "OptionText": "Fewer than 2 months; this is my first job.", "MappedSubquestion": null, "SkipGroup": "0" }, { "QuestionId": "146", "QuestionText": "How long have you been teaching?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1751", "OptionText": "Fewer than 2 months; this is my first job teaching, but I have other work experience.", "MappedSubquestion": null, "SkipGroup": "0" }, { "QuestionId": "146", "QuestionText": "How long have you been teaching?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1752", "OptionText": "I have been teaching for more than 2 months.", "MappedSubquestion": "151", "SkipGroup": "0" }, { "QuestionId": "151", "QuestionText": "Are you a manager\/director who supervises other people?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1721", "OptionText": "Yes", "MappedSubquestion": null, "SkipGroup": "0" }, { "QuestionId": "151", "QuestionText": "Are you a manager\/director who supervises other people?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1722", "OptionText": "No", "MappedSubquestion": null, "SkipGroup": "0" }, { "QuestionId": "141", "QuestionText": "Are you currently working?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1281", "OptionText": "No", "MappedSubquestion": null, "SkipGroup": "0" }, { "QuestionId": "161", "QuestionText": "What level do you teach?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1743", "OptionText": "Continuing Education", "MappedSubquestion": "142", "SkipGroup": "0" }, { "QuestionId": "142", "QuestionText": "Are you currently working?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1737", "OptionText": "Yes", "MappedSubquestion": "147", "SkipGroup": "0" }, { "QuestionId": "147", "QuestionText": "How long have you been teaching?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1323", "OptionText": "Fewer than 2 months; this is my first job.", "MappedSubquestion": null, "SkipGroup": "0" }, { "QuestionId": "147", "QuestionText": "How long have you been teaching?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1324", "OptionText": "Fewer than 2 months; this is my first job teaching, but I have other work experience.", "MappedSubquestion": null, "SkipGroup": "0" }, { "QuestionId": "147", "QuestionText": "How long have you been teaching?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1325", "OptionText": "I have been teaching for more than 2 months.", "MappedSubquestion": "152", "SkipGroup": "0" }, { "QuestionId": "152", "QuestionText": "Are you a manager\/director who supervises other people?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1739", "OptionText": "Yes", "MappedSubquestion": null, "SkipGroup": "0" }, { "QuestionId": "152", "QuestionText": "Are you a manager\/director who supervises other people?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1740", "OptionText": "No", "MappedSubquestion": null, "SkipGroup": "0" }, { "QuestionId": "142", "QuestionText": "Are you currently working?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1738", "OptionText": "No", "MappedSubquestion": null, "SkipGroup": "0" }, { "QuestionId": "176", "QuestionText": "What best describes the classes you are taking?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1964", "OptionText": "College or university to earn a degree", "MappedSubquestion": null, "SkipGroup": "0" }, { "QuestionId": "176", "QuestionText": "What best describes the classes you are taking?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1965", "OptionText": "Continuing education to improve professional skills", "MappedSubquestion": null, "SkipGroup": "0" }, { "QuestionId": "176", "QuestionText": "What best describes the classes you are taking?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1966", "OptionText": "Language classes", "MappedSubquestion": null, "SkipGroup": "0" }, { "QuestionId": "177", "QuestionText": "What best describes your last educational experience?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1967", "OptionText": "College or university to earn a degree", "MappedSubquestion": null, "SkipGroup": "0" }, { "QuestionId": "177", "QuestionText": "What best describes your last educational experience?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1968", "OptionText": "Continuing education to improve professional skills", "MappedSubquestion": null, "SkipGroup": "0" }, { "QuestionId": "177", "QuestionText": "What best describes your last educational experience?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1969", "OptionText": "Language classes", "MappedSubquestion": null, "SkipGroup": "0" }, { "QuestionId": "177", "QuestionText": "What best describes your last educational experience?", "QuestionMinSelection": "1", "QuestionMaxSelection": "1", "QuestionInstructionText": "", "QuestionValidationText": "Please check one.", "OptionId": "1970", "OptionText": "It has been more than 5 years since I took a class.", "MappedSubquestion": null, "SkipGroup": "0" }];
+        var xmltxt_items_selected = "(currentnumber) Items Selected";
+        var xmltxt_num_selected_items = "You have selected (currentnumber) item(s)";
+        var xmltxt_part_of = "Part (currentnumber) of (totalnumber)";
+    </script>
+    <script type="text/javascript" src="./js/survey.js"></script>
+</body>
+
+</html>

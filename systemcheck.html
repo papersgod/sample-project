@@ -1,1585 +1,1194 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <style class="vjs-styles-defaults">
-      .video-js {
-        width: 300px;
-        height: 150px;
-      }
+        .video-js {
+            width: 300px;
+            height: 150px;
+        }
 
-      .vjs-fluid:not(.vjs-audio-only-mode) {
-        padding-top: 56.25%;
-      }
+        .vjs-fluid:not(.vjs-audio-only-mode) {
+            padding-top: 56.25%;
+        }
     </style>
     <style class="vjs-styles-dimensions">
-      .systemcheck-video-dimensions {
-        width: 296px;
-        height: 300px;
-      }
+        .systemcheck-video-dimensions {
+            width: 296px;
+            height: 300px;
+        }
 
-      .systemcheck-video-dimensions.vjs-fluid:not(.vjs-audio-only-mode) {
-        padding-top: 101.35135135135135%;
-      }
+        .systemcheck-video-dimensions.vjs-fluid:not(.vjs-audio-only-mode) {
+            padding-top: 101.35135135135135%;
+        }
     </style>
 
     <title>OPIcDemo</title>
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="icon" href="assets/favicon.gif" />
-    
-    <!-- <script src="./js/jquery.min.js"></script>
-    <script type="text/javascript" src="./js/syscheck.js"></script> -->
-    <link
-      rel="stylesheet"
-      href="./font-awesome-4.5.0-master/css/font-awesome.min.css"
-    />
+
+    <link rel="stylesheet" href="./font-awesome-4.5.0-master/css/font-awesome.min.css" />
     <link href="./css/video-js.css" rel="stylesheet" />
     <link rel="stylesheet" href="./css/master.css" />
-    <script
-      type="text/javascript"
-      async=""
-      src="./js/analytics.js"
-    ></script>
-    <script
-      type="text/javascript"
-      async=""
-      src="./js/js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="./js/mic-perm.js"
-    ></script>
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="./css/preload.css"
-    />
-    <!-- <script
-      src="./js/api.js"
-      crossorigin=""
-    ></script> -->
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="./css/vendor.css"
-    />
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="./css/main.css"
-    />
-    <link
-      rel="stylesheet"
-      id="lds-css"
-      href="./css/main.0.34.1.min.css"
-    />
-  </head>
-  <body cz-shortcut-listen="true">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      xmlns:xlink="http://www.w3.org/1999/xlink"
-      style="position: absolute; width: 0; height: 0"
-      aria-hidden="true"
-      id="__SVG_SPRITE_NODE__"
-    >
-      <symbol
-        xmlns="http://www.w3.org/2000/svg"
-        fill="currentColor"
-        viewBox="0 0 32 32"
-        id="lds-i-cross"
-      >
-        <path
-          d="M19.62 16l8.2-8.2a.614.614 0 000-.867L25.067 4.18a.614.614 0 00-.867 0l-8.2 8.2-8.2-8.2a.614.614 0 00-.867 0L4.18 6.933a.614.614 0 000 .868L12.38 16l-8.17 8.2a.614.614 0 000 .867l2.753 2.753c.239.24.628.24.867 0l8.17-8.2 8.2 8.2c.239.24.628.24.867 0l2.753-2.753a.614.614 0 000-.867l-8.2-8.2z"
-        ></path>
-      </symbol>
-      <symbol
-        xmlns="http://www.w3.org/2000/svg"
-        fill="currentColor"
-        viewBox="0 0 32 32"
-        id="lds-i-chevron-down"
-      >
-        <path
-          d="m3.58 12.29 12.056 12.328c.194.2.533.2.727 0l12.056-12.329a.545.545 0 0 0 .152-.366c0-.14-.05-.27-.152-.366l-3.322-3.4a.495.495 0 0 0-.726 0L16 16.72 7.63 8.157a.515.515 0 0 0-.727 0l-3.323 3.4a.517.517 0 0 0 0 .732Z"
-        ></path>
-      </symbol>
-      <symbol
-        xmlns="http://www.w3.org/2000/svg"
-        fill="currentColor"
-        viewBox="0 0 32 32"
-        id="lds-i-exclamation-circle"
-      >
-        <path
-          fill-rule="evenodd"
-          d="M2 16C2 8.268 8.268 2 16 2s14 6.268 14 14-6.268 14-14 14S2 23.732 2 16zm16.272 3.563v2.982c0 .147-.05.27-.15.37-.1.1-.217.149-.353.149h-3.014a.483.483 0 01-.353-.15.502.502 0 01-.15-.369v-2.982c0-.147.05-.27.15-.37.1-.099.217-.149.353-.149h3.014c.136 0 .254.05.354.15.1.1.149.222.149.369zm.25-10.093l-.282 7.204a.35.35 0 01-.165.26.64.64 0 01-.37.103h-2.903a.678.678 0 01-.377-.102c-.105-.068-.158-.155-.158-.26L14 9.502c0-.147.052-.256.157-.33.137-.115.263-.172.377-.172h3.454c.116 0 .241.057.377.172a.345.345 0 01.157.298z"
-          clip-rule="evenodd"
-        ></path>
-      </symbol>
-      <symbol
-        xmlns="http://www.w3.org/2000/svg"
-        fill="currentColor"
-        viewBox="0 0 32 32"
-        id="lds-i-exclamation-triangle"
-      >
-        <path
-          d="M18.09 24.583V21.6c0-.147-.05-.27-.15-.37a.483.483 0 00-.353-.15h-3.014a.483.483 0 00-.353.15c-.1.1-.15.223-.15.37v2.982c0 .146.05.27.15.37.1.099.217.149.353.149h3.014c.136 0 .254-.05.353-.15.1-.1.15-.223.15-.37zm-.032-5.87l.282-7.205a.345.345 0 00-.157-.298c-.136-.115-.262-.172-.377-.172h-3.454c-.114 0-.24.057-.377.172-.105.073-.157.183-.157.33l.267 7.173c0 .105.053.191.157.26.105.067.231.101.377.101h2.905a.64.64 0 00.369-.102.35.35 0 00.165-.259zm-.22-14.662l12.055 22.1c.366.66.356 1.32-.032 1.979a1.973 1.973 0 01-.73.721 1.97 1.97 0 01-.996.268H4.025c-.356 0-.688-.09-.997-.268a1.973 1.973 0 01-.73-.721c-.387-.66-.397-1.319-.031-1.978l12.055-22.1A2.005 2.005 0 0116.08 3a2.006 2.006 0 011.758 1.051z"
-        ></path>
-      </symbol>
-      <symbol
-        xmlns="http://www.w3.org/2000/svg"
-        fill="currentColor"
-        viewBox="0 0 32 32"
-        id="lds-i-tick-circle"
-      >
-        <path
-          fill-rule="evenodd"
-          d="M16 30c7.732 0 14-6.268 14-14S23.732 2 16 2 2 8.268 2 16s6.268 14 14 14Zm5.893-20.798c.26-.27.69-.27.95 0l1.97 2.034a.662.662 0 0 1 .001.92l-10.66 11.042a.661.661 0 0 1-.952 0l-6.017-6.246a.662.662 0 0 1 .003-.921l1.986-2.039a.661.661 0 0 1 .949.002l3.573 3.69 8.197-8.482Z"
-          clip-rule="evenodd"
-        ></path>
-      </symbol>
-      <symbol
-        xmlns="http://www.w3.org/2000/svg"
-        fill="currentColor"
-        viewBox="0 0 32 32"
-        id="lds-i-tick"
-      >
-        <path
-          d="M26.348 5.742a1 1 0 0 0-1.437 0L12.518 18.564l-5.403-5.577a1 1 0 0 0-1.435-.003l-3.003 3.081a1 1 0 0 0-.004 1.392l9.097 9.44a1 1 0 0 0 1.44 0l16.118-16.689a1 1 0 0 0-.001-1.39l-2.979-3.075Z"
-        ></path>
-      </symbol>
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/mic-perm.js"></script>
+    <link type="text/css" rel="stylesheet" href="./css/preload.css" />
+    <link type="text/css" rel="stylesheet" href="./css/vendor.css" />
+    <link type="text/css" rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" id="lds-css" href="./css/main.0.34.1.min.css" />
+</head>
+
+<body cz-shortcut-listen="true">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        style="position: absolute; width: 0; height: 0" aria-hidden="true" id="__SVG_SPRITE_NODE__">
+        <symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" id="lds-i-cross">
+            <path
+                d="M19.62 16l8.2-8.2a.614.614 0 000-.867L25.067 4.18a.614.614 0 00-.867 0l-8.2 8.2-8.2-8.2a.614.614 0 00-.867 0L4.18 6.933a.614.614 0 000 .868L12.38 16l-8.17 8.2a.614.614 0 000 .867l2.753 2.753c.239.24.628.24.867 0l8.17-8.2 8.2 8.2c.239.24.628.24.867 0l2.753-2.753a.614.614 0 000-.867l-8.2-8.2z">
+            </path>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" id="lds-i-chevron-down">
+            <path
+                d="m3.58 12.29 12.056 12.328c.194.2.533.2.727 0l12.056-12.329a.545.545 0 0 0 .152-.366c0-.14-.05-.27-.152-.366l-3.322-3.4a.495.495 0 0 0-.726 0L16 16.72 7.63 8.157a.515.515 0 0 0-.727 0l-3.323 3.4a.517.517 0 0 0 0 .732Z">
+            </path>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32"
+            id="lds-i-exclamation-circle">
+            <path fill-rule="evenodd"
+                d="M2 16C2 8.268 8.268 2 16 2s14 6.268 14 14-6.268 14-14 14S2 23.732 2 16zm16.272 3.563v2.982c0 .147-.05.27-.15.37-.1.1-.217.149-.353.149h-3.014a.483.483 0 01-.353-.15.502.502 0 01-.15-.369v-2.982c0-.147.05-.27.15-.37.1-.099.217-.149.353-.149h3.014c.136 0 .254.05.354.15.1.1.149.222.149.369zm.25-10.093l-.282 7.204a.35.35 0 01-.165.26.64.64 0 01-.37.103h-2.903a.678.678 0 01-.377-.102c-.105-.068-.158-.155-.158-.26L14 9.502c0-.147.052-.256.157-.33.137-.115.263-.172.377-.172h3.454c.116 0 .241.057.377.172a.345.345 0 01.157.298z"
+                clip-rule="evenodd"></path>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32"
+            id="lds-i-exclamation-triangle">
+            <path
+                d="M18.09 24.583V21.6c0-.147-.05-.27-.15-.37a.483.483 0 00-.353-.15h-3.014a.483.483 0 00-.353.15c-.1.1-.15.223-.15.37v2.982c0 .146.05.27.15.37.1.099.217.149.353.149h3.014c.136 0 .254-.05.353-.15.1-.1.15-.223.15-.37zm-.032-5.87l.282-7.205a.345.345 0 00-.157-.298c-.136-.115-.262-.172-.377-.172h-3.454c-.114 0-.24.057-.377.172-.105.073-.157.183-.157.33l.267 7.173c0 .105.053.191.157.26.105.067.231.101.377.101h2.905a.64.64 0 00.369-.102.35.35 0 00.165-.259zm-.22-14.662l12.055 22.1c.366.66.356 1.32-.032 1.979a1.973 1.973 0 01-.73.721 1.97 1.97 0 01-.996.268H4.025c-.356 0-.688-.09-.997-.268a1.973 1.973 0 01-.73-.721c-.387-.66-.397-1.319-.031-1.978l12.055-22.1A2.005 2.005 0 0116.08 3a2.006 2.006 0 011.758 1.051z">
+            </path>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" id="lds-i-tick-circle">
+            <path fill-rule="evenodd"
+                d="M16 30c7.732 0 14-6.268 14-14S23.732 2 16 2 2 8.268 2 16s6.268 14 14 14Zm5.893-20.798c.26-.27.69-.27.95 0l1.97 2.034a.662.662 0 0 1 .001.92l-10.66 11.042a.661.661 0 0 1-.952 0l-6.017-6.246a.662.662 0 0 1 .003-.921l1.986-2.039a.661.661 0 0 1 .949.002l3.573 3.69 8.197-8.482Z"
+                clip-rule="evenodd"></path>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" id="lds-i-tick">
+            <path
+                d="M26.348 5.742a1 1 0 0 0-1.437 0L12.518 18.564l-5.403-5.577a1 1 0 0 0-1.435-.003l-3.003 3.081a1 1 0 0 0-.004 1.392l9.097 9.44a1 1 0 0 0 1.44 0l16.118-16.689a1 1 0 0 0-.001-1.39l-2.979-3.075Z">
+            </path>
+        </symbol>
     </svg>
 
     <div id="contentDiv">
-      <div class="container-fluid">
-        <div class="actfl-test-container mx-auto">
-          <!-- Content begins here -->
+        <div class="container-fluid">
+            <div class="actfl-test-container mx-auto">
+                <!-- Content begins here -->
 
-          <script src="./js/video.min.js"></script>
-          <script src="./js/videojs-playlist.min.js"></script>
+                <script src="./js/video.min.js"></script>
+                <script src="./js/videojs-playlist.min.js"></script>
 
-          <div class="block-system-check">
-            <div class="row">
-              <div class="col"></div>
-            </div>
+                <div class="block-system-check">
+                    <div class="row">
+                        <div class="col"></div>
+                    </div>
 
-            <div class="row">
-              <div class="col text-center">
-                <h2 class="my-2">
-                  Oral Proficiency Interview - computer (OPIc)
-                </h2>
-                <p>
-                  Let's make sure your computer meets all of the required system
-                  checks.
-                </p>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-12">
-                <noscript>
-                  <div class="error-msg text-center mt-3">
-                    In order to perform the system check and take the test, you
-                    must have javascript enabled. Please contact your system
-                    administrator.
-                  </div>
-                </noscript>
-
-                <div
-                  id="speed_test_result_desc"
-                  class="sr-only"
-                  role="img"
-                  aria-label="success"
-                ></div>
-                <table
-                  id="system-check"
-                  class="system-check-table hide w-100"
-                  style="display: table"
-                >
-                  <thead class="text-center">
-                    <tr>
-                      <th>Criteria</th>
-                      <th>Minimum Requirements</th>
-                      <th>Your System Information</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <!--****************************** ROW 1 - Bandwidth ******************************-->
-                    <tr>
-                      <td>Bandwidth</td>
-                      <td>
-                        Connection speed of
-                        <span id="min-connection">1,000</span> Kbps per
-                        candidate.
-                      </td>
-                      <td>
-                        <span id="progress"
-                          >Connection Speed: 145,261.51 Kbps</span
-                        >
-                      </td>
-                      <td
-                        id="speed_test_result"
-                        class="status success"
-                        aria-hidden="false"
-                      ></td>
-                    </tr>
-                    <tr id="bandwidthError" class="error-msg hide">
-                      <td colspan="4">
-                        Your connection speed is not fast enough to take the
-                        test. Please contact your system administrator.
-                      </td>
-                    </tr>
-                    <tr id="genericBandwidthError" class="error-msg hide">
-                      <td colspan="4">
-                        General Error. Please contact your system administrator.
-                      </td>
-                    </tr>
-
-                    <!--****************************** ROW 2 - Web Browser ******************************-->
-                    <tr>
-                      <td>Web Browser</td>
-                      <td>
-                        <div id="browserSupport" class="supported-browsers">
-                          <a
-                            class="pr-1"
-                            data-toggle="collapse"
-                            href="#desktop"
-                            aria-expanded="false"
-                            aria-controls="desktop"
-                            >Desktop</a
-                          >
-                          <a
-                            data-toggle="collapse"
-                            href="#mobile"
-                            aria-expanded="false"
-                            aria-controls="mobile"
-                            >Tablet</a
-                          >
-
-                          <div
-                            class="collapse mt-1"
-                            id="desktop"
-                            data-parent="#browserSupport"
-                          >
-                            <div class="card card-body">
-                              <span id="supported-desktop-browsers"
-                                ><h3>Windows</h3>
-                                <p>
-                                  Edge v15, Chrome v65, Chrome Dev v65, Firefox
-                                  v61, Opera v56
-                                </p>
-                                <h3>OS X</h3>
-                                <p>
-                                  Chrome v65, Chrome Dev v65, Safari v12,
-                                  Firefox v61
-                                </p>
-                                <h3>Chrome OS</h3>
-                                <p>Chrome v65, Chrome Dev v65</p></span
-                              >
-                            </div>
-                          </div>
-
-                          <div
-                            class="collapse mt-1"
-                            id="mobile"
-                            data-parent="#browserSupport"
-                          >
-                            <div class="card card-body">
-                              <span id="supported-mobile-browsers"
-                                ><h3>Android</h3>
-                                <p>Chrome v65, Chrome Dev v65</p>
-                                <h3>iOS</h3>
-                                <p>Safari v11</p></span
-                              >
-                            </div>
-                          </div>
+                    <div class="row">
+                        <div class="col text-center">
+                            <h2 class="my-2">
+                                Oral Proficiency Interview - computer (OPIc)
+                            </h2>
+                            <p>
+                                Let's make sure your computer meets all of the required system
+                                checks.
+                            </p>
                         </div>
-                      </td>
-                      <td><span id="browser">Edge v147</span></td>
-                      <td id="browser_test_result" class="status success">
-                        <div
-                          id="browser_test_result_desc"
-                          class="sr-only"
-                          role="img"
-                          aria-label="success"
-                        ></div>
-                      </td>
-                    </tr>
-                    <tr id="browserError" class="error-msg hide">
-                      <td colspan="4">
-                        Your web browser is not supported. Please contact your
-                        system administrator.
-                      </td>
-                    </tr>
-                    <tr id="firefoxError" class="error-msg hide">
-                      <td colspan="4">
-                        If you're using Firefox, you'll need
-                        <a
-                          href="https://opicdemo.actfltesting.org/firefox-mic-access"
-                          target="_blank"
-                          >enable microphone access</a
-                        >
-                        for this application.
-                      </td>
-                    </tr>
-                    <tr id="edgeError" class="error-msg hide">
-                      <td colspan="4">
-                        If you're using Edge, you'll need
-                        <a
-                          href="https://opicdemo.actfltesting.org/edge-mic-access"
-                          target="_blank"
-                          >enable microphone access</a
-                        >
-                        for this application.
-                      </td>
-                    </tr>
-                    <tr id="genericBrowserError" class="error-msg hide">
-                      <td colspan="4">
-                        General Error. Please contact your system administrator.
-                      </td>
-                    </tr>
+                    </div>
 
-                    <!--****************************** ROW 3 - Microphone ******************************-->
-                    <tr>
-                      <td>Microphone</td>
-                      <td>A microphone is required.</td>
-                      <td>
-                        <div id="mic-test-panel" class="text-center">
-                          <button
-                            id="start"
-                            button=""
-                            class="btn btn-start-recording my-1"
-                            type="button"
-                            name="button"
-                          >
-                            <span>Start Recording</span>
-                          </button>
-                          <button
-                            id="stop"
-                            button=""
-                            class="hide btn btn-stop-recording my-1"
-                            type="button"
-                            name="button"
-                          >
-                            <span>Stop Recording</span>
-                          </button>
-                          <button
-                            id="view"
-                            class="btn btn-play-recording my-1"
-                            type="button"
-                            name="button"
-                            disabled=""
-                          >
-                            <span>Play Recording</span>
-                          </button>
+                    <div class="row">
+                        <div class="col-12">
+                            <noscript>
+                                <div class="error-msg text-center mt-3">
+                                    In order to perform the system check and take the test, you
+                                    must have javascript enabled. Please contact your system
+                                    administrator.
+                                </div>
+                            </noscript>
 
-                          <div id="mic-dialog" class="confirmation hide">
-                            <p>Were you able to record your voice?</p>
-                            <button class="button btn passCheck p-1">
-                              Yes
-                            </button>
-                            <button class="button btn failCheck p-1">No</button>
-                          </div>
-                        </div>
-                        <div
-                          id="mic-allow-panel"
-                          class="hide alert alert-warning text-center"
-                          role="alert"
-                        >
-                          <h3>Allow access to your microphone</h3>
-                          <p>
-                            Allow access to your microphone so that your
-                            response can be recorded.<br /><br />
-                          </p>
-                          <p>
-                            Click <strong>"Allow"</strong> or
-                            <strong>"Yes"</strong> to allow access.
-                          </p>
-                        </div>
-                      </td>
-                      <td id="mic_test_result" class="status waiting">
-                        <div
-                          id="mic_test_result_desc"
-                          class="sr-only"
-                          role="img"
-                          aria-label="waiting"
-                        ></div>
-                      </td>
-                    </tr>
-                    <tr class="error-msg hide">
-                      <td colspan="4">
-                        Before you begin the test, please contact your system
-                        administrator to check your microphone.
-                      </td>
-                    </tr>
+                            <div id="speed_test_result_desc" class="sr-only" role="img" aria-label="success"></div>
+                            <table id="system-check" class="system-check-table hide w-100" style="display: table">
+                                <thead class="text-center">
+                                    <tr>
+                                        <th>Criteria</th>
+                                        <th>Minimum Requirements</th>
+                                        <th>Your System Information</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!--****************************** ROW 1 - Bandwidth ******************************-->
+                                    <tr>
+                                        <td>Bandwidth</td>
+                                        <td>
+                                            Connection speed of
+                                            <span id="min-connection">1,000</span> Kbps per
+                                            candidate.
+                                        </td>
+                                        <td>
+                                            <span id="progress">Connection Speed: 145,261.51 Kbps</span>
+                                        </td>
+                                        <td id="speed_test_result" class="status success" aria-hidden="false"></td>
+                                    </tr>
+                                    <tr id="bandwidthError" class="error-msg hide">
+                                        <td colspan="4">
+                                            Your connection speed is not fast enough to take the
+                                            test. Please contact your system administrator.
+                                        </td>
+                                    </tr>
+                                    <tr id="genericBandwidthError" class="error-msg hide">
+                                        <td colspan="4">
+                                            General Error. Please contact your system administrator.
+                                        </td>
+                                    </tr>
 
-                    <!--****************************** ROW 4 - Video ******************************-->
-                    <tr>
-                      <td>Video</td>
-                      <td>You must be able to view video.</td>
-                      <td>
-                        <div class="block-video mb-1 text-center">
-                          <div
-                            class="video-js vjs-opic-skin vjs-system-check mx-auto vjs-paused vjs-controls-enabled vjs-touch-enabled vjs-workinghover vjs-v8 vjs-user-active systemcheck-video-dimensions"
-                            id="systemcheck-video"
-                            tabindex="-1"
-                            lang="en"
-                            translate="no"
-                            aria-label="Video Player"
-                            role="region"
-                          >
-                            <video
-                              id="systemcheck-video_html5_api"
-                              class="vjs-tech"
-                              tabindex="-1"
-                              preload="auto"
-                              poster="./assets/NewEuroAvatarCaptured.jpg"
-                              src="./assets/sample-video.mp4"
-                            >
-                              <p>
-                                To view this video, please enable javascript.
-                              </p>
-                              <div class="endscreen">
-                                <span class="fp-toggle"></span>
-                              </div>
-                            </video>
-                            <div class="vjs-poster" aria-disabled="false">
-                              <picture class="vjs-poster" tabindex="-1"
-                                ><img
-                                  loading="lazy"
-                                  alt=""
-                                  src="./assets/NewEuroAvatarCaptured.jpg"
-                              /></picture>
-                            </div>
-                            <div class="vjs-title-bar vjs-hidden">
-                              <div
-                                class="vjs-title-bar-title"
-                                id="vjs-title-bar-title-91"
-                              ></div>
-                              <div
-                                class="vjs-title-bar-description"
-                                id="vjs-title-bar-description-92"
-                              ></div>
-                            </div>
-                            <div
-                              class="vjs-text-track-display"
-                              translate="yes"
-                              aria-live="off"
-                              aria-atomic="true"
-                            >
-                              <div
-                                style="
+                                    <!--****************************** ROW 2 - Web Browser ******************************-->
+                                    <tr>
+                                        <td>Web Browser</td>
+                                        <td>
+                                            <div id="browserSupport" class="supported-browsers">
+                                                <a class="pr-1" data-toggle="collapse" href="#desktop"
+                                                    aria-expanded="false" aria-controls="desktop">Desktop</a>
+                                                <a data-toggle="collapse" href="#mobile" aria-expanded="false"
+                                                    aria-controls="mobile">Tablet</a>
+
+                                                <div class="collapse mt-1" id="desktop" data-parent="#browserSupport">
+                                                    <div class="card card-body">
+                                                        <span id="supported-desktop-browsers">
+                                                            <h3>Windows</h3>
+                                                            <p>
+                                                                Edge v15, Chrome v65, Chrome Dev v65, Firefox
+                                                                v61, Opera v56
+                                                            </p>
+                                                            <h3>OS X</h3>
+                                                            <p>
+                                                                Chrome v65, Chrome Dev v65, Safari v12,
+                                                                Firefox v61
+                                                            </p>
+                                                            <h3>Chrome OS</h3>
+                                                            <p>Chrome v65, Chrome Dev v65</p>
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="collapse mt-1" id="mobile" data-parent="#browserSupport">
+                                                    <div class="card card-body">
+                                                        <span id="supported-mobile-browsers">
+                                                            <h3>Android</h3>
+                                                            <p>Chrome v65, Chrome Dev v65</p>
+                                                            <h3>iOS</h3>
+                                                            <p>Safari v11</p>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td><span id="browser">Edge v147</span></td>
+                                        <td id="browser_test_result" class="status success">
+                                            <div id="browser_test_result_desc" class="sr-only" role="img"
+                                                aria-label="success"></div>
+                                        </td>
+                                    </tr>
+                                    <tr id="browserError" class="error-msg hide">
+                                        <td colspan="4">
+                                            Your web browser is not supported. Please contact your
+                                            system administrator.
+                                        </td>
+                                    </tr>
+                                    <tr id="firefoxError" class="error-msg hide">
+                                        <td colspan="4">
+                                            If you're using Firefox, you'll need
+                                            <a href="#" target="_blank">enable microphone access</a>
+                                            for this application.
+                                        </td>
+                                    </tr>
+                                    <tr id="edgeError" class="error-msg hide">
+                                        <td colspan="4">
+                                            If you're using Edge, you'll need
+                                            <a href="#" target="_blank">enable microphone access</a>
+                                            for this application.
+                                        </td>
+                                    </tr>
+                                    <tr id="genericBrowserError" class="error-msg hide">
+                                        <td colspan="4">
+                                            General Error. Please contact your system administrator.
+                                        </td>
+                                    </tr>
+
+                                    <!--****************************** ROW 3 - Microphone ******************************-->
+                                    <tr>
+                                        <td>Microphone</td>
+                                        <td>A microphone is required.</td>
+                                        <td>
+                                            <div id="mic-test-panel" class="text-center">
+                                                <button id="start" button="" class="btn btn-start-recording my-1"
+                                                    type="button" name="button">
+                                                    <span>Start Recording</span>
+                                                </button>
+                                                <button id="stop" button="" class="hide btn btn-stop-recording my-1"
+                                                    type="button" name="button">
+                                                    <span>Stop Recording</span>
+                                                </button>
+                                                <button id="view" class="btn btn-play-recording my-1" type="button"
+                                                    name="button" disabled="">
+                                                    <span>Play Recording</span>
+                                                </button>
+
+                                                <div id="mic-dialog" class="confirmation hide">
+                                                    <p>Were you able to record your voice?</p>
+                                                    <button class="button btn passCheck p-1">
+                                                        Yes
+                                                    </button>
+                                                    <button class="button btn failCheck p-1">No</button>
+                                                </div>
+                                            </div>
+                                            <div id="mic-allow-panel" class="hide alert alert-warning text-center"
+                                                role="alert">
+                                                <h3>Allow access to your microphone</h3>
+                                                <p>
+                                                    Allow access to your microphone so that your
+                                                    response can be recorded.<br /><br />
+                                                </p>
+                                                <p>
+                                                    Click <strong>"Allow"</strong> or
+                                                    <strong>"Yes"</strong> to allow access.
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td id="mic_test_result" class="status waiting">
+                                            <div id="mic_test_result_desc" class="sr-only" role="img"
+                                                aria-label="waiting"></div>
+                                        </td>
+                                    </tr>
+                                    <tr class="error-msg hide">
+                                        <td colspan="4">
+                                            Before you begin the test, please contact your system
+                                            administrator to check your microphone.
+                                        </td>
+                                    </tr>
+
+                                    <!--****************************** ROW 4 - Video ******************************-->
+                                    <tr>
+                                        <td>Video</td>
+                                        <td>You must be able to view video.</td>
+                                        <td>
+                                            <div class="block-video mb-1 text-center">
+                                                <div class="video-js vjs-opic-skin vjs-system-check mx-auto vjs-paused vjs-controls-enabled vjs-touch-enabled vjs-workinghover vjs-v8 vjs-user-active systemcheck-video-dimensions"
+                                                    id="systemcheck-video" tabindex="-1" lang="en" translate="no"
+                                                    aria-label="Video Player" role="region">
+                                                    <video id="systemcheck-video_html5_api" class="vjs-tech"
+                                                        tabindex="-1" preload="auto"
+                                                        poster="./assets/NewEuroAvatarCaptured.jpg"
+                                                        src="./assets/sample-video.mp4">
+                                                        <p>
+                                                            To view this video, please enable javascript.
+                                                        </p>
+                                                        <div class="endscreen">
+                                                            <span class="fp-toggle"></span>
+                                                        </div>
+                                                    </video>
+                                                    <div class="vjs-poster" aria-disabled="false">
+                                                        <picture class="vjs-poster" tabindex="-1"><img loading="lazy"
+                                                                alt="" src="./assets/NewEuroAvatarCaptured.jpg" />
+                                                        </picture>
+                                                    </div>
+                                                    <div class="vjs-title-bar vjs-hidden">
+                                                        <div class="vjs-title-bar-title" id="vjs-title-bar-title-91">
+                                                        </div>
+                                                        <div class="vjs-title-bar-description"
+                                                            id="vjs-title-bar-description-92"></div>
+                                                    </div>
+                                                    <div class="vjs-text-track-display" translate="yes" aria-live="off"
+                                                        aria-atomic="true">
+                                                        <div style="
                                   position: absolute;
                                   inset: 0px;
                                   margin: 1.5%;
-                                "
-                              ></div>
+                                "></div>
+                                                    </div>
+                                                    <div class="vjs-loading-spinner" dir="ltr">
+                                                        <span class="vjs-control-text">Video Player is loading.</span>
+                                                    </div>
+                                                    <button class="vjs-big-play-button" type="button" title="Play Video"
+                                                        aria-disabled="false">
+                                                        <span class="vjs-icon-placeholder"
+                                                            aria-hidden="true"></span><span class="vjs-control-text"
+                                                            aria-live="polite">Play Video</span>
+                                                    </button>
+                                                    <div class="vjs-error-display vjs-modal-dialog vjs-hidden"
+                                                        tabindex="-1"
+                                                        aria-describedby="systemcheck-video_component_568_description"
+                                                        aria-hidden="true" aria-label="Modal Window" role="dialog"
+                                                        aria-live="polite">
+                                                        <p class="vjs-modal-dialog-description vjs-control-text"
+                                                            id="systemcheck-video_component_568_description">
+                                                            This is a modal window.
+                                                        </p>
+                                                        <div class="vjs-modal-dialog-content" role="document"></div>
+                                                    </div>
+                                                    <div class="vjs-modal-dialog vjs-hidden vjs-text-track-settings"
+                                                        tabindex="-1"
+                                                        aria-describedby="systemcheck-video_component_574_description"
+                                                        aria-hidden="true" aria-label="Caption Settings Dialog"
+                                                        role="dialog" aria-live="polite">
+                                                        <p class="vjs-modal-dialog-description vjs-control-text"
+                                                            id="systemcheck-video_component_574_description">
+                                                            Beginning of dialog window. Escape will cancel
+                                                            and close the window.
+                                                        </p>
+                                                        <div class="vjs-modal-dialog-content" role="document">
+                                                            <div class="vjs-track-settings-colors">
+                                                                <fieldset class="vjs-fg vjs-track-setting">
+                                                                    <legend
+                                                                        id="captions-text-legend-systemcheck-video_component_574">
+                                                                        Text
+                                                                    </legend>
+                                                                    <span class="vjs-text-color"><label
+                                                                            id="captions-foreground-color-systemcheck-video_component_574"
+                                                                            class="vjs-label"
+                                                                            for="vjs_select_601">Color</label><select
+                                                                            id="vjs_select_601"
+                                                                            aria-labelledby="captions-text-legend-systemcheck-video_component_574 captions-foreground-color-systemcheck-video_component_574">
+                                                                            <option
+                                                                                id="captions-foreground-color-systemcheck-video_component_574-White"
+                                                                                value="#FFF"
+                                                                                aria-labelledby="captions-text-legend-systemcheck-video_component_574 captions-foreground-color-systemcheck-video_component_574 captions-foreground-color-systemcheck-video_component_574-White">
+                                                                                White
+                                                                            </option>
+                                                                            <option
+                                                                                id="captions-foreground-color-systemcheck-video_component_574-Black"
+                                                                                value="#000"
+                                                                                aria-labelledby="captions-text-legend-systemcheck-video_component_574 captions-foreground-color-systemcheck-video_component_574 captions-foreground-color-systemcheck-video_component_574-Black">
+                                                                                Black
+                                                                            </option>
+                                                                            <option
+                                                                                id="captions-foreground-color-systemcheck-video_component_574-Red"
+                                                                                value="#F00"
+                                                                                aria-labelledby="captions-text-legend-systemcheck-video_component_574 captions-foreground-color-systemcheck-video_component_574 captions-foreground-color-systemcheck-video_component_574-Red">
+                                                                                Red
+                                                                            </option>
+                                                                            <option
+                                                                                id="captions-foreground-color-systemcheck-video_component_574-Green"
+                                                                                value="#0F0"
+                                                                                aria-labelledby="captions-text-legend-systemcheck-video_component_574 captions-foreground-color-systemcheck-video_component_574 captions-foreground-color-systemcheck-video_component_574-Green">
+                                                                                Green
+                                                                            </option>
+                                                                            <option
+                                                                                id="captions-foreground-color-systemcheck-video_component_574-Blue"
+                                                                                value="#00F"
+                                                                                aria-labelledby="captions-text-legend-systemcheck-video_component_574 captions-foreground-color-systemcheck-video_component_574 captions-foreground-color-systemcheck-video_component_574-Blue">
+                                                                                Blue
+                                                                            </option>
+                                                                            <option
+                                                                                id="captions-foreground-color-systemcheck-video_component_574-Yellow"
+                                                                                value="#FF0"
+                                                                                aria-labelledby="captions-text-legend-systemcheck-video_component_574 captions-foreground-color-systemcheck-video_component_574 captions-foreground-color-systemcheck-video_component_574-Yellow">
+                                                                                Yellow
+                                                                            </option>
+                                                                            <option
+                                                                                id="captions-foreground-color-systemcheck-video_component_574-Magenta"
+                                                                                value="#F0F"
+                                                                                aria-labelledby="captions-text-legend-systemcheck-video_component_574 captions-foreground-color-systemcheck-video_component_574 captions-foreground-color-systemcheck-video_component_574-Magenta">
+                                                                                Magenta
+                                                                            </option>
+                                                                            <option
+                                                                                id="captions-foreground-color-systemcheck-video_component_574-Cyan"
+                                                                                value="#0FF"
+                                                                                aria-labelledby="captions-text-legend-systemcheck-video_component_574 captions-foreground-color-systemcheck-video_component_574 captions-foreground-color-systemcheck-video_component_574-Cyan">
+                                                                                Cyan
+                                                                            </option>
+                                                                        </select></span><span
+                                                                        class="vjs-text-opacity vjs-opacity"><label
+                                                                            id="captions-foreground-opacity-systemcheck-video_component_574"
+                                                                            class="vjs-label"
+                                                                            for="vjs_select_606">Opacity</label><select
+                                                                            id="vjs_select_606"
+                                                                            aria-labelledby="captions-text-legend-systemcheck-video_component_574 captions-foreground-opacity-systemcheck-video_component_574">
+                                                                            <option
+                                                                                id="captions-foreground-opacity-systemcheck-video_component_574-Opaque"
+                                                                                value="1"
+                                                                                aria-labelledby="captions-text-legend-systemcheck-video_component_574 captions-foreground-opacity-systemcheck-video_component_574 captions-foreground-opacity-systemcheck-video_component_574-Opaque">
+                                                                                Opaque
+                                                                            </option>
+                                                                            <option
+                                                                                id="captions-foreground-opacity-systemcheck-video_component_574-SemiTransparent"
+                                                                                value="0.5"
+                                                                                aria-labelledby="captions-text-legend-systemcheck-video_component_574 captions-foreground-opacity-systemcheck-video_component_574 captions-foreground-opacity-systemcheck-video_component_574-SemiTransparent">
+                                                                                Semi-Transparent
+                                                                            </option>
+                                                                        </select></span>
+                                                                </fieldset>
+                                                                <fieldset class="vjs-bg vjs-track-setting">
+                                                                    <legend
+                                                                        id="captions-background-systemcheck-video_component_574">
+                                                                        Text Background
+                                                                    </legend>
+                                                                    <span class="vjs-bg-color"><label
+                                                                            id="captions-background-color-systemcheck-video_component_574"
+                                                                            class="vjs-label"
+                                                                            for="vjs_select_616">Color</label><select
+                                                                            id="vjs_select_616"
+                                                                            aria-labelledby="captions-background-systemcheck-video_component_574 captions-background-color-systemcheck-video_component_574">
+                                                                            <option
+                                                                                id="captions-background-color-systemcheck-video_component_574-Black"
+                                                                                value="#000"
+                                                                                aria-labelledby="captions-background-systemcheck-video_component_574 captions-background-color-systemcheck-video_component_574 captions-background-color-systemcheck-video_component_574-Black">
+                                                                                Black
+                                                                            </option>
+                                                                            <option
+                                                                                id="captions-background-color-systemcheck-video_component_574-White"
+                                                                                value="#FFF"
+                                                                                aria-labelledby="captions-background-systemcheck-video_component_574 captions-background-color-systemcheck-video_component_574 captions-background-color-systemcheck-video_component_574-White">
+                                                                                White
+                                                                            </option>
+                                                                            <option
+                                                                                id="captions-background-color-systemcheck-video_component_574-Red"
+                                                                                value="#F00"
+                                                                                aria-labelledby="captions-background-systemcheck-video_component_574 captions-background-color-systemcheck-video_component_574 captions-background-color-systemcheck-video_component_574-Red">
+                                                                                Red
+                                                                            </option>
+                                                                            <option
+                                                                                id="captions-background-color-systemcheck-video_component_574-Green"
+                                                                                value="#0F0"
+                                                                                aria-labelledby="captions-background-systemcheck-video_component_574 captions-background-color-systemcheck-video_component_574 captions-background-color-systemcheck-video_component_574-Green">
+                                                                                Green
+                                                                            </option>
+                                                                            <option
+                                                                                id="captions-background-color-systemcheck-video_component_574-Blue"
+                                                                                value="#00F"
+                                                                                aria-labelledby="captions-background-systemcheck-video_component_574 captions-background-color-systemcheck-video_component_574 captions-background-color-systemcheck-video_component_574-Blue">
+                                                                                Blue
+                                                                            </option>
+                                                                            <option
+                                                                                id="captions-background-color-systemcheck-video_component_574-Yellow"
+                                                                                value="#FF0"
+                                                                                aria-labelledby="captions-background-systemcheck-video_component_574 captions-background-color-systemcheck-video_component_574 captions-background-color-systemcheck-video_component_574-Yellow">
+                                                                                Yellow
+                                                                            </option>
+                                                                            <option
+                                                                                id="captions-background-color-systemcheck-video_component_574-Magenta"
+                                                                                value="#F0F"
+                                                                                aria-labelledby="captions-background-systemcheck-video_component_574 captions-background-color-systemcheck-video_component_574 captions-background-color-systemcheck-video_component_574-Magenta">
+                                                                                Magenta
+                                                                            </option>
+                                                                            <option
+                                                                                id="captions-background-color-systemcheck-video_component_574-Cyan"
+                                                                                value="#0FF"
+                                                                                aria-labelledby="captions-background-systemcheck-video_component_574 captions-background-color-systemcheck-video_component_574 captions-background-color-systemcheck-video_component_574-Cyan">
+                                                                                Cyan
+                                                                            </option>
+                                                                        </select></span><span
+                                                                        class="vjs-bg-opacity vjs-opacity"><label
+                                                                            id="captions-background-opacity-systemcheck-video_component_574"
+                                                                            class="vjs-label"
+                                                                            for="vjs_select_621">Opacity</label><select
+                                                                            id="vjs_select_621"
+                                                                            aria-labelledby="captions-background-systemcheck-video_component_574 captions-background-opacity-systemcheck-video_component_574">
+                                                                            <option
+                                                                                id="captions-background-opacity-systemcheck-video_component_574-Opaque"
+                                                                                value="1"
+                                                                                aria-labelledby="captions-background-systemcheck-video_component_574 captions-background-opacity-systemcheck-video_component_574 captions-background-opacity-systemcheck-video_component_574-Opaque">
+                                                                                Opaque
+                                                                            </option>
+                                                                            <option
+                                                                                id="captions-background-opacity-systemcheck-video_component_574-SemiTransparent"
+                                                                                value="0.5"
+                                                                                aria-labelledby="captions-background-systemcheck-video_component_574 captions-background-opacity-systemcheck-video_component_574 captions-background-opacity-systemcheck-video_component_574-SemiTransparent">
+                                                                                Semi-Transparent
+                                                                            </option>
+                                                                            <option
+                                                                                id="captions-background-opacity-systemcheck-video_component_574-Transparent"
+                                                                                value="0"
+                                                                                aria-labelledby="captions-background-systemcheck-video_component_574 captions-background-opacity-systemcheck-video_component_574 captions-background-opacity-systemcheck-video_component_574-Transparent">
+                                                                                Transparent
+                                                                            </option>
+                                                                        </select></span>
+                                                                </fieldset>
+                                                                <fieldset class="vjs-window vjs-track-setting">
+                                                                    <legend
+                                                                        id="captions-window-systemcheck-video_component_574">
+                                                                        Caption Area Background
+                                                                    </legend>
+                                                                    <span class="vjs-window-color"><label
+                                                                            id="captions-window-color-systemcheck-video_component_574"
+                                                                            class="vjs-label"
+                                                                            for="vjs_select_631">Color</label><select
+                                                                            id="vjs_select_631"
+                                                                            aria-labelledby="captions-window-systemcheck-video_component_574 captions-window-color-systemcheck-video_component_574">
+                                                                            <option
+                                                                                id="captions-window-color-systemcheck-video_component_574-Black"
+                                                                                value="#000"
+                                                                                aria-labelledby="captions-window-systemcheck-video_component_574 captions-window-color-systemcheck-video_component_574 captions-window-color-systemcheck-video_component_574-Black">
+                                                                                Black
+                                                                            </option>
+                                                                            <option
+                                                                                id="captions-window-color-systemcheck-video_component_574-White"
+                                                                                value="#FFF"
+                                                                                aria-labelledby="captions-window-systemcheck-video_component_574 captions-window-color-systemcheck-video_component_574 captions-window-color-systemcheck-video_component_574-White">
+                                                                                White
+                                                                            </option>
+                                                                            <option
+                                                                                id="captions-window-color-systemcheck-video_component_574-Red"
+                                                                                value="#F00"
+                                                                                aria-labelledby="captions-window-systemcheck-video_component_574 captions-window-color-systemcheck-video_component_574 captions-window-color-systemcheck-video_component_574-Red">
+                                                                                Red
+                                                                            </option>
+                                                                            <option
+                                                                                id="captions-window-color-systemcheck-video_component_574-Green"
+                                                                                value="#0F0"
+                                                                                aria-labelledby="captions-window-systemcheck-video_component_574 captions-window-color-systemcheck-video_component_574 captions-window-color-systemcheck-video_component_574-Green">
+                                                                                Green
+                                                                            </option>
+                                                                            <option
+                                                                                id="captions-window-color-systemcheck-video_component_574-Blue"
+                                                                                value="#00F"
+                                                                                aria-labelledby="captions-window-systemcheck-video_component_574 captions-window-color-systemcheck-video_component_574 captions-window-color-systemcheck-video_component_574-Blue">
+                                                                                Blue
+                                                                            </option>
+                                                                            <option
+                                                                                id="captions-window-color-systemcheck-video_component_574-Yellow"
+                                                                                value="#FF0"
+                                                                                aria-labelledby="captions-window-systemcheck-video_component_574 captions-window-color-systemcheck-video_component_574 captions-window-color-systemcheck-video_component_574-Yellow">
+                                                                                Yellow
+                                                                            </option>
+                                                                            <option
+                                                                                id="captions-window-color-systemcheck-video_component_574-Magenta"
+                                                                                value="#F0F"
+                                                                                aria-labelledby="captions-window-systemcheck-video_component_574 captions-window-color-systemcheck-video_component_574 captions-window-color-systemcheck-video_component_574-Magenta">
+                                                                                Magenta
+                                                                            </option>
+                                                                            <option
+                                                                                id="captions-window-color-systemcheck-video_component_574-Cyan"
+                                                                                value="#0FF"
+                                                                                aria-labelledby="captions-window-systemcheck-video_component_574 captions-window-color-systemcheck-video_component_574 captions-window-color-systemcheck-video_component_574-Cyan">
+                                                                                Cyan
+                                                                            </option>
+                                                                        </select></span><span
+                                                                        class="vjs-window-opacity vjs-opacity"><label
+                                                                            id="captions-window-opacity-systemcheck-video_component_574"
+                                                                            class="vjs-label"
+                                                                            for="vjs_select_636">Opacity</label><select
+                                                                            id="vjs_select_636"
+                                                                            aria-labelledby="captions-window-systemcheck-video_component_574 captions-window-opacity-systemcheck-video_component_574">
+                                                                            <option
+                                                                                id="captions-window-opacity-systemcheck-video_component_574-Transparent"
+                                                                                value="0"
+                                                                                aria-labelledby="captions-window-systemcheck-video_component_574 captions-window-opacity-systemcheck-video_component_574 captions-window-opacity-systemcheck-video_component_574-Transparent">
+                                                                                Transparent
+                                                                            </option>
+                                                                            <option
+                                                                                id="captions-window-opacity-systemcheck-video_component_574-SemiTransparent"
+                                                                                value="0.5"
+                                                                                aria-labelledby="captions-window-systemcheck-video_component_574 captions-window-opacity-systemcheck-video_component_574 captions-window-opacity-systemcheck-video_component_574-SemiTransparent">
+                                                                                Semi-Transparent
+                                                                            </option>
+                                                                            <option
+                                                                                id="captions-window-opacity-systemcheck-video_component_574-Opaque"
+                                                                                value="1"
+                                                                                aria-labelledby="captions-window-systemcheck-video_component_574 captions-window-opacity-systemcheck-video_component_574 captions-window-opacity-systemcheck-video_component_574-Opaque">
+                                                                                Opaque
+                                                                            </option>
+                                                                        </select></span>
+                                                                </fieldset>
+                                                            </div>
+                                                            <div class="vjs-track-settings-font">
+                                                                <fieldset class="vjs-font-percent vjs-track-setting">
+                                                                    <legend
+                                                                        id="captions-font-size-systemcheck-video_component_574">
+                                                                        Font Size
+                                                                    </legend>
+                                                                    <select id="vjs_select_651"
+                                                                        aria-labelledby="captions-font-size-systemcheck-video_component_574">
+                                                                        <option id="vjs-track-option-652-50"
+                                                                            value="0.50"
+                                                                            aria-labelledby="captions-font-size-systemcheck-video_component_574 vjs-track-option-652-50">
+                                                                            50%
+                                                                        </option>
+                                                                        <option id="vjs-track-option-653-75"
+                                                                            value="0.75"
+                                                                            aria-labelledby="captions-font-size-systemcheck-video_component_574 vjs-track-option-653-75">
+                                                                            75%
+                                                                        </option>
+                                                                        <option id="vjs-track-option-654-100"
+                                                                            value="1.00"
+                                                                            aria-labelledby="captions-font-size-systemcheck-video_component_574 vjs-track-option-654-100">
+                                                                            100%
+                                                                        </option>
+                                                                        <option id="vjs-track-option-655-125"
+                                                                            value="1.25"
+                                                                            aria-labelledby="captions-font-size-systemcheck-video_component_574 vjs-track-option-655-125">
+                                                                            125%
+                                                                        </option>
+                                                                        <option id="vjs-track-option-656-150"
+                                                                            value="1.50"
+                                                                            aria-labelledby="captions-font-size-systemcheck-video_component_574 vjs-track-option-656-150">
+                                                                            150%
+                                                                        </option>
+                                                                        <option id="vjs-track-option-657-175"
+                                                                            value="1.75"
+                                                                            aria-labelledby="captions-font-size-systemcheck-video_component_574 vjs-track-option-657-175">
+                                                                            175%
+                                                                        </option>
+                                                                        <option id="vjs-track-option-658-200"
+                                                                            value="2.00"
+                                                                            aria-labelledby="captions-font-size-systemcheck-video_component_574 vjs-track-option-658-200">
+                                                                            200%
+                                                                        </option>
+                                                                        <option id="vjs-track-option-659-300"
+                                                                            value="3.00"
+                                                                            aria-labelledby="captions-font-size-systemcheck-video_component_574 vjs-track-option-659-300">
+                                                                            300%
+                                                                        </option>
+                                                                        <option id="vjs-track-option-660-400"
+                                                                            value="4.00"
+                                                                            aria-labelledby="captions-font-size-systemcheck-video_component_574 vjs-track-option-660-400">
+                                                                            400%
+                                                                        </option>
+                                                                    </select>
+                                                                </fieldset>
+                                                                <fieldset class="vjs-edge-style vjs-track-setting">
+                                                                    <legend
+                                                                        id="captions-edge-style-systemcheck-video_component_574">
+                                                                        Text Edge Style
+                                                                    </legend>
+                                                                    <select id="vjs_select_670"
+                                                                        aria-labelledby="captions-edge-style-systemcheck-video_component_574">
+                                                                        <option id="vjs-track-option-671-None"
+                                                                            value="none"
+                                                                            aria-labelledby="captions-edge-style-systemcheck-video_component_574 vjs-track-option-671-None">
+                                                                            None
+                                                                        </option>
+                                                                        <option id="vjs-track-option-672-Raised"
+                                                                            value="raised"
+                                                                            aria-labelledby="captions-edge-style-systemcheck-video_component_574 vjs-track-option-672-Raised">
+                                                                            Raised
+                                                                        </option>
+                                                                        <option id="vjs-track-option-673-Depressed"
+                                                                            value="depressed"
+                                                                            aria-labelledby="captions-edge-style-systemcheck-video_component_574 vjs-track-option-673-Depressed">
+                                                                            Depressed
+                                                                        </option>
+                                                                        <option id="vjs-track-option-674-Uniform"
+                                                                            value="uniform"
+                                                                            aria-labelledby="captions-edge-style-systemcheck-video_component_574 vjs-track-option-674-Uniform">
+                                                                            Uniform
+                                                                        </option>
+                                                                        <option id="vjs-track-option-675-Dropshadow"
+                                                                            value="dropshadow"
+                                                                            aria-labelledby="captions-edge-style-systemcheck-video_component_574 vjs-track-option-675-Dropshadow">
+                                                                            Drop shadow
+                                                                        </option>
+                                                                    </select>
+                                                                </fieldset>
+                                                                <fieldset class="vjs-font-family vjs-track-setting">
+                                                                    <legend
+                                                                        id="captions-font-family-systemcheck-video_component_574">
+                                                                        Font Family
+                                                                    </legend>
+                                                                    <select id="vjs_select_685"
+                                                                        aria-labelledby="captions-font-family-systemcheck-video_component_574">
+                                                                        <option
+                                                                            id="vjs-track-option-686-ProportionalSansSerif"
+                                                                            value="proportionalSansSerif"
+                                                                            aria-labelledby="captions-font-family-systemcheck-video_component_574 vjs-track-option-686-ProportionalSansSerif">
+                                                                            Proportional Sans-Serif
+                                                                        </option>
+                                                                        <option
+                                                                            id="vjs-track-option-687-MonospaceSansSerif"
+                                                                            value="monospaceSansSerif"
+                                                                            aria-labelledby="captions-font-family-systemcheck-video_component_574 vjs-track-option-687-MonospaceSansSerif">
+                                                                            Monospace Sans-Serif
+                                                                        </option>
+                                                                        <option
+                                                                            id="vjs-track-option-688-ProportionalSerif"
+                                                                            value="proportionalSerif"
+                                                                            aria-labelledby="captions-font-family-systemcheck-video_component_574 vjs-track-option-688-ProportionalSerif">
+                                                                            Proportional Serif
+                                                                        </option>
+                                                                        <option id="vjs-track-option-689-MonospaceSerif"
+                                                                            value="monospaceSerif"
+                                                                            aria-labelledby="captions-font-family-systemcheck-video_component_574 vjs-track-option-689-MonospaceSerif">
+                                                                            Monospace Serif
+                                                                        </option>
+                                                                        <option id="vjs-track-option-690-Casual"
+                                                                            value="casual"
+                                                                            aria-labelledby="captions-font-family-systemcheck-video_component_574 vjs-track-option-690-Casual">
+                                                                            Casual
+                                                                        </option>
+                                                                        <option id="vjs-track-option-691-Script"
+                                                                            value="script"
+                                                                            aria-labelledby="captions-font-family-systemcheck-video_component_574 vjs-track-option-691-Script">
+                                                                            Script
+                                                                        </option>
+                                                                        <option id="vjs-track-option-692-SmallCaps"
+                                                                            value="small-caps"
+                                                                            aria-labelledby="captions-font-family-systemcheck-video_component_574 vjs-track-option-692-SmallCaps">
+                                                                            Small Caps
+                                                                        </option>
+                                                                    </select>
+                                                                </fieldset>
+                                                            </div>
+                                                            <div class="vjs-track-settings-controls">
+                                                                <button class="vjs-default-button" type="button"
+                                                                    title="restore all settings to the default values"
+                                                                    aria-disabled="false">
+                                                                    Reset</button><button class="vjs-done-button"
+                                                                    type="button"
+                                                                    title="restore all settings to the default values"
+                                                                    aria-disabled="false">
+                                                                    Done
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <button class="vjs-close-button vjs-control vjs-button"
+                                                            type="button" title="Close Modal Dialog"
+                                                            aria-disabled="false">
+                                                            <span class="vjs-icon-placeholder"
+                                                                aria-hidden="true"></span><span class="vjs-control-text"
+                                                                aria-live="polite">Close Modal Dialog</span>
+                                                        </button>
+                                                        <p class="vjs-control-text">
+                                                            End of dialog window.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- end block-video -->
+
+                                            <div class="text-center">
+                                                <div id="video-dialog" class="confirmation hide">
+                                                    <p>Were you able to view the video?</p>
+                                                    <button class="button btn passCheck p-1">
+                                                        Yes
+                                                    </button>
+                                                    <button class="button btn failCheck p-1">No</button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td id="video_test_result" class="status waiting">
+                                            <div id="video_test_result_desc" class="sr-only" role="img"
+                                                aria-label="waiting"></div>
+                                        </td>
+                                    </tr>
+                                    <tr class="error-msg hide">
+                                        <td colspan="4">
+                                            If you cannot play video, please contact your system
+                                            administrator.
+                                        </td>
+                                    </tr>
+
+                                    <!--****************************** ROW 5 - Captions ******************************-->
+                                    <tr>
+                                        <td>Captions</td>
+                                        <td>Captions must not appear on your screen.</td>
+                                        <td>
+                                            <div class="text-center">
+                                                <div id="caption-dialog" class="confirmation">
+                                                    <p>
+                                                        Did captions appear anywhere on your screen while
+                                                        the video was playing?
+                                                    </p>
+                                                    <button class="button btn failCheck p-1">
+                                                        Yes
+                                                    </button>
+                                                    <button class="button btn passCheck p-1">No</button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td id="caption_test_result" class="status waiting">
+                                            <div id="caption_test_result_desc" class="sr-only" role="img"
+                                                aria-label="waiting"></div>
+                                        </td>
+                                    </tr>
+                                    <tr class="error-msg hide">
+                                        <td colspan="4">
+                                            If captions appeared anywhere on your screen while the
+                                            video was playing and you are using the Chrome browser,
+                                            Chrome is not configured correctly to take this test and
+                                            your test rating may be affected. Please notify your
+                                            proctor right away; they will assist you in modifying
+                                            your browser settings. If you are not able to contact
+                                            your proctor for help with the Chrome settings, please
+                                            take your test using a different browser (Firefox,
+                                            Safari, or Edge), or call 1-800-486-8444 (Option 1),
+                                            Monday-Friday 8am-7pm ET or email
+                                            <a href="mailto:support@languagetesting.com">support@languagetesting.com</a>
+                                            for assistance with Chrome.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div id="pass-message-bottom" class="system-check-result success hide">
+                                <p>
+                                    <strong>Success!</strong> You've passed all of the system
+                                    checks.
+                                </p>
                             </div>
-                            <div class="vjs-loading-spinner" dir="ltr">
-                              <span class="vjs-control-text"
-                                >Video Player is loading.</span
-                              >
+
+                            <div id="fail-message-bottom" class="system-check-result fail hide">
+                                <p>
+                                    <strong>Error!</strong> Your computer does not meet the
+                                    minimum requirements. Please contact your system
+                                    administrator.
+                                </p>
                             </div>
-                            <button
-                              class="vjs-big-play-button"
-                              type="button"
-                              title="Play Video"
-                              aria-disabled="false"
-                            >
-                              <span
-                                class="vjs-icon-placeholder"
-                                aria-hidden="true"
-                              ></span
-                              ><span class="vjs-control-text" aria-live="polite"
-                                >Play Video</span
-                              >
-                            </button>
-                            <div
-                              class="vjs-error-display vjs-modal-dialog vjs-hidden"
-                              tabindex="-1"
-                              aria-describedby="systemcheck-video_component_568_description"
-                              aria-hidden="true"
-                              aria-label="Modal Window"
-                              role="dialog"
-                              aria-live="polite"
-                            >
-                              <p
-                                class="vjs-modal-dialog-description vjs-control-text"
-                                id="systemcheck-video_component_568_description"
-                              >
-                                This is a modal window.
-                              </p>
-                              <div
-                                class="vjs-modal-dialog-content"
-                                role="document"
-                              ></div>
-                            </div>
-                            <div
-                              class="vjs-modal-dialog vjs-hidden vjs-text-track-settings"
-                              tabindex="-1"
-                              aria-describedby="systemcheck-video_component_574_description"
-                              aria-hidden="true"
-                              aria-label="Caption Settings Dialog"
-                              role="dialog"
-                              aria-live="polite"
-                            >
-                              <p
-                                class="vjs-modal-dialog-description vjs-control-text"
-                                id="systemcheck-video_component_574_description"
-                              >
-                                Beginning of dialog window. Escape will cancel
-                                and close the window.
-                              </p>
-                              <div
-                                class="vjs-modal-dialog-content"
-                                role="document"
-                              >
-                                <div class="vjs-track-settings-colors">
-                                  <fieldset class="vjs-fg vjs-track-setting">
-                                    <legend
-                                      id="captions-text-legend-systemcheck-video_component_574"
-                                    >
-                                      Text
-                                    </legend>
-                                    <span class="vjs-text-color"
-                                      ><label
-                                        id="captions-foreground-color-systemcheck-video_component_574"
-                                        class="vjs-label"
-                                        for="vjs_select_601"
-                                        >Color</label
-                                      ><select
-                                        id="vjs_select_601"
-                                        aria-labelledby="captions-text-legend-systemcheck-video_component_574 captions-foreground-color-systemcheck-video_component_574"
-                                      >
-                                        <option
-                                          id="captions-foreground-color-systemcheck-video_component_574-White"
-                                          value="#FFF"
-                                          aria-labelledby="captions-text-legend-systemcheck-video_component_574 captions-foreground-color-systemcheck-video_component_574 captions-foreground-color-systemcheck-video_component_574-White"
-                                        >
-                                          White
-                                        </option>
-                                        <option
-                                          id="captions-foreground-color-systemcheck-video_component_574-Black"
-                                          value="#000"
-                                          aria-labelledby="captions-text-legend-systemcheck-video_component_574 captions-foreground-color-systemcheck-video_component_574 captions-foreground-color-systemcheck-video_component_574-Black"
-                                        >
-                                          Black
-                                        </option>
-                                        <option
-                                          id="captions-foreground-color-systemcheck-video_component_574-Red"
-                                          value="#F00"
-                                          aria-labelledby="captions-text-legend-systemcheck-video_component_574 captions-foreground-color-systemcheck-video_component_574 captions-foreground-color-systemcheck-video_component_574-Red"
-                                        >
-                                          Red
-                                        </option>
-                                        <option
-                                          id="captions-foreground-color-systemcheck-video_component_574-Green"
-                                          value="#0F0"
-                                          aria-labelledby="captions-text-legend-systemcheck-video_component_574 captions-foreground-color-systemcheck-video_component_574 captions-foreground-color-systemcheck-video_component_574-Green"
-                                        >
-                                          Green
-                                        </option>
-                                        <option
-                                          id="captions-foreground-color-systemcheck-video_component_574-Blue"
-                                          value="#00F"
-                                          aria-labelledby="captions-text-legend-systemcheck-video_component_574 captions-foreground-color-systemcheck-video_component_574 captions-foreground-color-systemcheck-video_component_574-Blue"
-                                        >
-                                          Blue
-                                        </option>
-                                        <option
-                                          id="captions-foreground-color-systemcheck-video_component_574-Yellow"
-                                          value="#FF0"
-                                          aria-labelledby="captions-text-legend-systemcheck-video_component_574 captions-foreground-color-systemcheck-video_component_574 captions-foreground-color-systemcheck-video_component_574-Yellow"
-                                        >
-                                          Yellow
-                                        </option>
-                                        <option
-                                          id="captions-foreground-color-systemcheck-video_component_574-Magenta"
-                                          value="#F0F"
-                                          aria-labelledby="captions-text-legend-systemcheck-video_component_574 captions-foreground-color-systemcheck-video_component_574 captions-foreground-color-systemcheck-video_component_574-Magenta"
-                                        >
-                                          Magenta
-                                        </option>
-                                        <option
-                                          id="captions-foreground-color-systemcheck-video_component_574-Cyan"
-                                          value="#0FF"
-                                          aria-labelledby="captions-text-legend-systemcheck-video_component_574 captions-foreground-color-systemcheck-video_component_574 captions-foreground-color-systemcheck-video_component_574-Cyan"
-                                        >
-                                          Cyan
-                                        </option>
-                                      </select></span
-                                    ><span class="vjs-text-opacity vjs-opacity"
-                                      ><label
-                                        id="captions-foreground-opacity-systemcheck-video_component_574"
-                                        class="vjs-label"
-                                        for="vjs_select_606"
-                                        >Opacity</label
-                                      ><select
-                                        id="vjs_select_606"
-                                        aria-labelledby="captions-text-legend-systemcheck-video_component_574 captions-foreground-opacity-systemcheck-video_component_574"
-                                      >
-                                        <option
-                                          id="captions-foreground-opacity-systemcheck-video_component_574-Opaque"
-                                          value="1"
-                                          aria-labelledby="captions-text-legend-systemcheck-video_component_574 captions-foreground-opacity-systemcheck-video_component_574 captions-foreground-opacity-systemcheck-video_component_574-Opaque"
-                                        >
-                                          Opaque
-                                        </option>
-                                        <option
-                                          id="captions-foreground-opacity-systemcheck-video_component_574-SemiTransparent"
-                                          value="0.5"
-                                          aria-labelledby="captions-text-legend-systemcheck-video_component_574 captions-foreground-opacity-systemcheck-video_component_574 captions-foreground-opacity-systemcheck-video_component_574-SemiTransparent"
-                                        >
-                                          Semi-Transparent
-                                        </option>
-                                      </select></span
-                                    >
-                                  </fieldset>
-                                  <fieldset class="vjs-bg vjs-track-setting">
-                                    <legend
-                                      id="captions-background-systemcheck-video_component_574"
-                                    >
-                                      Text Background
-                                    </legend>
-                                    <span class="vjs-bg-color"
-                                      ><label
-                                        id="captions-background-color-systemcheck-video_component_574"
-                                        class="vjs-label"
-                                        for="vjs_select_616"
-                                        >Color</label
-                                      ><select
-                                        id="vjs_select_616"
-                                        aria-labelledby="captions-background-systemcheck-video_component_574 captions-background-color-systemcheck-video_component_574"
-                                      >
-                                        <option
-                                          id="captions-background-color-systemcheck-video_component_574-Black"
-                                          value="#000"
-                                          aria-labelledby="captions-background-systemcheck-video_component_574 captions-background-color-systemcheck-video_component_574 captions-background-color-systemcheck-video_component_574-Black"
-                                        >
-                                          Black
-                                        </option>
-                                        <option
-                                          id="captions-background-color-systemcheck-video_component_574-White"
-                                          value="#FFF"
-                                          aria-labelledby="captions-background-systemcheck-video_component_574 captions-background-color-systemcheck-video_component_574 captions-background-color-systemcheck-video_component_574-White"
-                                        >
-                                          White
-                                        </option>
-                                        <option
-                                          id="captions-background-color-systemcheck-video_component_574-Red"
-                                          value="#F00"
-                                          aria-labelledby="captions-background-systemcheck-video_component_574 captions-background-color-systemcheck-video_component_574 captions-background-color-systemcheck-video_component_574-Red"
-                                        >
-                                          Red
-                                        </option>
-                                        <option
-                                          id="captions-background-color-systemcheck-video_component_574-Green"
-                                          value="#0F0"
-                                          aria-labelledby="captions-background-systemcheck-video_component_574 captions-background-color-systemcheck-video_component_574 captions-background-color-systemcheck-video_component_574-Green"
-                                        >
-                                          Green
-                                        </option>
-                                        <option
-                                          id="captions-background-color-systemcheck-video_component_574-Blue"
-                                          value="#00F"
-                                          aria-labelledby="captions-background-systemcheck-video_component_574 captions-background-color-systemcheck-video_component_574 captions-background-color-systemcheck-video_component_574-Blue"
-                                        >
-                                          Blue
-                                        </option>
-                                        <option
-                                          id="captions-background-color-systemcheck-video_component_574-Yellow"
-                                          value="#FF0"
-                                          aria-labelledby="captions-background-systemcheck-video_component_574 captions-background-color-systemcheck-video_component_574 captions-background-color-systemcheck-video_component_574-Yellow"
-                                        >
-                                          Yellow
-                                        </option>
-                                        <option
-                                          id="captions-background-color-systemcheck-video_component_574-Magenta"
-                                          value="#F0F"
-                                          aria-labelledby="captions-background-systemcheck-video_component_574 captions-background-color-systemcheck-video_component_574 captions-background-color-systemcheck-video_component_574-Magenta"
-                                        >
-                                          Magenta
-                                        </option>
-                                        <option
-                                          id="captions-background-color-systemcheck-video_component_574-Cyan"
-                                          value="#0FF"
-                                          aria-labelledby="captions-background-systemcheck-video_component_574 captions-background-color-systemcheck-video_component_574 captions-background-color-systemcheck-video_component_574-Cyan"
-                                        >
-                                          Cyan
-                                        </option>
-                                      </select></span
-                                    ><span class="vjs-bg-opacity vjs-opacity"
-                                      ><label
-                                        id="captions-background-opacity-systemcheck-video_component_574"
-                                        class="vjs-label"
-                                        for="vjs_select_621"
-                                        >Opacity</label
-                                      ><select
-                                        id="vjs_select_621"
-                                        aria-labelledby="captions-background-systemcheck-video_component_574 captions-background-opacity-systemcheck-video_component_574"
-                                      >
-                                        <option
-                                          id="captions-background-opacity-systemcheck-video_component_574-Opaque"
-                                          value="1"
-                                          aria-labelledby="captions-background-systemcheck-video_component_574 captions-background-opacity-systemcheck-video_component_574 captions-background-opacity-systemcheck-video_component_574-Opaque"
-                                        >
-                                          Opaque
-                                        </option>
-                                        <option
-                                          id="captions-background-opacity-systemcheck-video_component_574-SemiTransparent"
-                                          value="0.5"
-                                          aria-labelledby="captions-background-systemcheck-video_component_574 captions-background-opacity-systemcheck-video_component_574 captions-background-opacity-systemcheck-video_component_574-SemiTransparent"
-                                        >
-                                          Semi-Transparent
-                                        </option>
-                                        <option
-                                          id="captions-background-opacity-systemcheck-video_component_574-Transparent"
-                                          value="0"
-                                          aria-labelledby="captions-background-systemcheck-video_component_574 captions-background-opacity-systemcheck-video_component_574 captions-background-opacity-systemcheck-video_component_574-Transparent"
-                                        >
-                                          Transparent
-                                        </option>
-                                      </select></span
-                                    >
-                                  </fieldset>
-                                  <fieldset
-                                    class="vjs-window vjs-track-setting"
-                                  >
-                                    <legend
-                                      id="captions-window-systemcheck-video_component_574"
-                                    >
-                                      Caption Area Background
-                                    </legend>
-                                    <span class="vjs-window-color"
-                                      ><label
-                                        id="captions-window-color-systemcheck-video_component_574"
-                                        class="vjs-label"
-                                        for="vjs_select_631"
-                                        >Color</label
-                                      ><select
-                                        id="vjs_select_631"
-                                        aria-labelledby="captions-window-systemcheck-video_component_574 captions-window-color-systemcheck-video_component_574"
-                                      >
-                                        <option
-                                          id="captions-window-color-systemcheck-video_component_574-Black"
-                                          value="#000"
-                                          aria-labelledby="captions-window-systemcheck-video_component_574 captions-window-color-systemcheck-video_component_574 captions-window-color-systemcheck-video_component_574-Black"
-                                        >
-                                          Black
-                                        </option>
-                                        <option
-                                          id="captions-window-color-systemcheck-video_component_574-White"
-                                          value="#FFF"
-                                          aria-labelledby="captions-window-systemcheck-video_component_574 captions-window-color-systemcheck-video_component_574 captions-window-color-systemcheck-video_component_574-White"
-                                        >
-                                          White
-                                        </option>
-                                        <option
-                                          id="captions-window-color-systemcheck-video_component_574-Red"
-                                          value="#F00"
-                                          aria-labelledby="captions-window-systemcheck-video_component_574 captions-window-color-systemcheck-video_component_574 captions-window-color-systemcheck-video_component_574-Red"
-                                        >
-                                          Red
-                                        </option>
-                                        <option
-                                          id="captions-window-color-systemcheck-video_component_574-Green"
-                                          value="#0F0"
-                                          aria-labelledby="captions-window-systemcheck-video_component_574 captions-window-color-systemcheck-video_component_574 captions-window-color-systemcheck-video_component_574-Green"
-                                        >
-                                          Green
-                                        </option>
-                                        <option
-                                          id="captions-window-color-systemcheck-video_component_574-Blue"
-                                          value="#00F"
-                                          aria-labelledby="captions-window-systemcheck-video_component_574 captions-window-color-systemcheck-video_component_574 captions-window-color-systemcheck-video_component_574-Blue"
-                                        >
-                                          Blue
-                                        </option>
-                                        <option
-                                          id="captions-window-color-systemcheck-video_component_574-Yellow"
-                                          value="#FF0"
-                                          aria-labelledby="captions-window-systemcheck-video_component_574 captions-window-color-systemcheck-video_component_574 captions-window-color-systemcheck-video_component_574-Yellow"
-                                        >
-                                          Yellow
-                                        </option>
-                                        <option
-                                          id="captions-window-color-systemcheck-video_component_574-Magenta"
-                                          value="#F0F"
-                                          aria-labelledby="captions-window-systemcheck-video_component_574 captions-window-color-systemcheck-video_component_574 captions-window-color-systemcheck-video_component_574-Magenta"
-                                        >
-                                          Magenta
-                                        </option>
-                                        <option
-                                          id="captions-window-color-systemcheck-video_component_574-Cyan"
-                                          value="#0FF"
-                                          aria-labelledby="captions-window-systemcheck-video_component_574 captions-window-color-systemcheck-video_component_574 captions-window-color-systemcheck-video_component_574-Cyan"
-                                        >
-                                          Cyan
-                                        </option>
-                                      </select></span
-                                    ><span
-                                      class="vjs-window-opacity vjs-opacity"
-                                      ><label
-                                        id="captions-window-opacity-systemcheck-video_component_574"
-                                        class="vjs-label"
-                                        for="vjs_select_636"
-                                        >Opacity</label
-                                      ><select
-                                        id="vjs_select_636"
-                                        aria-labelledby="captions-window-systemcheck-video_component_574 captions-window-opacity-systemcheck-video_component_574"
-                                      >
-                                        <option
-                                          id="captions-window-opacity-systemcheck-video_component_574-Transparent"
-                                          value="0"
-                                          aria-labelledby="captions-window-systemcheck-video_component_574 captions-window-opacity-systemcheck-video_component_574 captions-window-opacity-systemcheck-video_component_574-Transparent"
-                                        >
-                                          Transparent
-                                        </option>
-                                        <option
-                                          id="captions-window-opacity-systemcheck-video_component_574-SemiTransparent"
-                                          value="0.5"
-                                          aria-labelledby="captions-window-systemcheck-video_component_574 captions-window-opacity-systemcheck-video_component_574 captions-window-opacity-systemcheck-video_component_574-SemiTransparent"
-                                        >
-                                          Semi-Transparent
-                                        </option>
-                                        <option
-                                          id="captions-window-opacity-systemcheck-video_component_574-Opaque"
-                                          value="1"
-                                          aria-labelledby="captions-window-systemcheck-video_component_574 captions-window-opacity-systemcheck-video_component_574 captions-window-opacity-systemcheck-video_component_574-Opaque"
-                                        >
-                                          Opaque
-                                        </option>
-                                      </select></span
-                                    >
-                                  </fieldset>
-                                </div>
-                                <div class="vjs-track-settings-font">
-                                  <fieldset
-                                    class="vjs-font-percent vjs-track-setting"
-                                  >
-                                    <legend
-                                      id="captions-font-size-systemcheck-video_component_574"
-                                    >
-                                      Font Size
-                                    </legend>
-                                    <select
-                                      id="vjs_select_651"
-                                      aria-labelledby="captions-font-size-systemcheck-video_component_574"
-                                    >
-                                      <option
-                                        id="vjs-track-option-652-50"
-                                        value="0.50"
-                                        aria-labelledby="captions-font-size-systemcheck-video_component_574 vjs-track-option-652-50"
-                                      >
-                                        50%
-                                      </option>
-                                      <option
-                                        id="vjs-track-option-653-75"
-                                        value="0.75"
-                                        aria-labelledby="captions-font-size-systemcheck-video_component_574 vjs-track-option-653-75"
-                                      >
-                                        75%
-                                      </option>
-                                      <option
-                                        id="vjs-track-option-654-100"
-                                        value="1.00"
-                                        aria-labelledby="captions-font-size-systemcheck-video_component_574 vjs-track-option-654-100"
-                                      >
-                                        100%
-                                      </option>
-                                      <option
-                                        id="vjs-track-option-655-125"
-                                        value="1.25"
-                                        aria-labelledby="captions-font-size-systemcheck-video_component_574 vjs-track-option-655-125"
-                                      >
-                                        125%
-                                      </option>
-                                      <option
-                                        id="vjs-track-option-656-150"
-                                        value="1.50"
-                                        aria-labelledby="captions-font-size-systemcheck-video_component_574 vjs-track-option-656-150"
-                                      >
-                                        150%
-                                      </option>
-                                      <option
-                                        id="vjs-track-option-657-175"
-                                        value="1.75"
-                                        aria-labelledby="captions-font-size-systemcheck-video_component_574 vjs-track-option-657-175"
-                                      >
-                                        175%
-                                      </option>
-                                      <option
-                                        id="vjs-track-option-658-200"
-                                        value="2.00"
-                                        aria-labelledby="captions-font-size-systemcheck-video_component_574 vjs-track-option-658-200"
-                                      >
-                                        200%
-                                      </option>
-                                      <option
-                                        id="vjs-track-option-659-300"
-                                        value="3.00"
-                                        aria-labelledby="captions-font-size-systemcheck-video_component_574 vjs-track-option-659-300"
-                                      >
-                                        300%
-                                      </option>
-                                      <option
-                                        id="vjs-track-option-660-400"
-                                        value="4.00"
-                                        aria-labelledby="captions-font-size-systemcheck-video_component_574 vjs-track-option-660-400"
-                                      >
-                                        400%
-                                      </option>
-                                    </select>
-                                  </fieldset>
-                                  <fieldset
-                                    class="vjs-edge-style vjs-track-setting"
-                                  >
-                                    <legend
-                                      id="captions-edge-style-systemcheck-video_component_574"
-                                    >
-                                      Text Edge Style
-                                    </legend>
-                                    <select
-                                      id="vjs_select_670"
-                                      aria-labelledby="captions-edge-style-systemcheck-video_component_574"
-                                    >
-                                      <option
-                                        id="vjs-track-option-671-None"
-                                        value="none"
-                                        aria-labelledby="captions-edge-style-systemcheck-video_component_574 vjs-track-option-671-None"
-                                      >
-                                        None
-                                      </option>
-                                      <option
-                                        id="vjs-track-option-672-Raised"
-                                        value="raised"
-                                        aria-labelledby="captions-edge-style-systemcheck-video_component_574 vjs-track-option-672-Raised"
-                                      >
-                                        Raised
-                                      </option>
-                                      <option
-                                        id="vjs-track-option-673-Depressed"
-                                        value="depressed"
-                                        aria-labelledby="captions-edge-style-systemcheck-video_component_574 vjs-track-option-673-Depressed"
-                                      >
-                                        Depressed
-                                      </option>
-                                      <option
-                                        id="vjs-track-option-674-Uniform"
-                                        value="uniform"
-                                        aria-labelledby="captions-edge-style-systemcheck-video_component_574 vjs-track-option-674-Uniform"
-                                      >
-                                        Uniform
-                                      </option>
-                                      <option
-                                        id="vjs-track-option-675-Dropshadow"
-                                        value="dropshadow"
-                                        aria-labelledby="captions-edge-style-systemcheck-video_component_574 vjs-track-option-675-Dropshadow"
-                                      >
-                                        Drop shadow
-                                      </option>
-                                    </select>
-                                  </fieldset>
-                                  <fieldset
-                                    class="vjs-font-family vjs-track-setting"
-                                  >
-                                    <legend
-                                      id="captions-font-family-systemcheck-video_component_574"
-                                    >
-                                      Font Family
-                                    </legend>
-                                    <select
-                                      id="vjs_select_685"
-                                      aria-labelledby="captions-font-family-systemcheck-video_component_574"
-                                    >
-                                      <option
-                                        id="vjs-track-option-686-ProportionalSansSerif"
-                                        value="proportionalSansSerif"
-                                        aria-labelledby="captions-font-family-systemcheck-video_component_574 vjs-track-option-686-ProportionalSansSerif"
-                                      >
-                                        Proportional Sans-Serif
-                                      </option>
-                                      <option
-                                        id="vjs-track-option-687-MonospaceSansSerif"
-                                        value="monospaceSansSerif"
-                                        aria-labelledby="captions-font-family-systemcheck-video_component_574 vjs-track-option-687-MonospaceSansSerif"
-                                      >
-                                        Monospace Sans-Serif
-                                      </option>
-                                      <option
-                                        id="vjs-track-option-688-ProportionalSerif"
-                                        value="proportionalSerif"
-                                        aria-labelledby="captions-font-family-systemcheck-video_component_574 vjs-track-option-688-ProportionalSerif"
-                                      >
-                                        Proportional Serif
-                                      </option>
-                                      <option
-                                        id="vjs-track-option-689-MonospaceSerif"
-                                        value="monospaceSerif"
-                                        aria-labelledby="captions-font-family-systemcheck-video_component_574 vjs-track-option-689-MonospaceSerif"
-                                      >
-                                        Monospace Serif
-                                      </option>
-                                      <option
-                                        id="vjs-track-option-690-Casual"
-                                        value="casual"
-                                        aria-labelledby="captions-font-family-systemcheck-video_component_574 vjs-track-option-690-Casual"
-                                      >
-                                        Casual
-                                      </option>
-                                      <option
-                                        id="vjs-track-option-691-Script"
-                                        value="script"
-                                        aria-labelledby="captions-font-family-systemcheck-video_component_574 vjs-track-option-691-Script"
-                                      >
-                                        Script
-                                      </option>
-                                      <option
-                                        id="vjs-track-option-692-SmallCaps"
-                                        value="small-caps"
-                                        aria-labelledby="captions-font-family-systemcheck-video_component_574 vjs-track-option-692-SmallCaps"
-                                      >
-                                        Small Caps
-                                      </option>
-                                    </select>
-                                  </fieldset>
-                                </div>
-                                <div class="vjs-track-settings-controls">
-                                  <button
-                                    class="vjs-default-button"
-                                    type="button"
-                                    title="restore all settings to the default values"
-                                    aria-disabled="false"
-                                  >
-                                    Reset</button
-                                  ><button
-                                    class="vjs-done-button"
-                                    type="button"
-                                    title="restore all settings to the default values"
-                                    aria-disabled="false"
-                                  >
-                                    Done
-                                  </button>
-                                </div>
-                              </div>
-                              <button
-                                class="vjs-close-button vjs-control vjs-button"
-                                type="button"
-                                title="Close Modal Dialog"
-                                aria-disabled="false"
-                              >
-                                <span
-                                  class="vjs-icon-placeholder"
-                                  aria-hidden="true"
-                                ></span
-                                ><span
-                                  class="vjs-control-text"
-                                  aria-live="polite"
-                                  >Close Modal Dialog</span
-                                >
-                              </button>
-                              <p class="vjs-control-text">
-                                End of dialog window.
-                              </p>
-                            </div>
-                          </div>
                         </div>
-                        <!-- end block-video -->
-
-                        <div class="text-center">
-                          <div id="video-dialog" class="confirmation hide">
-                            <p>Were you able to view the video?</p>
-                            <button class="button btn passCheck p-1">
-                              Yes
-                            </button>
-                            <button class="button btn failCheck p-1">No</button>
-                          </div>
+                        <div class="col-12 text-center pt-1">
+                            <a id="testUrl" class="btn btn-primary btn-goto-test"
+                                href="index.html"><span>Next</span></a>
                         </div>
-                      </td>
-                      <td id="video_test_result" class="status waiting">
-                        <div
-                          id="video_test_result_desc"
-                          class="sr-only"
-                          role="img"
-                          aria-label="waiting"
-                        ></div>
-                      </td>
-                    </tr>
-                    <tr class="error-msg hide">
-                      <td colspan="4">
-                        If you cannot play video, please contact your system
-                        administrator.
-                      </td>
-                    </tr>
-
-                    <!--****************************** ROW 5 - Captions ******************************-->
-                    <tr>
-                      <td>Captions</td>
-                      <td>Captions must not appear on your screen.</td>
-                      <td>
-                        <div class="text-center">
-                          <div id="caption-dialog" class="confirmation">
-                            <p>
-                              Did captions appear anywhere on your screen while
-                              the video was playing?
-                            </p>
-                            <button class="button btn failCheck p-1">
-                              Yes
-                            </button>
-                            <button class="button btn passCheck p-1">No</button>
-                          </div>
-                        </div>
-                      </td>
-                      <td id="caption_test_result" class="status waiting">
-                        <div
-                          id="caption_test_result_desc"
-                          class="sr-only"
-                          role="img"
-                          aria-label="waiting"
-                        ></div>
-                      </td>
-                    </tr>
-                    <tr class="error-msg hide">
-                      <td colspan="4">
-                        If captions appeared anywhere on your screen while the
-                        video was playing and you are using the Chrome browser,
-                        Chrome is not configured correctly to take this test and
-                        your test rating may be affected. Please notify your
-                        proctor right away; they will assist you in modifying
-                        your browser settings. If you are not able to contact
-                        your proctor for help with the Chrome settings, please
-                        take your test using a different browser (Firefox,
-                        Safari, or Edge), or call 1-800-486-8444 (Option 1),
-                        Monday-Friday 8am-7pm ET or email
-                        <a href="mailto:support@languagetesting.com"
-                          >support@languagetesting.com</a
-                        >
-                        for assistance with Chrome.
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-
-                <div
-                  id="pass-message-bottom"
-                  class="system-check-result success hide"
-                >
-                  <p>
-                    <strong>Success!</strong> You've passed all of the system
-                    checks.
-                  </p>
-                </div>
-
-                <div
-                  id="fail-message-bottom"
-                  class="system-check-result fail hide"
-                >
-                  <p>
-                    <strong>Error!</strong> Your computer does not meet the
-                    minimum requirements. Please contact your system
-                    administrator.
-                  </p>
-                </div>
-              </div>
-              <div class="col-12 text-center pt-1">
-                <a
-                  id="testUrl"
-                  class="btn btn-primary btn-goto-test"
-                  href="index.html"
-                  ><span>Next</span></a
-                >
-              </div>
-            </div>
-
-            <div class="system-check-footer mt-4">
-              <div class="row">
-                <div class="col-8 text-left">
-                  OPIc<sup>®</sup> is a registered trademark of ACTFL and is
-                  delivered by LTI.
-                </div>
-                <div class="col-4 text-right">
-                  © 2018 LTI, Inc. All Rights Reserved.
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Modal -->
-          <div
-            class="modal fade"
-            id="errorModal"
-            tabindex="-1"
-            role="dialog"
-            aria-labelledby="errorModalLabel"
-            aria-hidden="true"
-          >
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-body text-center"></div>
-                <div class="modal-footer text-center">
-                  <button
-                    type="button"
-                    id="btn-confirm"
-                    class="btn btn-primary mx-auto"
-                    data-dismiss="modal"
-                  >
-                    OK
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <script>
-            $(function () {
-              var startRecBtn = $("#start");
-              var stopRecBtn = $("#stop");
-              var playbackBtn = $("#view");
-              var confirmBtn = $("#btn-confirm");
-
-              var micDialog = $("#mic-dialog");
-              var micTestPanel = $("#mic-test-panel");
-              var micAllowPanel = $("#mic-allow-panel");
-
-              var videoDialog = $("#video-dialog");
-
-              var errorModal = $("#errorModal");
-              var modalContent = $("#errorModal .modal-body");
-
-              var eventOptions = {
-                readyListener: function () {
-                  var player = videojs("systemcheck-video", {
-                    controls: true,
-                    autoplay: false,
-                    preload: "auto",
-                    html5: {
-                      hls: {
-                        overrideNative: true,
-                      },
-                    },
-                  });
-
-                  var videoList = [
-                    {
-                      sources: [
-                        {
-                          type: "application/x-mpegURL",
-                          src: "./assets/sample-video.mp4",
-                        },
-                      ],
-                      poster:
-                        "./assets/NewEuroAvatarCaptured.jpg",
-                    },
-                  ];
-
-                  player.playlist(videoList);
-                  player.removeChild("ControlBar");
-
-                  player.on("click", function () {
-                    videoDialog.show();
-                  });
-
-                  var audioQuestion = questionsApp.question(
-                    "demo6-5c3fa62b-39bb-47e7-8f61-41de40fc1a5b",
-                  );
-
-                  var sysCheckVideoContainer = $("#systemcheck-video");
-                  var sysCheckVideo = $("#systemcheck-video_html5_api");
-
-                  sysCheckVideoContainer
-                    .removeAttr("role")
-                    .attr("role", "region");
-                  sysCheckVideo.removeAttr("role");
-
-                  startRecBtn.click(function () {
-                    var constraints = { audio: true, video: false };
-                    micTestPanel.hide();
-                    micAllowPanel.fadeIn("slow");
-                    navigator.mediaDevices
-                      .getUserMedia(constraints)
-                      .then(function () {
-                        // recAlert.prop('hidden', false);
-                        /* Act on the event */
-                        micTestPanel.show();
-                        micAllowPanel.hide();
-                        audioQuestion.recording.start();
-                        playbackBtn.prop("disabled", true);
-                        stopRecBtn.prop("disabled", false);
-                        startRecBtn.hide();
-                        stopRecBtn.show();
-                        // recAlert.show();
-                      })
-                      .catch(function (err) {
-                        checkDeviceSupport(function () {
-                          //console.log("Has microphone: " + hasMicrophone);
-                          //console.log("Microphone access:" + isMicrophoneAlreadyCaptured);
-                          if (!hasMicrophone) {
-                            micTestPanel.show();
-                            micAllowPanel.hide();
-                            modalContent.html("No microphone detected");
-                            errorModal.modal("show");
-
-                            confirmBtn.click(function () {
-                              /* Act on the event */
-                              window.location.reload(true);
-                            });
-                          } else if (!isMicrophoneAlreadyCaptured) {
-                            micTestPanel.show();
-                            micAllowPanel.hide();
-                            modalContent.html(
-                              "Your microphone has been <strong>disabled</strong>. <br /> Enable microphone access in your browser settings.",
-                            );
-                            errorModal.modal("show");
-
-                            confirmBtn.click(function () {
-                              /* Act on the event */
-                              window.location.reload(true);
-                            });
-                          }
-                        });
-                      });
-                  });
-
-                  stopRecBtn.click(function () {
-                    audioQuestion.recording.stop();
-                    $(this).hide();
-                    startRecBtn.show();
-                  });
-
-                  audioQuestion.on("recording:stopped", function () {
-                    audioQuality = audioQuestion.response.audioQualityCheck();
-                    if (audioQuality.detail.numberOfClippingSamples > 40) {
-                      // number of clipping samples
-                      modalContent.html(
-                        "The recording has a lot of noise. <br />Please record again",
-                      );
-                      errorModal.modal("show");
-                      startRecBtn.prop("disabled", false);
-                      startRecBtn.show();
-                    } else if (audioQuality.detail.maxRmsEnergy < 0.05) {
-                      modalContent.html("too low");
-                      errorModal.modal("show");
-                      startRecBtn.prop("disabled", false);
-                      startRecBtn.show();
-                    } else {
-                      startRecBtn.prop("disabled", true);
-                      startRecBtn.show();
-                      playbackBtn.prop("disabled", false);
-                    }
-                    stopRecBtn.prop("disabled", true);
-                    stopRecBtn.hide();
-                    // recAlert.hide();
-                  });
-
-                  playbackBtn.click(function () {
-                    stopRecBtn.prop("disabled", false);
-                    audioQuestion.response.play();
-                    playbackBtn.toggleClass("waiting-btn", "play-sound-btn");
-                    playbackBtn.html("<span>Playing&mldr;</span>");
-                    micDialog.slideDown();
-                  });
-
-                  audioQuestion.on("playback:complete", function () {
-                    startRecBtn.prop("disabled", false);
-                    playbackBtn.toggleClass("waiting-btn", "play-sound-btn");
-                    playbackBtn.html("<span>Play Recording</span>");
-                  });
-                },
-
-                errorListener: function (e) {},
-
-                saveSuccess: function (response_ids) {
-                  console.log("saveSuccess !!!");
-                },
-
-                prevent_flash: true,
-              };
-
-            //   window.questionsApp = LearnosityApp.init(
-            //     {
-            //       consumer_key: "BbfMQ4LLanm31mEH",
-            //       user_id: "demo_student",
-            //       timestamp: "20260423-1740",
-            //       signature:
-            //         "1f7b5219c5508f1a75532f7a85fe73198c8413ab34e31816ec5bed13633d65c3",
-            //       type: "local_practice",
-            //       state: "initial",
-            //       id: "questionsapi-demo",
-            //       name: "Questions API Demo",
-            //       course_id: "demo_BbfMQ4LLanm31mEH",
-            //       beta_flags: { use_webrtc: true, reactive_views: true },
-            //       questions: [
-            //         {
-            //           response_id: "demo6-5c3fa62b-39bb-47e7-8f61-41de40fc1a5b",
-            //           overwrite_warning: false,
-            //           type: "audio",
-            //           description:
-            //             "The student needs to speak about a typical day in their life.",
-            //         },
-            //       ],
-            //     },
-            //     eventOptions,
-            //   );
-            });
-          </script>
-
-          <div class="row d-none">
-            <div class="col">
-              <div
-                id="demo6-5c3fa62b-39bb-47e7-8f61-41de40fc1a5b"
-                class="lrn lrn_widget lrn_qr lrn_audio lrn_clearfix"
-                data-lrn-widget-container="demo6-5c3fa62b-39bb-47e7-8f61-41de40fc1a5b"
-                data-lrn-widget-type="question"
-              >
-                <div
-                  class="lrn_response_wrapper"
-                  data-lrn-widget-component="interaction"
-                >
-                  <div
-                    class="lrn_response lrn_clearfix lrn-player-responsive lrn-player-skin-small"
-                  >
-                    <div
-                      class="lrn-accessibility-arialive"
-                      aria-live="assertive"
-                      aria-atomic="true"
-                    ></div>
-                    <div
-                      class="lrn_response_input_wrapper lrn_box_skin_wrapper"
-                    >
-                      <div class="lrn_row lrn_clearfix">
-                        <div class="lrn_widget_content">
-                          <div class="lrn_content_header">
-                            <div class="lrn_header_left">Audio Recorder</div>
-                            <div class="lrn_header_right"></div>
-                          </div>
-                          <div class="lrn_audio_status">
-                            Click on record to start
-                          </div>
-                          <div class="">
-                            <div class="lrn_waveform" style="display: none">
-                              <div class="lrn_loaded lrn_wfblock"></div>
-                              <img
-                                class="lrn_wfgraphic lrn_wfimage"
-                                style="display: none"
-                              /><canvas
-                                class="lrn_wfgraphic lrn_wfcanvas"
-                                role="img"
-                                aria-label="Sound waves"
-                                tabindex="0"
-                                style="display: none"
-                              ></canvas>
-                              <div class="lrn_position lrn_wfblock"></div>
-                              <div class="lrn_seeker"></div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="lrn_audioblock_right">
-                          <div class="lrn_audiomiclevel">
-                            <img
-                              src="./assets/audioblock-vol.png"
-                              class="lrn_audiomiclevel_image"
-                            />
-                            <div class="lrn_audiomiclevelmask"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="lrn_widget_footer lrn_toolbar">
-                        <div class="lrn_toolbar_left">
-                          <button
-                            type="button"
-                            class="lrn_btn lrn_start_recording"
-                            title="Start recording"
-                            aria-label="Start recording"
-                          ></button
-                          ><button
-                            type="button"
-                            class="lrn_btn lrn_start_playback"
-                            title="Play"
-                            aria-label="Play"
-                            disabled="disabled"
-                          ></button>
-                        </div>
-                        <div class="lrn_toolbar_center">
-                          <div class="lrn_audio_timer">
-                            <span class="lrn_currentTime">00:00</span
-                            ><span class="lrn_timeSeparator"> / </span
-                            ><span class="lrn_totalTime">10:00</span>
-                          </div>
-                          <div class="lrn_audio_progress_bar_wrapper">
-                            <div
-                              class="lrn_audio_progress_bar"
-                              title="Progress"
-                            >
-                              <div
-                                class="lrn_position lrn_recording"
-                                tabindex="0"
-                                role="slider"
-                                aria-valuemin="0%"
-                                aria-valuemax="100%"
-                              ></div>
-                              <div class="lrn_seeker"></div>
-                              <div class="lrn_seekspace"></div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="lrn_volume_control"></div>
-                      </div>
                     </div>
-                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
 
-          <!-- Content ends here -->
+                <!-- Modal -->
+                <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body text-center"></div>
+                            <div class="modal-footer text-center">
+                                <button type="button" id="btn-confirm" class="btn btn-primary mx-auto"
+                                    data-dismiss="modal">
+                                    OK
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    $(function () {
+                        var startRecBtn = $("#start");
+                        var stopRecBtn = $("#stop");
+                        var playbackBtn = $("#view");
+                        var confirmBtn = $("#btn-confirm");
+
+                        var micDialog = $("#mic-dialog");
+                        var micTestPanel = $("#mic-test-panel");
+                        var micAllowPanel = $("#mic-allow-panel");
+
+                        var videoDialog = $("#video-dialog");
+
+                        var errorModal = $("#errorModal");
+                        var modalContent = $("#errorModal .modal-body");
+
+                        // ── Native recording state ────────────────────────────
+                        var mediaRecorder = null;
+                        var audioChunks = [];
+                        var audioBlob = null;
+                        var audioObjectUrl = null;
+                        var audioElement = null;
+
+                        // ── Audio quality analysis (replaces Learnosity audioQualityCheck) ──
+                        function analyzeAudioBlob(blob, callback) {
+                            var reader = new FileReader();
+                            reader.onload = function (ev) {
+                                var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                                audioCtx.decodeAudioData(ev.target.result, function (buffer) {
+                                    var channelData = buffer.getChannelData(0);
+                                    var frameCount = channelData.length;
+                                    var clippingCount = 0;
+                                    var maxRms = 0;
+                                    var windowSize = 1024;
+
+                                    for (var i = 0; i < frameCount; i += windowSize) {
+                                        var end = Math.min(i + windowSize, frameCount);
+                                        var sumSq = 0;
+                                        for (var j = i; j < end; j++) {
+                                            var s = channelData[j];
+                                            if (Math.abs(s) >= 0.99) clippingCount++;
+                                            sumSq += s * s;
+                                        }
+                                        var rms = Math.sqrt(sumSq / (end - i));
+                                        if (rms > maxRms) maxRms = rms;
+                                    }
+
+                                    audioCtx.close();
+                                    callback({
+                                        detail: {
+                                            numberOfClippingSamples: clippingCount,
+                                            maxRmsEnergy: maxRms,
+                                        },
+                                    });
+                                }, function () {
+                                    // decode failed — treat as silent
+                                    callback({ detail: { numberOfClippingSamples: 0, maxRmsEnergy: 0 } });
+                                });
+                            };
+                            reader.readAsArrayBuffer(blob);
+                        }
+
+                        // ── Called when MediaRecorder stops ───────────────────
+                        function onRecordingStopped() {
+                            audioBlob = new Blob(audioChunks, { type: "audio/webm" });
+                            audioChunks = [];
+
+                            if (audioObjectUrl) URL.revokeObjectURL(audioObjectUrl);
+                            audioObjectUrl = URL.createObjectURL(audioBlob);
+
+                            analyzeAudioBlob(audioBlob, function (audioQuality) {
+                                if (audioQuality.detail.numberOfClippingSamples > 40) {
+                                    modalContent.html(
+                                        "The recording has a lot of noise. <br />Please record again"
+                                    );
+                                    errorModal.modal("show");
+                                    startRecBtn.prop("disabled", false).show();
+                                } else if (audioQuality.detail.maxRmsEnergy < 0.05) {
+                                    modalContent.html("too low");
+                                    errorModal.modal("show");
+                                    startRecBtn.prop("disabled", false).show();
+                                } else {
+                                    startRecBtn.prop("disabled", true).show();
+                                    playbackBtn.prop("disabled", false);
+                                }
+
+                                stopRecBtn.prop("disabled", true).hide();
+                            });
+                        }
+
+                        // ── Start native recording from a live stream ─────────
+                        function startRecording(stream) {
+                            var mimeType = "";
+                            ["audio/webm;codecs=opus", "audio/webm", "audio/ogg;codecs=opus", "audio/ogg"]
+                                .forEach(function (t) {
+                                    if (!mimeType && MediaRecorder.isTypeSupported(t)) mimeType = t;
+                                });
+
+                            mediaRecorder = mimeType
+                                ? new MediaRecorder(stream, { mimeType: mimeType })
+                                : new MediaRecorder(stream);
+
+                            audioChunks = [];
+
+                            mediaRecorder.addEventListener("dataavailable", function (e) {
+                                if (e.data && e.data.size > 0) audioChunks.push(e.data);
+                            });
+
+                            mediaRecorder.addEventListener("stop", onRecordingStopped);
+
+                            mediaRecorder.start(100);
+
+                            playbackBtn.prop("disabled", true);
+                            stopRecBtn.prop("disabled", false).show();
+                            startRecBtn.hide();
+                        }
+
+                        // ── Video player setup ─────────────────────────────────
+                        // The systemcheck video is already rendered as a native <video>
+                        // element inside a video.js-styled wrapper. We skip video.js
+                        // re-initialisation and drive the native element directly.
+                        var videoEl = document.getElementById("systemcheck-video_html5_api");
+                        var bigPlayBtn = document.querySelector("#systemcheck-video .vjs-big-play-button");
+                        var videoWrapper = document.getElementById("systemcheck-video");
+                        var videoPoster = document.querySelector("#systemcheck-video .vjs-poster");
+
+                        if (videoEl && bigPlayBtn) {
+                            // Clicking the big play button starts the video
+                            bigPlayBtn.addEventListener("click", function () {
+                                bigPlayBtn.classList.add("vjs-hidden");
+                                videoWrapper.classList.remove("vjs-paused");
+                                videoWrapper.classList.add("vjs-playing");
+                                videoPoster.classList.add("vjs-hidden");
+                                videoEl.play();
+                            });
+
+                            // Clicking the wrapper while playing pauses / resumes
+                            videoWrapper.addEventListener("click", function (e) {
+                                if (e.target === bigPlayBtn || bigPlayBtn.contains(e.target)) return;
+                                if (!videoEl.paused) {
+                                    videoEl.pause();
+                                    videoWrapper.classList.remove("vjs-playing");
+                                    videoWrapper.classList.add("vjs-paused");
+                                    bigPlayBtn.classList.remove("vjs-hidden");
+                                }
+                            });
+
+                            // When playback ends, show dialog and reset the button
+                            videoEl.addEventListener("ended", function () {
+                                videoWrapper.classList.remove("vjs-playing");
+                                videoWrapper.classList.add("vjs-paused");
+                                bigPlayBtn.classList.remove("vjs-hidden");
+                                videoDialog.show();
+                            });
+                        }
+
+                        // ── Fix ARIA roles on the video container ─────────────
+                        $("#systemcheck-video").removeAttr("role").attr("role", "region");
+                        $("#systemcheck-video_html5_api").removeAttr("role");
+
+                        // ── Start Recording button ────────────────────────────
+                        startRecBtn.click(function () {
+                            micTestPanel.hide();
+                            micAllowPanel.fadeIn("slow");
+
+                            navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+                                .then(function (stream) {
+                                    micTestPanel.show();
+                                    micAllowPanel.hide();
+                                    startRecording(stream);
+                                })
+                                .catch(function () {
+                                    checkDeviceSupport(function () {
+                                        if (!hasMicrophone) {
+                                            micTestPanel.show();
+                                            micAllowPanel.hide();
+                                            modalContent.html("No microphone detected");
+                                            errorModal.modal("show");
+                                            confirmBtn.click(function () {
+                                                window.location.reload(true);
+                                            });
+                                        } else if (!isMicrophoneAlreadyCaptured) {
+                                            micTestPanel.show();
+                                            micAllowPanel.hide();
+                                            modalContent.html(
+                                                "Your microphone has been <strong>disabled</strong>. <br /> Enable microphone access in your browser settings."
+                                            );
+                                            errorModal.modal("show");
+                                            confirmBtn.click(function () {
+                                                window.location.reload(true);
+                                            });
+                                        }
+                                    });
+                                });
+                        });
+
+                        // ── Stop Recording button ─────────────────────────────
+                        stopRecBtn.click(function () {
+                            if (mediaRecorder && mediaRecorder.state !== "inactive") {
+                                mediaRecorder.stop();
+                            }
+                            $(this).hide();
+                            startRecBtn.show();
+                        });
+
+                        // ── Play Recording button ─────────────────────────────
+                        playbackBtn.click(function () {
+                            stopRecBtn.prop("disabled", false);
+                            playbackBtn.toggleClass("waiting-btn", false).toggleClass("play-sound-btn", true);
+                            playbackBtn.html("<span>Playing&mldr;</span>");
+                            micDialog.slideDown();
+
+                            if (!audioElement) {
+                                audioElement = new Audio();
+                                audioElement.style.display = "none";
+                                document.body.appendChild(audioElement);
+                            }
+
+                            audioElement.src = audioObjectUrl;
+                            audioElement.onended = function () {
+                                startRecBtn.prop("disabled", false);
+                                playbackBtn.toggleClass("waiting-btn", false).toggleClass("play-sound-btn", true);
+                                playbackBtn.html("<span>Play Recording</span>");
+                            };
+                            audioElement.play();
+                        });
+                    });
+                </script>
+
+                <div class="row d-none">
+                    <div class="col">
+                        <div id="demo6-5c3fa62b-39bb-47e7-8f61-41de40fc1a5b"
+                            class="lrn lrn_widget lrn_qr lrn_audio lrn_clearfix"
+                            data-lrn-widget-container="demo6-5c3fa62b-39bb-47e7-8f61-41de40fc1a5b"
+                            data-lrn-widget-type="question">
+                            <div class="lrn_response_wrapper" data-lrn-widget-component="interaction">
+                                <div class="lrn_response lrn_clearfix lrn-player-responsive lrn-player-skin-small">
+                                    <div class="lrn-accessibility-arialive" aria-live="assertive" aria-atomic="true">
+                                    </div>
+                                    <div class="lrn_response_input_wrapper lrn_box_skin_wrapper">
+                                        <div class="lrn_row lrn_clearfix">
+                                            <div class="lrn_widget_content">
+                                                <div class="lrn_content_header">
+                                                    <div class="lrn_header_left">Audio Recorder</div>
+                                                    <div class="lrn_header_right"></div>
+                                                </div>
+                                                <div class="lrn_audio_status">
+                                                    Click on record to start
+                                                </div>
+                                                <div class="">
+                                                    <div class="lrn_waveform" style="display: none">
+                                                        <div class="lrn_loaded lrn_wfblock"></div>
+                                                        <img class="lrn_wfgraphic lrn_wfimage"
+                                                            style="display: none" /><canvas
+                                                            class="lrn_wfgraphic lrn_wfcanvas" role="img"
+                                                            aria-label="Sound waves" tabindex="0"
+                                                            style="display: none"></canvas>
+                                                        <div class="lrn_position lrn_wfblock"></div>
+                                                        <div class="lrn_seeker"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="lrn_audioblock_right">
+                                                <div class="lrn_audiomiclevel">
+                                                    <img src="./assets/audioblock-vol.png"
+                                                        class="lrn_audiomiclevel_image" />
+                                                    <div class="lrn_audiomiclevelmask"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="lrn_widget_footer lrn_toolbar">
+                                            <div class="lrn_toolbar_left">
+                                                <button type="button" class="lrn_btn lrn_start_recording"
+                                                    title="Start recording"
+                                                    aria-label="Start recording"></button><button type="button"
+                                                    class="lrn_btn lrn_start_playback" title="Play" aria-label="Play"
+                                                    disabled="disabled"></button>
+                                            </div>
+                                            <div class="lrn_toolbar_center">
+                                                <div class="lrn_audio_timer">
+                                                    <span class="lrn_currentTime">00:00</span><span
+                                                        class="lrn_timeSeparator"> / </span><span
+                                                        class="lrn_totalTime">10:00</span>
+                                                </div>
+                                                <div class="lrn_audio_progress_bar_wrapper">
+                                                    <div class="lrn_audio_progress_bar" title="Progress">
+                                                        <div class="lrn_position lrn_recording" tabindex="0"
+                                                            role="slider" aria-valuemin="0%" aria-valuemax="100%"></div>
+                                                        <div class="lrn_seeker"></div>
+                                                        <div class="lrn_seekspace"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="lrn_volume_control"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content ends here -->
+            </div>
+            <!-- end actfl-test-container -->
         </div>
-        <!-- end actfl-test-container -->
-      </div>
-      <!-- end container-fluid -->
+        <!-- end container-fluid -->
     </div>
     <!-- end  contentDiv -->
 
     <script src="./js/popper.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async="" src="./js/js(1)"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "UA-134127163-1");
-    </script>
-
     <script type="text/javascript">
-      var micAccessPermanent = false;
-      confirmMicAccess({
-        onSuccess: function () {
-          micAccessPermanent = true;
-        },
-      });
+        var micAccessPermanent = false;
+        confirmMicAccess({
+            onSuccess: function () {
+                micAccessPermanent = true;
+            },
+        });
     </script>
- 
- <script src="./js/syscheck.js"></script>
-    <script
-      type="text/javascript"
-      src="./js/detect-rtc.js"
-    ></script>
 
-    <iframe
-      class="x-origin-frame"
-      frameborder="0"
-      marginwidth="0"
-      marginheight="0"
-      aria-hidden="true"
-      tabindex="-1"
-      src="./others/xdomain.html"
-      style="width: 0px; height: 0px; position: absolute; top: -1000px"
-    ></iframe>
+    <script src="./js/syscheck.js"></script>
+    <script type="text/javascript" src="./js/detect-rtc.js"></script>
+
+    <iframe class="x-origin-frame" frameborder="0" marginwidth="0" marginheight="0" aria-hidden="true" tabindex="-1"
+        src="./others/xdomain.html" style="width: 0px; height: 0px; position: absolute; top: -1000px"></iframe>
     <div class="lrn-math-modal-root"></div>
-  </body>
+</body>
+
 </html>

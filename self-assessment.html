@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+    <title>
+        Self Assessment |
+        OPIcDemo
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="./assets/favicon.gif">
+
+    <link rel="stylesheet" href="./font-awesome-4.5.0-master/css/font-awesome.min.css">
+    <link href="./js/video-js.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/master.css">
+
+    <script src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/mic-perm.js"></script>
+    <style>
+        /**
+       * Session Timeout Dialog Styles
+       */
+        #session-timeout-dialog-logout {
+            display: none;
+        }
+
+        /**
+       * Following styles are used on the Setup page, Sample Question page, and  Test page.
+       */
+
+        /**
+       * Used display: inline-block to get the video element and the volume-indicator wrapper side by side.
+       * *** I also added the mx-md-0 class to help with the positioning.
+       */
+        #setup-video,
+        #opic-video {
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body cz-shortcut-listen="true">
+
+    <div id="contentDiv">
+        <div class="container-fluid">
+            <div id="actfl-test-container" class="actfl-test-container mx-auto">
+
+                <!-- Content begins here -->
+                <div class="row">
+                    <div class="col-12 text-right">
+                        <div class="block-upper-right mt-1">
+                            <a href="index.html" class="sign-out"><span>Sign
+                                    Out</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    $(document).ready(function () {
+                        const signOutButton = document.querySelector('.sign-out');
+
+                        signOutButton.addEventListener('keydown', function (event) {
+                            if (event.code === 'Space' || event.key === ' ') {
+                                event.preventDefault();
+                                signOutButton.click();
+                            }
+                        });
+                    });
+                </script>
+                <div class="row">
+                    <div class="col">
+                        <div class="block-steps mt-1" role="group"
+                            aria-label="Step Indicator. Step 2 of 4: Self Assessment">
+                            <ul class="steps-4">
+                                <li class="checked before-selected" aria-current="false">
+                                    <div class="step-content">
+                                        <div class="sr-only">completed</div>
+                                        <h3>1</h3>
+                                        <p>Background Survey</p>
+                                    </div>
+                                </li>
+                                <li class="selected" aria-current="step">
+                                    <div class="step-content">
+                                        <div class="sr-only"> </div>
+                                        <h3>2</h3>
+                                        <p>Self Assessment</p>
+                                    </div>
+                                </li>
+                                <li class="" aria-current="false">
+                                    <div class="step-content">
+                                        <div class="sr-only">no completed</div>
+                                        <h3>3</h3>
+                                        <p>Setup</p>
+                                    </div>
+                                </li>
+                                <li class="" aria-current="false">
+                                    <div class="step-content">
+                                        <div class="sr-only">no completed</div>
+                                        <h3>4</h3>
+                                        <p>Begin Test</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="block-survey">
+                            <h2 class="header-primary">Self Assessment</h2>
+                            <p class="instructions-survey">
+                                Choose the best description of your English-speaking ability. This test will be based on
+                                your response. </p>
+                            <ol class="list-numbered">
+                                <li>
+                                    <div class="form-check">
+                                        <input name="sa-responses" id="sa-0" type="radio" class="form-check-input"
+                                            data-assessment-id="61" data-option-id="226">
+                                        <label for="sa-0" class="form-check-label">
+                                            I can name basic objects, colors, days of the week, foods, clothing items,
+                                            numbers, etc. I cannot make a complete sentence or ask simple questions.
+                                        </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form-check">
+                                        <input name="sa-responses" id="sa-1" type="radio" class="form-check-input"
+                                            data-assessment-id="61" data-option-id="227">
+                                        <label for="sa-1" class="form-check-label">
+                                            I can give some basic information about myself, work, familiar people and
+                                            places, and daily routines while speaking in simple sentences. I can ask
+                                            some simple questions. </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form-check">
+                                        <input name="sa-responses" id="sa-2" type="radio" class="form-check-input"
+                                            data-assessment-id="61" data-option-id="228">
+                                        <label for="sa-2" class="form-check-label">
+                                            I can participate in simple conversations about familiar topics and
+                                            routines. I can talk about things that have happened, but sometimes my forms
+                                            are incorrect. I can handle a range of everyday transactions to get what I
+                                            need. </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form-check">
+                                        <input name="sa-responses" id="sa-3" type="radio" class="form-check-input"
+                                            data-assessment-id="61" data-option-id="229">
+                                        <label for="sa-3" class="form-check-label">
+                                            I can participate fully and confidently in all conversations about topics
+                                            and activities related to home, work/school, personal and community
+                                            interests. I can speak in connected discourse about things that have
+                                            happened, are happening, and will happen. I can explain and elaborate when
+                                            necessary. I can handle routine situations, even when there may be an
+                                            unexpected complication. </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form-check">
+                                        <input name="sa-responses" id="sa-4" type="radio" class="form-check-input"
+                                            data-assessment-id="61" data-option-id="230">
+                                        <label for="sa-4" class="form-check-label">
+                                            I can engage in all informal and formal discussions on issues related to
+                                            personal, general or professional interests. I can deal with these issues
+                                            abstractly, support my opinion, and construct hypotheses to explore
+                                            alternatives. I am able to elaborate at length and in detail on most topics
+                                            with a high level of accuracy and a wide range of precise vocabulary.
+                                        </label>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div><!-- end block-survey -->
+
+                        <div class="row mt-4">
+                            <div class="col text-right">
+                                <form id="formNext" action="pretest-setup.html" method="get">
+                                    <div class="form-group">
+                                        <button id="btnNext" class="btn btn-primary" type="button" name="button"
+                                            disabled=""><span>Next</span></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Content ends here -->
+
+            </div><!-- end actfl-test-container -->
+        </div><!-- end container-fluid -->
+    </div><!-- end  contentDiv -->
+
+    <script src="./js/popper.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/jquery.html5.hide-show.js"></script>
+
+    <script src="./js/common.js" charset="utf-8"></script>
+    <script src="./js/common-demo.js" charset="utf-8"></script>
+
+    <script type="text/javascript" src="./js/self-assessment.js"></script>
+</body>
+
+</html>

@@ -1,148 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>OPIcDemo</title>
-    <link rel="icon" href="./assets/favicon.gif" />
-    <link rel="stylesheet" href="font-awesome-4.5.0-master/css/font-awesome.min.css" />
-    <link href="./css/video-js.css" rel="stylesheet" />
-    <link rel="stylesheet" href="./css/master.css" />
-  </head>
 
-  <body cz-shortcut-listen="true">
-    <div class="row">
-      <div class="col actfl-test-header">
-        <div class="form-group btn-login-group text-center">
-          <img src="./assets/OPIc_logo.png" alt="OPIc logo" />
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>OPIcDemo</title>
+  <link rel="icon" href="./assets/favicon.gif" />
+  <link rel="stylesheet" href="font-awesome-4.5.0-master/css/font-awesome.min.css" />
+  <link href="./css/video-js.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/master.css" />
+</head>
+
+<body cz-shortcut-listen="true">
+  <div class="row">
+    <div class="col actfl-test-header">
+      <div class="form-group btn-login-group text-center">
+        <!-- <img src="./assets/OPIc_logo.png" alt="OPIc logo" /> -->
       </div>
     </div>
-    <title>OPIcDemo</title>
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <link rel="icon" href="./assets/favicon.gif" />
+  </div>
+  <title>OPIcDemo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="icon" href="./assets/favicon.gif" />
 
-    <link
-      rel="stylesheet"
-      href="font-awesome-4.5.0-master/css/font-awesome.min.css"
-    />
-    <link href="./css/video-js.css" rel="stylesheet" />
-    <link rel="stylesheet" href="./css/master.css" />
-    <script type="text/javascript" async="" src="./js/analytics.js"></script>
-    <script type="text/javascript" async="" src="./js/js"></script>
-    <script src="./js/jquery.min.js"></script>
-    <script type="text/javascript" src="./js/mic-perm.js"></script>
+  <link rel="stylesheet" href="font-awesome-4.5.0-master/css/font-awesome.min.css" />
+  <link href="./css/video-js.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/master.css" />
+  <!-- <script type="text/javascript" async="" src="./js/analytics.js"></script> -->
+  <script type="text/javascript" async="" src="./js/script.js"></script>
+  <script src="./js/jquery.min.js"></script>
+  <script type="text/javascript" src="./js/mic-perm.js"></script>
 
-    <div id="contentDiv">
-      <div class="container-fluid">
-        <div class="actfl-test-container mx-auto">
-          <!-- Content begins here -->
+  <div id="contentDiv">
+    <div class="container-fluid">
+      <div class="actfl-test-container mx-auto">
+        <!-- Content begins here -->
 
-          <div class="row">
-            <div class="col">
-              <div class="block-login mt-md-8 mt-3">
-                <form id="formAuth" method="post" action="#">
-                  <h1 class="text-center mb-3 px-3">
-                    Oral Proficiency Interview - computer (OPIc)
-                  </h1>
-                  <div class="form-group mb-2">
-                    <label for="username">Username</label>
-                    <input
-                      type="text"
-                      name="username"
-                      id="username"
-                      class="form-control"
-                      placeholder="Username"
-                      value=""
-                      required=""
-                      autofocus=""
-                      autocomplete="off"
-                      readonly=""
-                    />
-                  </div>
-                  <div class="form-group mb-2">
-                    <label for="password">Password</label>
-                    <input
-                      type="password"
-                      name="password"
-                      id="password"
-                      class="form-control"
-                      placeholder="Password"
-                      required=""
-                      autocomplete="off"
-                      readonly=""
-                    />
-                  </div>
-                  <div
-                    class="form-group btn-login-group text-center mt-4 mb-5 mb-md-0 mt-md-0"
-                  >
-                    <a href="systemcheck.html" class="mr-3 mr-md-4"
-                      >System Check</a
-                    >
-                    <button
-                      id="btnSubmit"
-                      class="btn btn-primary"
-                      type="submit"
-                    >
-                      <span>Log In</span>
-                    </button>
-                  </div>
-                </form>
-              </div>
-              <!-- end block-login -->
+        <div class="row">
+          <div class="col">
+            <div class="block-login mt-md-8 mt-3">
+              <form id="formAuth" method="get" action="welcome.html">
+                <h1 class="text-center mb-3 px-3">
+                  Oral Proficiency Interview - computer (OPIc)
+                </h1>
+                <div class="form-group mb-2">
+                  <label for="username">Username</label>
+                  <input type="text" name="username" id="username" class="form-control" placeholder="Username" value=""
+                    required="" autofocus="" autocomplete="off" readonly="" />
+                </div>
+                <div class="form-group mb-2">
+                  <label for="password">Password</label>
+                  <input type="password" name="password" id="password" class="form-control" placeholder="Password"
+                    required="" autocomplete="off" readonly="" />
+                </div>
+                <div class="form-group btn-login-group text-center mt-4 mb-5 mb-md-0 mt-md-0">
+                  <a href="systemcheck.html" class="mr-3 mr-md-4">System Check</a>
+                  <button id="btnSubmit" class="btn btn-primary" type="submit">
+                    <span>Log In</span>
+                  </button>
+                </div>
+              </form>
             </div>
+            <!-- end block-login -->
           </div>
+        </div>
 
-          <div class="row">
-            <div class="col mt-5 text-md-right text-center">
-              <span class="block-actfl-lti-branding">
-                <img
+        <div class="row">
+          <div class="col mt-5 text-md-right text-center">
+            <span class="block-actfl-lti-branding">
+              <!-- <img
                   class="img-fluid"
                   src="./assets/logo-actfl-lti-v3.png"
                   alt="ACTFL and LTI co-branded logo"
-                />
-              </span>
-            </div>
+                /> -->
+            </span>
           </div>
-
-          <script>
-            $("[name='username']").change(function (e) {
-              e.preventDefault();
-              $("[name='username']")[0].value = $(
-                "[name='username']",
-              )[0].value.replace(/ /g, "");
-            });
-
-            $("[name='password']").change(function (e) {
-              e.preventDefault();
-              $("[name='password']")[0].value = $(
-                "[name='password']",
-              )[0].value.replace(/ /g, "");
-            });
-
-            // Prevent user from clicking "Log In" button multiple times
-            $("#btnSubmit").on("click", function () {
-              $("#btnSubmit").prop("disabled", true);
-              $("#formAuth").submit();
-            });
-          </script>
-
-          <!-- Content ends here -->
         </div>
-        <!-- end actfl-test-container -->
-      </div>
-      <!-- end container-fluid -->
-    </div>
-    <!-- end  contentDiv -->
 
-    <script src="./js/popper.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async="" src="./js/js(1)"></script>
-    <script>
+        <script>
+          $("[name='username']").change(function (e) {
+            e.preventDefault();
+            $("[name='username']")[0].value = $(
+              "[name='username']",
+            )[0].value.replace(/ /g, "");
+          });
+
+          $("[name='password']").change(function (e) {
+            e.preventDefault();
+            $("[name='password']")[0].value = $(
+              "[name='password']",
+            )[0].value.replace(/ /g, "");
+          });
+
+          // Prevent user from clicking "Log In" button multiple times
+          $("#btnSubmit").on("click", function () {
+            $("#btnSubmit").prop("disabled", true);
+            $("#formAuth").submit();
+          });
+        </script>
+
+        <!-- Content ends here -->
+      </div>
+      <!-- end actfl-test-container -->
+    </div>
+    <!-- end container-fluid -->
+  </div>
+  <!-- end  contentDiv -->
+
+  <script src="./js/popper.min.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async="" src="./js/script_1.js"></script> -->
+  <!-- <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
@@ -150,38 +119,36 @@
       gtag("js", new Date());
 
       gtag("config", "UA-134127163-1");
-    </script>
+    </script> -->
 
-    <script type="text/javascript">
-      $("#username").val("en-demo").prop("readonly", true);
-      $("#password").val("pwd").prop("readonly", true);
-    </script>
+  <script type="text/javascript">
+    $("#username").val("en-demo").prop("readonly", true);
+    $("#password").val("pwd").prop("readonly", true);
+  </script>
 
-    <script
-      type="text/javascript"
-      src="./js/timeoutInteractiveRefresh.js"
-    ></script>
-    <script type="text/javascript">
-      var deviceInfo = {
-        name: "Windows",
-        version: {
-          value: "10.0",
-          hidden: false,
-          nickname: null,
-          alias: "10",
-          details: null,
-          builds: null,
-        },
-        browser: "Edge",
-        browser_version: "147",
-      };
+  <script type="text/javascript" src="./js/timeoutInteractiveRefresh.js"></script>
+  <script type="text/javascript">
+    var deviceInfo = {
+      name: "Windows",
+      version: {
+        value: "10.0",
+        hidden: false,
+        nickname: null,
+        alias: "10",
+        details: null,
+        builds: null,
+      },
+      browser: "Edge",
+      browser_version: "147",
+    };
 
-      $(document).ready(function () {
-        // Set timeout for interactive refresh to 20 minutes (1200000 milliseconds)
-        setTimeout(function () {
-          window.location.reload();
-        }, 1200000);
-      });
-    </script>
-  </body>
+    $(document).ready(function () {
+      // Set timeout for interactive refresh to 20 minutes (1200000 milliseconds)
+      setTimeout(function () {
+        window.location.reload();
+      }, 1200000);
+    });
+  </script>
+</body>
+
 </html>

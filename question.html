@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)https://opicdemo.actfltesting.org/test -->
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style class="vjs-styles-defaults">
+        .video-js {
+            width: 300px;
+            height: 150px;
+        }
+
+        .vjs-fluid:not(.vjs-audio-only-mode) {
+            padding-top: 56.25%
+        }
+    </style>
+    <style class="vjs-styles-dimensions">
+        .opic-video-dimensions {
+            width: 296px;
+            height: 300px;
+        }
+
+        .opic-video-dimensions.vjs-fluid:not(.vjs-audio-only-mode) {
+            padding-top: 101.35135135135135%;
+        }
+    </style>
+
+    <title>
+
+
+        OPIcDemo
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="./assets/favicon.gif">
+
+    <link rel="stylesheet" href="./font-awesome-4.5.0-master/css/font-awesome.min.css">
+    <link href="./css/video-js.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/master.css">
+    <script src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/mic-perm.js"></script>
+    <style>
+        /**
+       * Session Timeout Dialog Styles
+       */
+        #session-timeout-dialog-logout {
+            display: none;
+        }
+
+        /**
+       * Following styles are used on the Setup page, Sample Question page, and  Test page.
+       */
+
+        /**
+       * Used display: inline-block to get the video element and the volume-indicator wrapper side by side.
+       * *** I also added the mx-md-0 class to help with the positioning.
+       */
+        #setup-video,
+        #opic-video {
+            display: inline-block;
+        }
+    </style>
+    <style type="text/css">
+        .learnosity-block .lrn.lrn_widget.lrn_qr.lrn_audio {
+            width: 400px;
+        }
+
+        .lrn_widget>div>div>div.lrn_response_input_wrapper.lrn_box_skin_wrapper {
+            width: 400px;
+        }
+
+        .lrn_widget>div>div>div.lrn_response_input_wrapper.lrn_box_skin_wrapper>div.lrn_row.lrn_clearfix {
+            display: flex;
+        }
+    </style>
+    <link type="text/css" rel="stylesheet" href="./css/preload.css">
+    <script src="./js/api.js.download" crossorigin=""></script>
+    <link type="text/css" rel="stylesheet" href="./css/vendor.css">
+    <link type="text/css" rel="stylesheet" href="./css/main.css">
+    <style type="text/css">
+        [responsive-image]>img,
+        [data-responsive-image] {
+            overflow: hidden;
+            padding: 0;
+        }
+
+        [responsive-image]>img,
+        [data-responsive-image]>img {
+            width: 100%;
+        }
+
+        @keyframes element-queries {
+            0% {
+                visibility: inherit;
+            }
+        }
+    </style>
+    <link rel="stylesheet" id="lds-css" href="./css/main.0.34.1.min.css">
+</head>
+
+<body cz-shortcut-listen="true"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        style="position: absolute; width: 0; height: 0" aria-hidden="true" id="__SVG_SPRITE_NODE__">
+        <symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" id="lds-i-cross">
+            <path
+                d="M19.62 16l8.2-8.2a.614.614 0 000-.867L25.067 4.18a.614.614 0 00-.867 0l-8.2 8.2-8.2-8.2a.614.614 0 00-.867 0L4.18 6.933a.614.614 0 000 .868L12.38 16l-8.17 8.2a.614.614 0 000 .867l2.753 2.753c.239.24.628.24.867 0l8.17-8.2 8.2 8.2c.239.24.628.24.867 0l2.753-2.753a.614.614 0 000-.867l-8.2-8.2z">
+            </path>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" id="lds-i-chevron-down">
+            <path
+                d="m3.58 12.29 12.056 12.328c.194.2.533.2.727 0l12.056-12.329a.545.545 0 0 0 .152-.366c0-.14-.05-.27-.152-.366l-3.322-3.4a.495.495 0 0 0-.726 0L16 16.72 7.63 8.157a.515.515 0 0 0-.727 0l-3.323 3.4a.517.517 0 0 0 0 .732Z">
+            </path>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32"
+            id="lds-i-exclamation-circle">
+            <path fill-rule="evenodd"
+                d="M2 16C2 8.268 8.268 2 16 2s14 6.268 14 14-6.268 14-14 14S2 23.732 2 16zm16.272 3.563v2.982c0 .147-.05.27-.15.37-.1.1-.217.149-.353.149h-3.014a.483.483 0 01-.353-.15.502.502 0 01-.15-.369v-2.982c0-.147.05-.27.15-.37.1-.099.217-.149.353-.149h3.014c.136 0 .254.05.354.15.1.1.149.222.149.369zm.25-10.093l-.282 7.204a.35.35 0 01-.165.26.64.64 0 01-.37.103h-2.903a.678.678 0 01-.377-.102c-.105-.068-.158-.155-.158-.26L14 9.502c0-.147.052-.256.157-.33.137-.115.263-.172.377-.172h3.454c.116 0 .241.057.377.172a.345.345 0 01.157.298z"
+                clip-rule="evenodd"></path>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32"
+            id="lds-i-exclamation-triangle">
+            <path
+                d="M18.09 24.583V21.6c0-.147-.05-.27-.15-.37a.483.483 0 00-.353-.15h-3.014a.483.483 0 00-.353.15c-.1.1-.15.223-.15.37v2.982c0 .146.05.27.15.37.1.099.217.149.353.149h3.014c.136 0 .254-.05.353-.15.1-.1.15-.223.15-.37zm-.032-5.87l.282-7.205a.345.345 0 00-.157-.298c-.136-.115-.262-.172-.377-.172h-3.454c-.114 0-.24.057-.377.172-.105.073-.157.183-.157.33l.267 7.173c0 .105.053.191.157.26.105.067.231.101.377.101h2.905a.64.64 0 00.369-.102.35.35 0 00.165-.259zm-.22-14.662l12.055 22.1c.366.66.356 1.32-.032 1.979a1.973 1.973 0 01-.73.721 1.97 1.97 0 01-.996.268H4.025c-.356 0-.688-.09-.997-.268a1.973 1.973 0 01-.73-.721c-.387-.66-.397-1.319-.031-1.978l12.055-22.1A2.005 2.005 0 0116.08 3a2.006 2.006 0 011.758 1.051z">
+            </path>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" id="lds-i-tick-circle">
+            <path fill-rule="evenodd"
+                d="M16 30c7.732 0 14-6.268 14-14S23.732 2 16 2 2 8.268 2 16s6.268 14 14 14Zm5.893-20.798c.26-.27.69-.27.95 0l1.97 2.034a.662.662 0 0 1 .001.92l-10.66 11.042a.661.661 0 0 1-.952 0l-6.017-6.246a.662.662 0 0 1 .003-.921l1.986-2.039a.661.661 0 0 1 .949.002l3.573 3.69 8.197-8.482Z"
+                clip-rule="evenodd"></path>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" id="lds-i-tick">
+            <path
+                d="M26.348 5.742a1 1 0 0 0-1.437 0L12.518 18.564l-5.403-5.577a1 1 0 0 0-1.435-.003l-3.003 3.081a1 1 0 0 0-.004 1.392l9.097 9.44a1 1 0 0 0 1.44 0l16.118-16.689a1 1 0 0 0-.001-1.39l-2.979-3.075Z">
+            </path>
+        </symbol>
+    </svg>
+
+    <div id="contentDiv">
+        <div class="container-fluid">
+            <div id="actfl-test-container" class="actfl-test-container mx-auto trap-active">
+
+                <!-- Content begins here -->
+                <div class="row">
+                    <div class="col-12 text-right">
+                        <div class="block-upper-right mt-1">
+                            <a href="index.html" class="sign-out"><span>Sign
+                                    Out</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    $(document).ready(function () {
+                        const signOutButton = document.querySelector('.sign-out');
+
+                        signOutButton.addEventListener('keydown', function (event) {
+                            if (event.code === 'Space' || event.key === ' ') {
+                                event.preventDefault();
+                                signOutButton.click();
+                            }
+                        });
+                    });
+                </script>
+                <script src="./js/all.min.js" charset="utf-8"></script>
+                <script src="./js/video.min.js"></script>
+                <script src="./js/videojs-playlist.min.js"></script>
+                <script src="./js/audioRecordTimer.js"></script>
+
+                <div class="block-test">
+                    <h2 id="questionHeader" class="header-primary mb-1">Question 1 of 2</h2>
+
+                    <div id="micAccessMessage" class="text-center mt-3 p-5" hidden="hidden" style="display: none;">
+                        <h2>Please allow access to your microphone.</h2>
+                        <p>Click the "Allow" button in your browser's permission dialog to grant access to your
+                            microphone.</p>
+                    </div>
+
+                    <div id="accessDeniedMessage" class="text-center mt-3" hidden="">
+                        <h2>Microphone Access Denied</h2>
+                        <p>You have denied access to your microphone.</p>
+                        <button class="btn-primary refreshButton">Try Again</button>
+                    </div>
+
+                    <div id="accessBlockedMessage" class="text-center mt-3" hidden="">
+                        <h2>Microphone Access Blocked</h2>
+                        <p>Your microphone appears to be disabled or blocked for this website in your browser settings.
+                        </p>
+                        <p>Please enable microphone access in your browser settings, then try again.</p>
+
+                        <button class="btn-primary refreshButton mt-2">Try Again</button>
+                    </div>
+
+                    <div id="noMicMessage" class="text-center mt-3" hidden="">
+                        <h2>No Microphone Detected</h2>
+                        <p>Your browser is reporting you have no microphone connected. Please make sure your microphone
+                            is plugged in and turned on, then try again. If the problem persists, contact technical
+                            support.</p>
+                        <button class="btn-primary refreshButton">Try Again</button>
+                    </div>
+
+                    <div id="serverErrorMessage" class="text-center mt-3" hidden="">
+                        <h2>Server Error</h2>
+                        <p></p>
+                        <button class="btn-primary refreshButton mt-2">Try Again</button>
+                    </div>
+
+                    <div id="browserNotSupportedMessage" class="text-center mt-3" hidden="">
+                        <h2>Browser not supported.</h2>
+                        <button class="btn-primary logoutButton mt-2">Sign Out</button>
+                    </div>
+
+                    <div id="testArea" class="row mt-2">
+                        <div class="col-lg-5 col-md-6">
+
+                            <div class="row no-gutters">
+                                <div class="col-11 text-center">
+                                    <div class="block-video">
+                                        <div class="video-js vjs-opic-skin mx-auto mx-md-0 vjs-controls-disabled vjs-touch-enabled vjs-workinghover vjs-v8 vjs-user-active opic-video-dimensions vjs-playing vjs-has-started"
+                                            id="opic-video" tabindex="-1" lang="en" translate="no" role="region"
+                                            aria-label="Video Player"><video id="opic-video_html5_api" class="vjs-tech"
+                                                tabindex="-1" preload="auto" poster="./assets/NewEuroAvatarCaptured.png"
+                                                aria-hidden="true"
+                                                src="blob:https://opicdemo.actfltesting.org/c7655a2e-35e0-4232-8af4-061199f03dcc">
+                                                <p>To view this video, please enable javascript.</p>
+                                            </video>
+                                            <div class="vjs-poster" aria-hidden="true" aria-disabled="true">
+                                                <picture class="vjs-poster" tabindex="-1" aria-hidden="true"
+                                                    aria-disabled="true"><img loading="lazy" alt=""
+                                                        src="./assets/NewEuroAvatarCaptured.png">
+                                                </picture>
+                                            </div>
+                                            <div class="vjs-title-bar vjs-hidden">
+                                                <div class="vjs-title-bar-title" id="vjs-title-bar-title-85"></div>
+                                                <div class="vjs-title-bar-description"
+                                                    id="vjs-title-bar-description-86"></div>
+                                            </div>
+                                            <div class="vjs-text-track-display" translate="yes" aria-live="off"
+                                                aria-atomic="true">
+                                                <div style="position: absolute; inset: 0px; margin: 1.5%;"></div>
+                                            </div>
+                                            <div class="vjs-error-display vjs-modal-dialog vjs-hidden " tabindex="-1"
+                                                aria-describedby="opic-video_component_545_description"
+                                                aria-hidden="true" aria-label="Modal Window" role="dialog"
+                                                aria-live="polite">
+                                                <p class="vjs-modal-dialog-description vjs-control-text"
+                                                    id="opic-video_component_545_description">This is a modal window.
+                                                </p>
+                                                <div class="vjs-modal-dialog-content" role="document"></div>
+                                            </div>
+                                            <div class="vjs-modal-dialog vjs-hidden  vjs-text-track-settings"
+                                                tabindex="-1" aria-describedby="opic-video_component_551_description"
+                                                aria-hidden="true" aria-label="Caption Settings Dialog" role="dialog"
+                                                aria-live="polite">
+                                                <p class="vjs-modal-dialog-description vjs-control-text"
+                                                    id="opic-video_component_551_description">Beginning of dialog
+                                                    window. Escape will cancel and close the window.</p>
+                                                <div class="vjs-modal-dialog-content" role="document">
+                                                    <div class="vjs-track-settings-colors">
+                                                        <fieldset class="vjs-fg vjs-track-setting">
+                                                            <legend id="captions-text-legend-opic-video_component_551">
+                                                                Text</legend><span class="vjs-text-color"><label
+                                                                    id="captions-foreground-color-opic-video_component_551"
+                                                                    class="vjs-label"
+                                                                    for="vjs_select_578">Color</label><select
+                                                                    id="vjs_select_578"
+                                                                    aria-labelledby="captions-text-legend-opic-video_component_551 captions-foreground-color-opic-video_component_551">
+                                                                    <option
+                                                                        id="captions-foreground-color-opic-video_component_551-White"
+                                                                        value="#FFF"
+                                                                        aria-labelledby="captions-text-legend-opic-video_component_551 captions-foreground-color-opic-video_component_551 captions-foreground-color-opic-video_component_551-White">
+                                                                        White</option>
+                                                                    <option
+                                                                        id="captions-foreground-color-opic-video_component_551-Black"
+                                                                        value="#000"
+                                                                        aria-labelledby="captions-text-legend-opic-video_component_551 captions-foreground-color-opic-video_component_551 captions-foreground-color-opic-video_component_551-Black">
+                                                                        Black</option>
+                                                                    <option
+                                                                        id="captions-foreground-color-opic-video_component_551-Red"
+                                                                        value="#F00"
+                                                                        aria-labelledby="captions-text-legend-opic-video_component_551 captions-foreground-color-opic-video_component_551 captions-foreground-color-opic-video_component_551-Red">
+                                                                        Red</option>
+                                                                    <option
+                                                                        id="captions-foreground-color-opic-video_component_551-Green"
+                                                                        value="#0F0"
+                                                                        aria-labelledby="captions-text-legend-opic-video_component_551 captions-foreground-color-opic-video_component_551 captions-foreground-color-opic-video_component_551-Green">
+                                                                        Green</option>
+                                                                    <option
+                                                                        id="captions-foreground-color-opic-video_component_551-Blue"
+                                                                        value="#00F"
+                                                                        aria-labelledby="captions-text-legend-opic-video_component_551 captions-foreground-color-opic-video_component_551 captions-foreground-color-opic-video_component_551-Blue">
+                                                                        Blue</option>
+                                                                    <option
+                                                                        id="captions-foreground-color-opic-video_component_551-Yellow"
+                                                                        value="#FF0"
+                                                                        aria-labelledby="captions-text-legend-opic-video_component_551 captions-foreground-color-opic-video_component_551 captions-foreground-color-opic-video_component_551-Yellow">
+                                                                        Yellow</option>
+                                                                    <option
+                                                                        id="captions-foreground-color-opic-video_component_551-Magenta"
+                                                                        value="#F0F"
+                                                                        aria-labelledby="captions-text-legend-opic-video_component_551 captions-foreground-color-opic-video_component_551 captions-foreground-color-opic-video_component_551-Magenta">
+                                                                        Magenta</option>
+                                                                    <option
+                                                                        id="captions-foreground-color-opic-video_component_551-Cyan"
+                                                                        value="#0FF"
+                                                                        aria-labelledby="captions-text-legend-opic-video_component_551 captions-foreground-color-opic-video_component_551 captions-foreground-color-opic-video_component_551-Cyan">
+                                                                        Cyan</option>
+                                                                </select></span><span
+                                                                class="vjs-text-opacity vjs-opacity"><label
+                                                                    id="captions-foreground-opacity-opic-video_component_551"
+                                                                    class="vjs-label"
+                                                                    for="vjs_select_583">Opacity</label><select
+                                                                    id="vjs_select_583"
+                                                                    aria-labelledby="captions-text-legend-opic-video_component_551 captions-foreground-opacity-opic-video_component_551">
+                                                                    <option
+                                                                        id="captions-foreground-opacity-opic-video_component_551-Opaque"
+                                                                        value="1"
+                                                                        aria-labelledby="captions-text-legend-opic-video_component_551 captions-foreground-opacity-opic-video_component_551 captions-foreground-opacity-opic-video_component_551-Opaque">
+                                                                        Opaque</option>
+                                                                    <option
+                                                                        id="captions-foreground-opacity-opic-video_component_551-SemiTransparent"
+                                                                        value="0.5"
+                                                                        aria-labelledby="captions-text-legend-opic-video_component_551 captions-foreground-opacity-opic-video_component_551 captions-foreground-opacity-opic-video_component_551-SemiTransparent">
+                                                                        Semi-Transparent</option>
+                                                                </select></span>
+                                                        </fieldset>
+                                                        <fieldset class="vjs-bg vjs-track-setting">
+                                                            <legend id="captions-background-opic-video_component_551">
+                                                                Text Background</legend><span
+                                                                class="vjs-bg-color"><label
+                                                                    id="captions-background-color-opic-video_component_551"
+                                                                    class="vjs-label"
+                                                                    for="vjs_select_593">Color</label><select
+                                                                    id="vjs_select_593"
+                                                                    aria-labelledby="captions-background-opic-video_component_551 captions-background-color-opic-video_component_551">
+                                                                    <option
+                                                                        id="captions-background-color-opic-video_component_551-Black"
+                                                                        value="#000"
+                                                                        aria-labelledby="captions-background-opic-video_component_551 captions-background-color-opic-video_component_551 captions-background-color-opic-video_component_551-Black">
+                                                                        Black</option>
+                                                                    <option
+                                                                        id="captions-background-color-opic-video_component_551-White"
+                                                                        value="#FFF"
+                                                                        aria-labelledby="captions-background-opic-video_component_551 captions-background-color-opic-video_component_551 captions-background-color-opic-video_component_551-White">
+                                                                        White</option>
+                                                                    <option
+                                                                        id="captions-background-color-opic-video_component_551-Red"
+                                                                        value="#F00"
+                                                                        aria-labelledby="captions-background-opic-video_component_551 captions-background-color-opic-video_component_551 captions-background-color-opic-video_component_551-Red">
+                                                                        Red</option>
+                                                                    <option
+                                                                        id="captions-background-color-opic-video_component_551-Green"
+                                                                        value="#0F0"
+                                                                        aria-labelledby="captions-background-opic-video_component_551 captions-background-color-opic-video_component_551 captions-background-color-opic-video_component_551-Green">
+                                                                        Green</option>
+                                                                    <option
+                                                                        id="captions-background-color-opic-video_component_551-Blue"
+                                                                        value="#00F"
+                                                                        aria-labelledby="captions-background-opic-video_component_551 captions-background-color-opic-video_component_551 captions-background-color-opic-video_component_551-Blue">
+                                                                        Blue</option>
+                                                                    <option
+                                                                        id="captions-background-color-opic-video_component_551-Yellow"
+                                                                        value="#FF0"
+                                                                        aria-labelledby="captions-background-opic-video_component_551 captions-background-color-opic-video_component_551 captions-background-color-opic-video_component_551-Yellow">
+                                                                        Yellow</option>
+                                                                    <option
+                                                                        id="captions-background-color-opic-video_component_551-Magenta"
+                                                                        value="#F0F"
+                                                                        aria-labelledby="captions-background-opic-video_component_551 captions-background-color-opic-video_component_551 captions-background-color-opic-video_component_551-Magenta">
+                                                                        Magenta</option>
+                                                                    <option
+                                                                        id="captions-background-color-opic-video_component_551-Cyan"
+                                                                        value="#0FF"
+                                                                        aria-labelledby="captions-background-opic-video_component_551 captions-background-color-opic-video_component_551 captions-background-color-opic-video_component_551-Cyan">
+                                                                        Cyan</option>
+                                                                </select></span><span
+                                                                class="vjs-bg-opacity vjs-opacity"><label
+                                                                    id="captions-background-opacity-opic-video_component_551"
+                                                                    class="vjs-label"
+                                                                    for="vjs_select_598">Opacity</label><select
+                                                                    id="vjs_select_598"
+                                                                    aria-labelledby="captions-background-opic-video_component_551 captions-background-opacity-opic-video_component_551">
+                                                                    <option
+                                                                        id="captions-background-opacity-opic-video_component_551-Opaque"
+                                                                        value="1"
+                                                                        aria-labelledby="captions-background-opic-video_component_551 captions-background-opacity-opic-video_component_551 captions-background-opacity-opic-video_component_551-Opaque">
+                                                                        Opaque</option>
+                                                                    <option
+                                                                        id="captions-background-opacity-opic-video_component_551-SemiTransparent"
+                                                                        value="0.5"
+                                                                        aria-labelledby="captions-background-opic-video_component_551 captions-background-opacity-opic-video_component_551 captions-background-opacity-opic-video_component_551-SemiTransparent">
+                                                                        Semi-Transparent</option>
+                                                                    <option
+                                                                        id="captions-background-opacity-opic-video_component_551-Transparent"
+                                                                        value="0"
+                                                                        aria-labelledby="captions-background-opic-video_component_551 captions-background-opacity-opic-video_component_551 captions-background-opacity-opic-video_component_551-Transparent">
+                                                                        Transparent</option>
+                                                                </select></span>
+                                                        </fieldset>
+                                                        <fieldset class="vjs-window vjs-track-setting">
+                                                            <legend id="captions-window-opic-video_component_551">
+                                                                Caption Area Background</legend><span
+                                                                class="vjs-window-color"><label
+                                                                    id="captions-window-color-opic-video_component_551"
+                                                                    class="vjs-label"
+                                                                    for="vjs_select_608">Color</label><select
+                                                                    id="vjs_select_608"
+                                                                    aria-labelledby="captions-window-opic-video_component_551 captions-window-color-opic-video_component_551">
+                                                                    <option
+                                                                        id="captions-window-color-opic-video_component_551-Black"
+                                                                        value="#000"
+                                                                        aria-labelledby="captions-window-opic-video_component_551 captions-window-color-opic-video_component_551 captions-window-color-opic-video_component_551-Black">
+                                                                        Black</option>
+                                                                    <option
+                                                                        id="captions-window-color-opic-video_component_551-White"
+                                                                        value="#FFF"
+                                                                        aria-labelledby="captions-window-opic-video_component_551 captions-window-color-opic-video_component_551 captions-window-color-opic-video_component_551-White">
+                                                                        White</option>
+                                                                    <option
+                                                                        id="captions-window-color-opic-video_component_551-Red"
+                                                                        value="#F00"
+                                                                        aria-labelledby="captions-window-opic-video_component_551 captions-window-color-opic-video_component_551 captions-window-color-opic-video_component_551-Red">
+                                                                        Red</option>
+                                                                    <option
+                                                                        id="captions-window-color-opic-video_component_551-Green"
+                                                                        value="#0F0"
+                                                                        aria-labelledby="captions-window-opic-video_component_551 captions-window-color-opic-video_component_551 captions-window-color-opic-video_component_551-Green">
+                                                                        Green</option>
+                                                                    <option
+                                                                        id="captions-window-color-opic-video_component_551-Blue"
+                                                                        value="#00F"
+                                                                        aria-labelledby="captions-window-opic-video_component_551 captions-window-color-opic-video_component_551 captions-window-color-opic-video_component_551-Blue">
+                                                                        Blue</option>
+                                                                    <option
+                                                                        id="captions-window-color-opic-video_component_551-Yellow"
+                                                                        value="#FF0"
+                                                                        aria-labelledby="captions-window-opic-video_component_551 captions-window-color-opic-video_component_551 captions-window-color-opic-video_component_551-Yellow">
+                                                                        Yellow</option>
+                                                                    <option
+                                                                        id="captions-window-color-opic-video_component_551-Magenta"
+                                                                        value="#F0F"
+                                                                        aria-labelledby="captions-window-opic-video_component_551 captions-window-color-opic-video_component_551 captions-window-color-opic-video_component_551-Magenta">
+                                                                        Magenta</option>
+                                                                    <option
+                                                                        id="captions-window-color-opic-video_component_551-Cyan"
+                                                                        value="#0FF"
+                                                                        aria-labelledby="captions-window-opic-video_component_551 captions-window-color-opic-video_component_551 captions-window-color-opic-video_component_551-Cyan">
+                                                                        Cyan</option>
+                                                                </select></span><span
+                                                                class="vjs-window-opacity vjs-opacity"><label
+                                                                    id="captions-window-opacity-opic-video_component_551"
+                                                                    class="vjs-label"
+                                                                    for="vjs_select_613">Opacity</label><select
+                                                                    id="vjs_select_613"
+                                                                    aria-labelledby="captions-window-opic-video_component_551 captions-window-opacity-opic-video_component_551">
+                                                                    <option
+                                                                        id="captions-window-opacity-opic-video_component_551-Transparent"
+                                                                        value="0"
+                                                                        aria-labelledby="captions-window-opic-video_component_551 captions-window-opacity-opic-video_component_551 captions-window-opacity-opic-video_component_551-Transparent">
+                                                                        Transparent</option>
+                                                                    <option
+                                                                        id="captions-window-opacity-opic-video_component_551-SemiTransparent"
+                                                                        value="0.5"
+                                                                        aria-labelledby="captions-window-opic-video_component_551 captions-window-opacity-opic-video_component_551 captions-window-opacity-opic-video_component_551-SemiTransparent">
+                                                                        Semi-Transparent</option>
+                                                                    <option
+                                                                        id="captions-window-opacity-opic-video_component_551-Opaque"
+                                                                        value="1"
+                                                                        aria-labelledby="captions-window-opic-video_component_551 captions-window-opacity-opic-video_component_551 captions-window-opacity-opic-video_component_551-Opaque">
+                                                                        Opaque</option>
+                                                                </select></span>
+                                                        </fieldset>
+                                                    </div>
+                                                    <div class="vjs-track-settings-font">
+                                                        <fieldset class="vjs-font-percent vjs-track-setting">
+                                                            <legend id="captions-font-size-opic-video_component_551">
+                                                                Font Size</legend><select id="vjs_select_628"
+                                                                aria-labelledby="captions-font-size-opic-video_component_551">
+                                                                <option id="vjs-track-option-629-50" value="0.50"
+                                                                    aria-labelledby="captions-font-size-opic-video_component_551 vjs-track-option-629-50">
+                                                                    50%</option>
+                                                                <option id="vjs-track-option-630-75" value="0.75"
+                                                                    aria-labelledby="captions-font-size-opic-video_component_551 vjs-track-option-630-75">
+                                                                    75%</option>
+                                                                <option id="vjs-track-option-631-100" value="1.00"
+                                                                    aria-labelledby="captions-font-size-opic-video_component_551 vjs-track-option-631-100">
+                                                                    100%</option>
+                                                                <option id="vjs-track-option-632-125" value="1.25"
+                                                                    aria-labelledby="captions-font-size-opic-video_component_551 vjs-track-option-632-125">
+                                                                    125%</option>
+                                                                <option id="vjs-track-option-633-150" value="1.50"
+                                                                    aria-labelledby="captions-font-size-opic-video_component_551 vjs-track-option-633-150">
+                                                                    150%</option>
+                                                                <option id="vjs-track-option-634-175" value="1.75"
+                                                                    aria-labelledby="captions-font-size-opic-video_component_551 vjs-track-option-634-175">
+                                                                    175%</option>
+                                                                <option id="vjs-track-option-635-200" value="2.00"
+                                                                    aria-labelledby="captions-font-size-opic-video_component_551 vjs-track-option-635-200">
+                                                                    200%</option>
+                                                                <option id="vjs-track-option-636-300" value="3.00"
+                                                                    aria-labelledby="captions-font-size-opic-video_component_551 vjs-track-option-636-300">
+                                                                    300%</option>
+                                                                <option id="vjs-track-option-637-400" value="4.00"
+                                                                    aria-labelledby="captions-font-size-opic-video_component_551 vjs-track-option-637-400">
+                                                                    400%</option>
+                                                            </select>
+                                                        </fieldset>
+                                                        <fieldset class="vjs-edge-style vjs-track-setting">
+                                                            <legend id="captions-edge-style-opic-video_component_551">
+                                                                Text Edge Style</legend><select id="vjs_select_647"
+                                                                aria-labelledby="captions-edge-style-opic-video_component_551">
+                                                                <option id="vjs-track-option-648-None" value="none"
+                                                                    aria-labelledby="captions-edge-style-opic-video_component_551 vjs-track-option-648-None">
+                                                                    None</option>
+                                                                <option id="vjs-track-option-649-Raised" value="raised"
+                                                                    aria-labelledby="captions-edge-style-opic-video_component_551 vjs-track-option-649-Raised">
+                                                                    Raised</option>
+                                                                <option id="vjs-track-option-650-Depressed"
+                                                                    value="depressed"
+                                                                    aria-labelledby="captions-edge-style-opic-video_component_551 vjs-track-option-650-Depressed">
+                                                                    Depressed</option>
+                                                                <option id="vjs-track-option-651-Uniform"
+                                                                    value="uniform"
+                                                                    aria-labelledby="captions-edge-style-opic-video_component_551 vjs-track-option-651-Uniform">
+                                                                    Uniform</option>
+                                                                <option id="vjs-track-option-652-Dropshadow"
+                                                                    value="dropshadow"
+                                                                    aria-labelledby="captions-edge-style-opic-video_component_551 vjs-track-option-652-Dropshadow">
+                                                                    Drop shadow</option>
+                                                            </select>
+                                                        </fieldset>
+                                                        <fieldset class="vjs-font-family vjs-track-setting">
+                                                            <legend id="captions-font-family-opic-video_component_551">
+                                                                Font Family</legend><select id="vjs_select_662"
+                                                                aria-labelledby="captions-font-family-opic-video_component_551">
+                                                                <option id="vjs-track-option-663-ProportionalSansSerif"
+                                                                    value="proportionalSansSerif"
+                                                                    aria-labelledby="captions-font-family-opic-video_component_551 vjs-track-option-663-ProportionalSansSerif">
+                                                                    Proportional Sans-Serif</option>
+                                                                <option id="vjs-track-option-664-MonospaceSansSerif"
+                                                                    value="monospaceSansSerif"
+                                                                    aria-labelledby="captions-font-family-opic-video_component_551 vjs-track-option-664-MonospaceSansSerif">
+                                                                    Monospace Sans-Serif</option>
+                                                                <option id="vjs-track-option-665-ProportionalSerif"
+                                                                    value="proportionalSerif"
+                                                                    aria-labelledby="captions-font-family-opic-video_component_551 vjs-track-option-665-ProportionalSerif">
+                                                                    Proportional Serif</option>
+                                                                <option id="vjs-track-option-666-MonospaceSerif"
+                                                                    value="monospaceSerif"
+                                                                    aria-labelledby="captions-font-family-opic-video_component_551 vjs-track-option-666-MonospaceSerif">
+                                                                    Monospace Serif</option>
+                                                                <option id="vjs-track-option-667-Casual" value="casual"
+                                                                    aria-labelledby="captions-font-family-opic-video_component_551 vjs-track-option-667-Casual">
+                                                                    Casual</option>
+                                                                <option id="vjs-track-option-668-Script" value="script"
+                                                                    aria-labelledby="captions-font-family-opic-video_component_551 vjs-track-option-668-Script">
+                                                                    Script</option>
+                                                                <option id="vjs-track-option-669-SmallCaps"
+                                                                    value="small-caps"
+                                                                    aria-labelledby="captions-font-family-opic-video_component_551 vjs-track-option-669-SmallCaps">
+                                                                    Small Caps</option>
+                                                            </select>
+                                                        </fieldset>
+                                                    </div>
+                                                    <div class="vjs-track-settings-controls"><button
+                                                            class="vjs-default-button" type="button"
+                                                            title="restore all settings to the default values"
+                                                            aria-disabled="false">Reset</button><button
+                                                            class="vjs-done-button" type="button"
+                                                            title="restore all settings to the default values"
+                                                            aria-disabled="false">Done</button></div>
+                                                </div><button class="vjs-close-button vjs-control vjs-button"
+                                                    type="button" title="Close Modal Dialog" aria-disabled="false"><span
+                                                        class="vjs-icon-placeholder" aria-hidden="true"></span><span
+                                                        class="vjs-control-text" aria-live="polite">Close Modal
+                                                        Dialog</span></button>
+                                                <p class="vjs-control-text">End of dialog window.</p>
+                                            </div>
+                                        </div>
+                                    </div><!-- end block-video -->
+                                </div>
+                                <div class="col-1">
+                                    <div class="block-mic-gauge disable set-to-video-height" aria-label="Microphone"
+                                        role="img">
+                                        <div class="mic-gauge-well">
+                                            <div class="mic-gauge">
+                                                <div class="mic-gauge-marker"></div>
+                                            </div>
+                                        </div>
+                                        <div class="mic-icon"></div>
+                                    </div>
+                                </div>
+                                <div class="col-11 text-center">
+                                    <!-- Custom playback controls for video player -->
+                                    <div class="block-video-control d-flex mx-auto">
+                                        <button id="replayButton" class="btn m-0 btn-video-replay" type="button"
+                                            name="button" aria-label="replay" hidden=""><span></span></button>
+                                        <button id="playButton" class="btn m-0 btn-video-play btn-disabled"
+                                            type="button" name="button" aria-label="play" style="display: inline-block;"
+                                            disabled=""><span></span></button>
+                                        <div class="block-playback flex-fill">
+                                            <div id="playback" class="track-well">
+                                                <div class="track"></div>
+                                            </div>
+                                        </div><!-- end block-playback (desktop/tablet) -->
+                                    </div><!-- End custom playback controls for video player -->
+                                </div>
+                                <div class="col-6 col-md-1"></div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-7 col-md-6 mt-2 mt-md-0">
+                            <h3>Question Progress:</h3>
+                            <ul class="prompt-list mb-2">
+                                <li class="active" aria-current="true">1</li>
+                                <li>2</li>
+                            </ul>
+
+                            <div id="recordingStatus" class="hide alert-recording mb-2">
+                                <span>Recording...</span>
+                            </div><!-- end alert-recording -->
+
+                            <div id="uploading-alert" class="hide alert-blue alert-uploading">
+                                <span>Uploading your audio</span>
+                            </div>
+
+                            <div id="responseTimer" class="hide block-response-timer mb-2">
+                                <h3>Response Time:</h3>
+                                <div class="response-time-well">
+                                    <div id="response-time-progress-bar" class="response-time" role="progressbar"
+                                        aria-label="voice recording timeline" aria-valuemin="0" aria-valuemax="100"
+                                        aria-valuenow="0" aria-valuetext="0% completed"></div>
+                                </div>
+                                <span class="sr-only">Time remaining: </span>
+                                <div id="response-time-remaining-time" class="remaining-time">1:00</div>
+                            </div><!-- end block-response-timer -->
+
+                        </div>
+                    </div>
+
+                </div><!-- end block-setup -->
+
+                <div class="row mt-4">
+                    <div class="col text-right">
+                        <form id="formNext" action="https://opicdemo.actfltesting.org/next" method="post">
+                            <input type="hidden" name="_token" value="lBmzfL6nmsgC7j0zV3HOxN68Re2jmrNEzkC4iwWc"
+                                autocomplete="off">
+                            <div id="nextButton" class="form-group">
+                                <button id="btnNext" class="btn btn-primary" type="button" name="button"
+                                    disabled=""><span>Next</span></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="learnosity-block row" aria-hidden="true">
+                    <div class="col-md-8">
+                        <div id="549565-300_adf0ff58-2265-4cff-9101-dc541e9d528c"
+                            class="lrn lrn_widget lrn_qr lrn_audio lrn_clearfix "
+                            data-lrn-widget-container="549565-300_adf0ff58-2265-4cff-9101-dc541e9d528c"
+                            data-lrn-widget-type="question">
+                            <div class="lrn_response_wrapper" data-lrn-widget-component="interaction">
+                                <div class="lrn_response lrn_clearfix lrn-player-responsive lrn-player-skin-medium">
+                                    <div class="lrn-accessibility-arialive" aria-live="assertive" aria-atomic="true">
+                                    </div>
+                                    <div class="lrn_response_input_wrapper lrn_box_skin_wrapper">
+                                        <div class="lrn_row lrn_clearfix">
+                                            <div class="lrn_widget_content">
+                                                <div class="lrn_content_header">
+                                                    <div class="lrn_header_left">Audio Recorder</div>
+                                                    <div class="lrn_header_right"></div>
+                                                </div>
+                                                <div class="lrn_audio_status">Click on record to start</div>
+                                                <div class="">
+                                                    <div class="lrn_waveform" style="display: none;">
+                                                        <div class="lrn_loaded lrn_wfblock"></div><img
+                                                            class="lrn_wfgraphic lrn_wfimage"
+                                                            style="display: none;"><canvas
+                                                            class="lrn_wfgraphic lrn_wfcanvas" role="img"
+                                                            aria-label="Sound waves" tabindex="0"
+                                                            style="display: none;"></canvas>
+                                                        <div class="lrn_position lrn_wfblock"></div>
+                                                        <div class="lrn_seeker"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="lrn_audioblock_right">
+                                                <div class="lrn_audiomiclevel">
+                                                    <img src="./assets/audioblock-vol.png"
+                                                        class="lrn_audiomiclevel_image">
+                                                    <div class="lrn_audiomiclevelmask"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="lrn_widget_footer lrn_toolbar">
+                                            <div class="lrn_toolbar_left"><button type="button"
+                                                    class="lrn_btn lrn_start_recording" title="Start recording"
+                                                    aria-label="Start recording"></button><button type="button"
+                                                    class="lrn_btn lrn_start_playback" title="Play" aria-label="Play"
+                                                    disabled="disabled"></button></div>
+                                            <div class="lrn_toolbar_center">
+                                                <div class="lrn_audio_timer"><span
+                                                        class="lrn_currentTime">00:00</span><span
+                                                        class="lrn_timeSeparator"> / </span><span
+                                                        class="lrn_totalTime">1:30</span></div>
+                                                <div class="lrn_audio_progress_bar_wrapper">
+                                                    <div class="lrn_audio_progress_bar" title="Progress">
+                                                        <div class="lrn_position lrn_recording" tabindex="0"
+                                                            role="slider" aria-valuemin="0%" aria-valuemax="100%"></div>
+                                                        <div class="lrn_seeker"></div>
+                                                        <div class="lrn_seekspace"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="lrn_volume_control"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="549565-2983_d9a63a9c-d21c-4429-8133-04a2e008c081"
+                            class="lrn lrn_widget lrn_qr lrn_audio lrn_clearfix "
+                            data-lrn-widget-container="549565-2983_d9a63a9c-d21c-4429-8133-04a2e008c081"
+                            data-lrn-widget-type="question">
+                            <div class="lrn_response_wrapper" data-lrn-widget-component="interaction">
+                                <div class="lrn_response lrn_clearfix lrn-player-responsive lrn-player-skin-medium">
+                                    <div class="lrn-accessibility-arialive" aria-live="assertive" aria-atomic="true">
+                                    </div>
+                                    <div class="lrn_response_input_wrapper lrn_box_skin_wrapper">
+                                        <div class="lrn_row lrn_clearfix">
+                                            <div class="lrn_widget_content">
+                                                <div class="lrn_content_header">
+                                                    <div class="lrn_header_left">Audio Recorder</div>
+                                                    <div class="lrn_header_right"></div>
+                                                </div>
+                                                <div class="lrn_audio_status">Click on record to start</div>
+                                                <div class="">
+                                                    <div class="lrn_waveform" style="display: none;">
+                                                        <div class="lrn_loaded lrn_wfblock"></div><img
+                                                            class="lrn_wfgraphic lrn_wfimage"
+                                                            style="display: none;"><canvas
+                                                            class="lrn_wfgraphic lrn_wfcanvas" role="img"
+                                                            aria-label="Sound waves" tabindex="0"
+                                                            style="display: none;"></canvas>
+                                                        <div class="lrn_position lrn_wfblock"></div>
+                                                        <div class="lrn_seeker"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="lrn_audioblock_right">
+                                                <div class="lrn_audiomiclevel"><img src="./assets/audioblock-vol.png"
+                                                        class="lrn_audiomiclevel_image">
+                                                    <div class="lrn_audiomiclevelmask"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="lrn_widget_footer lrn_toolbar">
+                                            <div class="lrn_toolbar_left"><button type="button"
+                                                    class="lrn_btn lrn_start_recording" title="Start recording"
+                                                    aria-label="Start recording"></button><button type="button"
+                                                    class="lrn_btn lrn_start_playback" title="Play" aria-label="Play"
+                                                    disabled="disabled"></button></div>
+                                            <div class="lrn_toolbar_center">
+                                                <div class="lrn_audio_timer"><span
+                                                        class="lrn_currentTime">00:00</span><span
+                                                        class="lrn_timeSeparator"> / </span><span
+                                                        class="lrn_totalTime">1:30</span></div>
+                                                <div class="lrn_audio_progress_bar_wrapper">
+                                                    <div class="lrn_audio_progress_bar" title="Progress">
+                                                        <div class="lrn_position lrn_recording" tabindex="0"
+                                                            role="slider" aria-valuemin="0%" aria-valuemax="100%"></div>
+                                                        <div class="lrn_seeker"></div>
+                                                        <div class="lrn_seekspace"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="lrn_volume_control"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Error Modal -->
+                <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body text-center">
+
+                            </div>
+                            <div class="modal-footer text-center">
+                                <button type="button" class="btn btn-primary mx-auto" data-dismiss="modal">OK</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recording Finished Modal -->
+                <div class="modal fade" id="moveOnModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body text-center">
+                                <div id="moveOnHeader" class="alert-block" hidden="">
+                                    <h3>Time to move on to the next question.</h3>
+                                </div>
+                                <div id="volumeLowContent" class="alert-block text-left" hidden="">
+                                    <h3>The recording volume was low. </h3>
+                                    <ul>
+                                        <li>Speak louder.</li>
+                                        <li>Move the microphone closer to your mouth.</li>
+                                        <li>Adjust the microphone volume.</li>
+                                    </ul>
+                                </div>
+                                <div id="volumeHighContent" class="alert-block" hidden="">
+                                    <h3>The recording has a lot of noise.</h3>
+                                </div>
+                            </div>
+                            <div class="modal-footer text-center">
+                                <button type="button" class="btn btn-primary mx-auto" data-dismiss="modal">OK</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content ends here -->
+
+            </div><!-- end actfl-test-container -->
+        </div><!-- end container-fluid -->
+    </div><!-- end  contentDiv -->
+
+    <script src="./js/popper.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/jquery.html5.hide-show.js"></script>
+
+    <script src="./js/common.js" charset="utf-8"></script>
+    <script src="./js/common-demo.js" charset="utf-8"></script>
+
+    <script type="text/javascript" src="./js/detect-rtc.js"></script>
+    <script type="text/javascript" src="./js/test-question.js"></script>
+    <script src="./js/ResizeSensor.js"></script>
+    <script src="./js/ElementQueries.js"></script>
+    <script src="./OPIcDemo_question_files/index.umd.js.download"></script>
+    <script src="./OPIcDemo_question_files/focus-trap.umd.js.download"></script>
+
+    <script src="./OPIcDemo_question_files/saved_resource"></script>
+    <script type="text/javascript">
+        var ltiOpicAppSettings = {
+            sampleQuestion: false,
+            nextPage: "https://opicdemo.actfltesting.org/next",
+            learnositySignedRequest: { "consumer_key": "BbfMQ4LLanm31mEH", "user_id": "ED57EB4A-31CE-46C0-99D7-0C4535F7863B", "timestamp": "20260426-1705", "signature": "05bf1f5092ba7e641d0ec0bcee5ed5ac9c283fc9ed485160c997a438577333bc", "session_id": "96272698-DCF4-4F65-B652-48C532F354BF", "type": "local_practice", "state": "initial", "id": "question", "name": "question", "course_id": "OPIc", "beta_flags": { "use_webrtc": true, "reactive_views": false }, "questions": [{ "response_id": "549565-300_adf0ff58-2265-4cff-9101-dc541e9d528c", "type": "audio", "description": "The student needs to speak about the weather today.", "overwrite_warning": false, "max_length": 90, "silence_stop_duration": 0 }, { "type": "audio", "response_id": "549565-2983_d9a63a9c-d21c-4429-8133-04a2e008c081", "overwrite_warning": false, "max_length": 90 }] },
+            nextTimer: "10",
+            responseTimer: 60.0,
+            nextTimer: 10000,
+            questionVideo: "https://opicdemo.actfltesting.org/video/300-EN-A1.flv",
+            introVideo: "https://opicdemo.actfltesting.org/video",
+            noddingVideo: "https://opicdemo.actfltesting.org/file/NewEuroStandBy",
+            standByPortrait: "https://opicdemo.actfltesting.org/images/NewEuroAvatarCaptured.png",
+            replayTimeout: 5000,
+            responseId: "549565-300_adf0ff58-2265-4cff-9101-dc541e9d528c",
+            savePrompt: true,
+            ltrId: "D584A673-56A5-4821-9EF3-10AF501CD07F",
+            responseUrl: "https://learnositymediaprocessed.s3.amazonaws.com/",
+            lastPrompt: false,
+            nextLTRId: "92184405-1240-46E8-A996-6F638E869BA2",
+            videoReplays: 0,
+            prompts: [{ "LTRId": "D584A673-56A5-4821-9EF3-10AF501CD07F", "Ltid": "75964CD4-BF11-4C14-A9FC-AE7EF8263BE0", "promptId": "300", "promptIntroId": null, "promptIntroMediaFile": "https:\/\/opicdemo.actfltesting.org\/video", "Mediafile": "https:\/\/opicdemo.actfltesting.org\/video\/300-EN-A1.flv", "responseid": "75964CD4-BF11-4C14-A9FC-AE7EF8263BE0_300", "starttime": null, "questionstatus": "New", "ResponseOrder": "1", "TimeSpentSoFar": "0", "TotalTestTime": "5400", "TestTimeRemaining": "5400", "TimeForQuestion": "60.0", "NoddingAvatarID": "0", "NoddingAvatarText": "", "ScenarioText": "", "responseNo": "1", "LevelId": "-1", "LevelName": "", "FormId": "45", "FormName": "Form 1 - ACTFL", "IsForm4InsShown": "0", "learnosityId": "549565-300_adf0ff58-2265-4cff-9101-dc541e9d528c" }, { "LTRId": "92184405-1240-46E8-A996-6F638E869BA2", "Ltid": "75964CD4-BF11-4C14-A9FC-AE7EF8263BE0", "promptId": "2983", "promptIntroId": null, "promptIntroMediaFile": "https:\/\/opicdemo.actfltesting.org\/video", "Mediafile": "https:\/\/opicdemo.actfltesting.org\/video\/2983-EN-A1.flv", "responseid": "75964CD4-BF11-4C14-A9FC-AE7EF8263BE0_2983", "starttime": null, "questionstatus": "New", "ResponseOrder": "2", "TimeSpentSoFar": "0", "TotalTestTime": "5400", "TestTimeRemaining": "5400", "TimeForQuestion": "60.0", "NoddingAvatarID": "0", "NoddingAvatarText": "", "ScenarioText": "", "responseNo": "2", "LevelId": "-1", "LevelName": "", "FormId": "45", "FormName": "Form 1 - ACTFL", "IsForm4InsShown": "0", "learnosityId": "549565-2983_d9a63a9c-d21c-4429-8133-04a2e008c081" }],
+            currentQuestionIndex: 1,
+            finalQuestionIndex: 2,
+            questionHeaderText: "Question (currentnumber) of (totalnumber)",
+            appEnv: "prod",
+            isRemoteProctorTest: 0,
+            deviceInfo: { "os": "Windows", "browser": "Edge" },
+            secureOption: 0
+        };
+        ltiOpic.demo(true);
+
+        $(document).on('keydown', function () {
+            var trapPage;
+
+            if (!trapPage) {
+                const container = document.getElementById("actfl-test-container");
+
+                trapPage = focusTrap.createFocusTrap(container, {
+                    onActivate: () => container.classList.add("trap-active"),
+                    onDeactivate: () => container.classList.remove("trap-active"),
+                });
+
+                trapPage.activate();
+            }
+        });
+    </script>
+    <script src="./js/bootstrap-session-timeout.js"></script>
+
+    </div><iframe class="x-origin-frame" frameborder="0" marginwidth="0" marginheight="0" aria-hidden="true"
+        tabindex="-1" src="./others/xdomain.html"
+        style="width: 0px; height: 0px; position: absolute; top: -1000px;"></iframe>
+    <div class="lrn-math-modal-root"></div>
+</body>
+
+</html>

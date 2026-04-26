@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style class="vjs-styles-defaults">
+        .video-js {
+            width: 300px;
+            height: 150px;
+        }
+
+        .vjs-fluid:not(.vjs-audio-only-mode) {
+            padding-top: 56.25%
+        }
+    </style>
+    <style class="vjs-styles-dimensions">
+        .setup-video-dimensions {
+            width: 296px;
+            height: 300px;
+        }
+
+        .setup-video-dimensions.vjs-fluid:not(.vjs-audio-only-mode) {
+            padding-top: 101.35135135135135%;
+        }
+    </style>
+
+    <title>
+        Pre-Test Setup |
+        OPIcDemo
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="./assets/favicon.gif">
+
+    <link rel="stylesheet" href="./font-awesome-4.5.0-master/css/font-awesome.min.css">
+    <link href="./css/video-js.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/master.css">
+    <script src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/mic-perm.js"></script>
+    <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet">
+    <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
+    <style>
+        /**
+       * Session Timeout Dialog Styles
+       */
+        #session-timeout-dialog-logout {
+            display: none;
+        }
+
+        /**
+       * Following styles are used on the Setup page, Sample Question page, and  Test page.
+       */
+
+        /**
+       * Used display: inline-block to get the video element and the volume-indicator wrapper side by side.
+       * *** I also added the mx-md-0 class to help with the positioning.
+       */
+        #setup-video,
+        #opic-video {
+            display: inline-block;
+        }
+    </style>
+    <style type="text/css">
+        .learnosity-block {
+            position: static;
+            top: auto;
+        }
+
+        .learnosity-block .lrn.lrn_widget.lrn_qr.lrn_audio {
+            width: 100%;
+        }
+
+        .lrn_widget>div>div>div.lrn_response_input_wrapper.lrn_box_skin_wrapper {
+            width: 100%;
+        }
+
+        .lrn_widget>div>div>div.lrn_response_input_wrapper.lrn_box_skin_wrapper>div.lrn_row.lrn_clearfix {
+            display: block;
+        }
+
+        .lrn_widget>div>div>div.lrn_response_input_wrapper.lrn_box_skin_wrapper>div.lrn_widget_footer.lrn_toolbar {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .lrn_widget>div>div>div.lrn_response_input_wrapper.lrn_box_skin_wrapper {
+            max-width: inherit;
+            border: none;
+        }
+
+        .lrn_widget>div>div>div.lrn_response_input_wrapper.lrn_box_skin_wrapper>div.lrn_row.lrn_clearfix>div.lrn_widget_content {
+            display: none;
+        }
+
+        .lrn_widget>div>div>div.lrn_response_input_wrapper.lrn_box_skin_wrapper>div.lrn_row.lrn_clearfix>div.lrn_widget_content>div.lrn_content_header {
+            display: none;
+        }
+
+        .lrn_widget>div>div>div.lrn_response_input_wrapper.lrn_box_skin_wrapper>div.lrn_row.lrn_clearfix>div.lrn_widget_content>div.lrn_audio_status {
+            display: none;
+        }
+
+        .lrn_widget>div>div>div.lrn_response_input_wrapper.lrn_box_skin_wrapper>div.lrn_row.lrn_clearfix>div.lrn_widget_content>div {
+            display: none;
+        }
+
+        .lrn_widget>div>div>div.lrn_response_input_wrapper.lrn_box_skin_wrapper>div.lrn_row.lrn_clearfix>div.lrn_audioblock_right {
+            position: absolute;
+            top: -10000px;
+        }
+
+        .lrn_widget>div>div>div.lrn_response_input_wrapper.lrn_box_skin_wrapper>div.lrn_row.lrn_clearfix>div.lrn_audioblock_right>div.lrn_audiomiclevel>img {
+            display: none;
+        }
+
+        .lrn_widget>div>div>div.lrn_response_input_wrapper.lrn_box_skin_wrapper>div.lrn_row.lrn_clearfix {
+            background-color: #E8E8E8;
+        }
+
+        .lrn_widget>div>div>div.lrn_response_input_wrapper.lrn_box_skin_wrapper>div.lrn_row.lrn_clearfix>div.lrn_widget_content>div.lrn_waveform {
+            height: 4px;
+            position: inherit;
+            top: inherit;
+            background: inherit;
+        }
+
+        .lrn_widget>div>div>div.lrn_response_input_wrapper.lrn_box_skin_wrapper>div.lrn_row.lrn_clearfix>div.lrn_widget_content>div.lrn_waveform>canvas {
+            display: none !important;
+        }
+
+        .lrn_widget>div>div>div.lrn_response_input_wrapper.lrn_box_skin_wrapper>div.lrn_row.lrn_clearfix>div.lrn_widget_content {
+            background-color: #E8E8E8;
+        }
+
+        .lrn_widget>div>div>div.lrn_response_input_wrapper.lrn_box_skin_wrapper>div.lrn_row.lrn_clearfix>div.lrn_widget_content>div.lrn_waveform>div.lrn_position {
+            background: #36f;
+            opacity: 1;
+            border: none;
+            height: 4px;
+        }
+
+        .lrn_widget>div>div>div.lrn_response_input_wrapper.lrn_box_skin_wrapper>div.lrn_widget_footer.lrn_toolbar {
+            display: none;
+        }
+
+        .vjs-tech>p {
+            display: none;
+        }
+    </style>
+    <link type="text/css" rel="stylesheet" href="./css/preload.css">
+    <link type="text/css" rel="stylesheet" href="./css/vendor.css">
+    <link type="text/css" rel="stylesheet" href="./css/main.css">
+    <style type="text/css">
+        [responsive-image]>img,
+        [data-responsive-image] {
+            overflow: hidden;
+            padding: 0;
+        }
+
+        [responsive-image]>img,
+        [data-responsive-image]>img {
+            width: 100%;
+        }
+
+        @keyframes element-queries {
+            0% {
+                visibility: inherit;
+            }
+        }
+    </style>
+    <link rel="stylesheet" id="lds-css" href="./css/main.0.34.1.min.css">
+</head>
+
+<body cz-shortcut-listen="true"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        style="position: absolute; width: 0; height: 0" aria-hidden="true" id="__SVG_SPRITE_NODE__">
+        <symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" id="lds-i-cross">
+            <path
+                d="M19.62 16l8.2-8.2a.614.614 0 000-.867L25.067 4.18a.614.614 0 00-.867 0l-8.2 8.2-8.2-8.2a.614.614 0 00-.867 0L4.18 6.933a.614.614 0 000 .868L12.38 16l-8.17 8.2a.614.614 0 000 .867l2.753 2.753c.239.24.628.24.867 0l8.17-8.2 8.2 8.2c.239.24.628.24.867 0l2.753-2.753a.614.614 0 000-.867l-8.2-8.2z">
+            </path>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" id="lds-i-chevron-down">
+            <path
+                d="m3.58 12.29 12.056 12.328c.194.2.533.2.727 0l12.056-12.329a.545.545 0 0 0 .152-.366c0-.14-.05-.27-.152-.366l-3.322-3.4a.495.495 0 0 0-.726 0L16 16.72 7.63 8.157a.515.515 0 0 0-.727 0l-3.323 3.4a.517.517 0 0 0 0 .732Z">
+            </path>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32"
+            id="lds-i-exclamation-circle">
+            <path fill-rule="evenodd"
+                d="M2 16C2 8.268 8.268 2 16 2s14 6.268 14 14-6.268 14-14 14S2 23.732 2 16zm16.272 3.563v2.982c0 .147-.05.27-.15.37-.1.1-.217.149-.353.149h-3.014a.483.483 0 01-.353-.15.502.502 0 01-.15-.369v-2.982c0-.147.05-.27.15-.37.1-.099.217-.149.353-.149h3.014c.136 0 .254.05.354.15.1.1.149.222.149.369zm.25-10.093l-.282 7.204a.35.35 0 01-.165.26.64.64 0 01-.37.103h-2.903a.678.678 0 01-.377-.102c-.105-.068-.158-.155-.158-.26L14 9.502c0-.147.052-.256.157-.33.137-.115.263-.172.377-.172h3.454c.116 0 .241.057.377.172a.345.345 0 01.157.298z"
+                clip-rule="evenodd"></path>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32"
+            id="lds-i-exclamation-triangle">
+            <path
+                d="M18.09 24.583V21.6c0-.147-.05-.27-.15-.37a.483.483 0 00-.353-.15h-3.014a.483.483 0 00-.353.15c-.1.1-.15.223-.15.37v2.982c0 .146.05.27.15.37.1.099.217.149.353.149h3.014c.136 0 .254-.05.353-.15.1-.1.15-.223.15-.37zm-.032-5.87l.282-7.205a.345.345 0 00-.157-.298c-.136-.115-.262-.172-.377-.172h-3.454c-.114 0-.24.057-.377.172-.105.073-.157.183-.157.33l.267 7.173c0 .105.053.191.157.26.105.067.231.101.377.101h2.905a.64.64 0 00.369-.102.35.35 0 00.165-.259zm-.22-14.662l12.055 22.1c.366.66.356 1.32-.032 1.979a1.973 1.973 0 01-.73.721 1.97 1.97 0 01-.996.268H4.025c-.356 0-.688-.09-.997-.268a1.973 1.973 0 01-.73-.721c-.387-.66-.397-1.319-.031-1.978l12.055-22.1A2.005 2.005 0 0116.08 3a2.006 2.006 0 011.758 1.051z">
+            </path>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" id="lds-i-tick-circle">
+            <path fill-rule="evenodd"
+                d="M16 30c7.732 0 14-6.268 14-14S23.732 2 16 2 2 8.268 2 16s6.268 14 14 14Zm5.893-20.798c.26-.27.69-.27.95 0l1.97 2.034a.662.662 0 0 1 .001.92l-10.66 11.042a.661.661 0 0 1-.952 0l-6.017-6.246a.662.662 0 0 1 .003-.921l1.986-2.039a.661.661 0 0 1 .949.002l3.573 3.69 8.197-8.482Z"
+                clip-rule="evenodd"></path>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" id="lds-i-tick">
+            <path
+                d="M26.348 5.742a1 1 0 0 0-1.437 0L12.518 18.564l-5.403-5.577a1 1 0 0 0-1.435-.003l-3.003 3.081a1 1 0 0 0-.004 1.392l9.097 9.44a1 1 0 0 0 1.44 0l16.118-16.689a1 1 0 0 0-.001-1.39l-2.979-3.075Z">
+            </path>
+        </symbol>
+    </svg>
+
+    <div id="contentDiv">
+        <div class="container-fluid">
+            <div id="actfl-test-container" class="actfl-test-container mx-auto">
+
+                <!-- Content begins here -->
+                <div class="row">
+                    <div class="col-12 text-right">
+                        <div class="block-upper-right mt-1">
+                            <a href="./index.html" class="sign-out"><span>Sign
+                                    Out</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    $(document).ready(function () {
+                        const signOutButton = document.querySelector('.sign-out');
+
+                        signOutButton.addEventListener('keydown', function (event) {
+                            if (event.code === 'Space' || event.key === ' ') {
+                                event.preventDefault();
+                                signOutButton.click();
+                            }
+                        });
+                    });
+                </script>
+                <script src="./js/all.min.js" charset="utf-8"></script>
+                <script src="./js/video.min.js" charset="utf-8"></script>
+                <script src="./js/videojs-playlist.min.js" charset="utf-8"></script>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="block-steps mt-1" role="group" aria-label="Step Indicator. Step 3 of 4: Setup">
+                            <ul class="steps-4">
+                                <li class="checked" aria-current="false">
+                                    <div class="step-content">
+                                        <div class="sr-only">completed</div>
+                                        <h3>1</h3>
+                                        <p>Background Survey</p>
+                                    </div>
+                                </li>
+                                <li class="checked before-selected" aria-current="false">
+                                    <div class="step-content">
+                                        <div class="sr-only">completed</div>
+                                        <h3>2</h3>
+                                        <p>Self Assessment</p>
+                                    </div>
+                                </li>
+                                <li class="selected" aria-current="step">
+                                    <div class="step-content">
+                                        <div class="sr-only"> </div>
+                                        <h3>3</h3>
+                                        <p>Setup</p>
+                                    </div>
+                                </li>
+                                <li class="" aria-current="false">
+                                    <div class="step-content">
+                                        <div class="sr-only">no completed</div>
+                                        <h3>4</h3>
+                                        <p>Begin Test</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="block-setup">
+
+                            <h2 class="header-primary mt-2 mb-5">Pre-Test Setup</h2>
+
+                            <div id="micAccessMessage" class="text-center mt-3 p-5" hidden="">
+                                <h2>Please allow access to your microphone.</h2>
+                                <p>Click the "Allow" button in your browser's permission dialog to grant access to your
+                                    microphone.</p>
+                            </div>
+
+                            <div id="accessDeniedMessage" class="text-center mt-3" hidden="">
+                                <h2>Microphone Access Denied</h2>
+                                <p>You have denied access to your microphone.</p>
+                                <button class="btn-primary refreshButton">Try Again</button>
+                            </div>
+
+                            <div id="accessBlockedMessage" class="text-center mt-3" hidden="">
+                                <h2>Microphone Access Blocked</h2>
+                                <p>Your microphone appears to be disabled or blocked for this website in your browser
+                                    settings.</p>
+                                <p>Please enable microphone access in your browser settings, then try again.</p>
+
+                                <button class="btn-primary refreshButton mt-2">Try Again</button>
+                            </div>
+
+                            <div id="noMicMessage" class="text-center mt-3" hidden="">
+                                <h2>No Microphone Detected</h2>
+                                <p>Your browser is reporting you have no microphone connected. Please make sure your
+                                    microphone is plugged in and turned on, then try again. If the problem persists,
+                                    contact technical support.</p>
+                                <button class="btn-primary refreshButton">Try Again</button>
+                            </div>
+
+                            <div id="serverErrorMessage" class="text-center mt-3" hidden="">
+                                <h2>Server Error</h2>
+                                <p></p>
+                                <button class="btn-primary refreshButton mt-2">Try Again</button>
+                            </div>
+
+                            <div id="browserNotSupportedMessage" class="text-center mt-3" hidden="">
+                                <h2>Browser not supported.</h2>
+                                <button class="btn-primary logoutButton mt-2">Sign Out</button>
+                            </div>
+
+                            <div id="setupArea" class="row">
+                                <div class="col-md-6 col-lg-5">
+
+                                    <div class="row no-gutters">
+                                        <div class="col-11 col-md-11 text-center">
+                                            <div class="block-video mb-1">
+                                                <div class="video-js vjs-opic-skin mx-auto mx-md-0" id="setup-video"
+                                                    tabindex="-1" lang="en">
+
+                                                    <video id="setup-video_html5_api" class="vjs-tech" controls
+                                                        preload="auto" poster="./assets/NewEuroAvatarCaptured.png"
+                                                        width="640" height="360">
+
+                                                        <!-- Put your local video file here -->
+                                                        <source src="./assets/sample-video.mp4" type="video/mp4">
+
+                                                        <p>To view this video, please enable JavaScript and use a modern
+                                                            browser.</p>
+                                                    </video>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-1">
+                                            <div class="block-mic-gauge disable set-to-video-height"
+                                                aria-label="Microphone" role="img">
+                                                <div class="mic-gauge-well">
+                                                    <div class="mic-gauge">
+                                                        <div class="mic-gauge-marker"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="mic-icon"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-11 text-center">
+                                            <div class="mt-1">
+                                                <button id="btnReplay" class="btn btn-primary" type="button"
+                                                    name="button" aria-label="Replay" hidden=""><i
+                                                        class="fa fa-undo"></i></button>
+                                                <button id="btnPlay" class="btn btn-primary" type="button" name="button"
+                                                    aria-label="Play"><i class="fa fa-play"></i></button>
+                                            </div>
+
+                                            <div id="recordingStatus"
+                                                class="alert-recording mx-auto set-to-video-width hide">
+                                                <span>Recording...</span>
+                                            </div><!-- end alert-recording -->
+
+                                            <div id="uploading-alert"
+                                                class="alert-blue alert-uploading mx-auto set-to-video-width hide">
+                                                <span>Uploading your audio</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-md-1"></div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-6 col-lg-7">
+
+                                    <div class="block-setup-instructions mt-2 mt-md-0">
+                                        <ol class="list-numbered">
+                                            <li class="mb-2">
+                                                <span class="sr-only">Click the Play button to listen and adjust the
+                                                    volume</span>
+                                                <span aria-hidden="true">Click the <b>Play</b> icon (below Ava) to
+                                                    listen to the recording and adjust the volume.</span>
+                                            </li>
+                                            <li class="mb-2">To test your microphone, click <b>Start Recording</b> speak
+                                                into your microphone,<br>and click <b>Stop Recording</b> when you are
+                                                finished.</li>
+                                            <li class="mb-2">Click <b>Play Recording</b> to make sure you can hear your
+                                                voice.</li>
+                                        </ol>
+
+                                        <div class="block-setup-controls text-center text-md-left mb-1 mb-md-0">
+                                            <button id="start" button="" class="btn btn-start-recording mb-1"
+                                                type="button" name="button" disabled=""><span>Start
+                                                    Recording</span></button>
+                                            <button id="stop" button="" class="hide btn btn-stop-recording mb-1"
+                                                type="button" name="button"><span>Stop Recording</span></button>
+                                            <button id="view" class="btn btn-play-recording mb-1" type="button"
+                                                name="button" disabled=""><span>Play Recording</span></button>
+                                        </div>
+
+                                        <div class="learnosity-block">
+                                            <div id="setup-90c5a2f0-70ba-4e38-941e-963d057e7257"
+                                                class="lrn lrn_widget lrn_qr lrn_audio lrn_clearfix "
+                                                data-lrn-widget-container="setup-90c5a2f0-70ba-4e38-941e-963d057e7257"
+                                                data-lrn-widget-type="question">
+                                                <div class="lrn_response_wrapper"
+                                                    data-lrn-widget-component="interaction">
+                                                    <div class="lrn_response lrn_clearfix lrn-player-responsive">
+                                                        <div class="lrn-accessibility-arialive" aria-live="assertive"
+                                                            aria-atomic="true"></div>
+                                                        <div class="lrn_response_input_wrapper lrn_box_skin_wrapper">
+                                                            <div class="lrn_row lrn_clearfix">
+                                                                <div class="lrn_widget_content">
+                                                                    <div class="lrn_content_header">
+                                                                        <div class="lrn_header_left">Audio Recorder
+                                                                        </div>
+                                                                        <div class="lrn_header_right"></div>
+                                                                    </div>
+                                                                    <div class="lrn_audio_status">Click on record to
+                                                                        start</div>
+                                                                    <div class="">
+                                                                        <div class="lrn_waveform"
+                                                                            style="display: none;">
+                                                                            <div class="lrn_loaded lrn_wfblock"></div>
+                                                                            <img class="lrn_wfgraphic lrn_wfimage"
+                                                                                style="display: none;"><canvas
+                                                                                class="lrn_wfgraphic lrn_wfcanvas"
+                                                                                role="img" aria-label="Sound waves"
+                                                                                tabindex="0"
+                                                                                style="display: none;"></canvas>
+                                                                            <div class="lrn_position lrn_wfblock"
+                                                                                aria-role="region"></div>
+                                                                            <div class="lrn_seeker"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="lrn_audioblock_right">
+                                                                    <div class="lrn_audiomiclevel"><img
+                                                                            src="./assets/audioblock-vol.png"
+                                                                            class="lrn_audiomiclevel_image" alt="">
+                                                                        <div class="lrn_audiomiclevelmask"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="lrn_widget_footer lrn_toolbar">
+                                                                <div class="lrn_toolbar_left"><button type="button"
+                                                                        class="lrn_btn lrn_start_recording"
+                                                                        title="Start recording"
+                                                                        aria-label="Start recording"></button><button
+                                                                        type="button" class="lrn_btn lrn_start_playback"
+                                                                        title="Play" aria-label="Play"
+                                                                        disabled="disabled"></button></div>
+                                                                <div class="lrn_toolbar_center">
+                                                                    <div class="lrn_audio_timer"><span
+                                                                            class="lrn_currentTime">00:00</span><span
+                                                                            class="lrn_timeSeparator"> / </span><span
+                                                                            class="lrn_totalTime">0:30</span></div>
+                                                                    <div class="lrn_audio_progress_bar_wrapper">
+                                                                        <div class="lrn_audio_progress_bar"
+                                                                            title="Progress">
+                                                                            <div class="lrn_position lrn_recording"
+                                                                                tabindex="0" role="slider"
+                                                                                aria-valuemin="0%" aria-valuemax="100%"
+                                                                                aria-role="region"></div>
+                                                                            <div class="lrn_seeker"></div>
+                                                                            <div class="lrn_seekspace"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="lrn_volume_control"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div><!-- end block-setup-instructions -->
+
+                                </div>
+                            </div>
+
+                        </div><!-- end block-setup -->
+
+                        <div class="row mt-4">
+                            <div class="col text-right">
+                                <form id="formNext" action="begin.html" method="get">
+                                    <div class="form-group">
+                                        <button id="btnNext" class="btn btn-primary" type="button" name="button"
+                                            disabled=""><span>Next</span></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="errorModal" tabindex="-1" role="dialog"
+                            aria-labelledby="errorModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body text-center">
+
+                                    </div>
+                                    <div class="modal-footer text-center">
+                                        <button type="button" class="btn btn-primary mx-auto"
+                                            data-dismiss="modal">OK</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- XHR Failure Modal -->
+                        <div class="modal fade" id="xhrFailModal" tabindex="-1" role="dialog"
+                            aria-labelledby="xhrFailModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body text-center">
+                                        An error has occurred. Please refresh your internet browser and login again.
+                                    </div>
+                                    <div class="modal-footer text-center">
+                                        <button type="button" class="btn btn-primary mx-auto" data-dismiss="modal"
+                                            onclick="location.reload()">Try Again</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row" hidden="">
+                    <p>
+                        Clipping Samples: <span id="test_clippingSamples"></span>
+                        <br>
+                        RMS Energy: <span id="test_rmsEnergy"></span>
+                    </p>
+                </div>
+
+                <!-- Content ends here -->
+
+            </div><!-- end actfl-test-container -->
+        </div><!-- end container-fluid -->
+    </div><!-- end  contentDiv -->
+
+    <script src="./js/popper.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/jquery.html5.hide-show.js"></script>
+
+    <script src="./js/common.js" charset="utf-8"></script>
+    <script src="./js/common-demo.js" charset="utf-8"></script>
+
+    <script type="text/javascript">
+        detectFailedXHR(function () {
+            $("#xhrFailModal").modal('show');
+            $('#xhrFailModal').on('hidden.bs.modal', function () {
+                location.reload();
+            })
+        });
+    </script>
+    <script type="text/javascript" src="./js/detect-rtc.js"></script>
+    <script src="./js/ResizeSensor.js"></script>
+    <script src="./js/ElementQueries.js"></script>
+
+    <!-- <script src="./js/setup.js"></script> -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const player = videojs('setup-video', {
+                controls: true,
+                autoplay: false,
+                preload: 'auto',
+                fluid: true,           // responsive
+                playbackRates: [0.5, 1, 1.5, 2]
+            });
+        });
+    </script>
+
+</body>
+
+</html>

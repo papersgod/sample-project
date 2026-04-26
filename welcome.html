@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>
+        Welcome |
+
+        OPIcDemo
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="./assets/favicon.gif">
+
+    <link rel="stylesheet" href="./font-awesome-4.5.0-master/css/font-awesome.min.css">
+    <link href="./js/video-js.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/master.css">
+    <!-- <script type="text/javascript" async="" src="./js/analytics.js"></script> -->
+    <!-- <script type="text/javascript" async="" src="./js/"></script> -->
+    <script src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/mic-perm.js"></script>
+    <style>
+        /**
+       * Session Timeout Dialog Styles
+       */
+        #session-timeout-dialog-logout {
+            display: none;
+        }
+
+        /**
+       * Following styles are used on the Setup page, Sample Question page, and  Test page.
+       */
+
+        /**
+       * Used display: inline-block to get the video element and the volume-indicator wrapper side by side.
+       * *** I also added the mx-md-0 class to help with the positioning.
+       */
+        #setup-video,
+        #opic-video {
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body cz-shortcut-listen="true">
+
+    <div id="contentDiv">
+        <div class="container-fluid">
+            <div id="actfl-test-container" class="actfl-test-container mx-auto">
+
+                <!-- Content begins here -->
+                <div class="row">
+                    <div class="col-12 text-right">
+                        <div class="block-upper-right mt-1">
+                            <a href="index.html" class="sign-out"><span>Sign
+                                    Out</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    $(document).ready(function () {
+                        const signOutButton = document.querySelector('.sign-out');
+
+                        signOutButton.addEventListener('keydown', function (event) {
+                            if (event.code === 'Space' || event.key === ' ') {
+                                event.preventDefault();
+                                signOutButton.click();
+                            }
+                        });
+                    });
+                </script>
+                <div class="row">
+                    <div class="col">
+                        <div class="block-welcome text-center">
+                            <h2 class="opic-header mt-5 mb-3">Oral Proficiency Interview - computer (OPIc)</h2>
+                            <p>You will be tested on how well you speak English.</p>
+                            <img class="icon-ava mb-3" src="./assets/NewEuroAvatarCaptured.png" alt="Ava - OPIc avatar">
+                            <p>Meet Ava! She will be your interviewer (and new best friend) during your test.</p>
+
+                            <!-- Add conditional for PI alert -->
+                            <p class="text-left pi-alert"></p>
+                            <!-- Add conditional for PI alert -->
+
+                            <form id="formNext" action="survey.html" method="get">
+                                <button id="btnNext" class="btn btn-primary mt-6" type="button"
+                                    name="button"><span>Next</span></button>
+                            </form>
+
+                        </div><!-- end block-welcome -->
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col mt-5 text-center text-md-right">
+                        <span class="block-actfl-lti-branding">
+                            <img class="img-fluid" src="./assets/logo-actfl-lti-v3.png"
+                                alt="ACTFL and LTI co-branded logo">
+                        </span>
+                    </div>
+                </div>
+
+
+                <!-- Content ends here -->
+
+            </div><!-- end actfl-test-container -->
+        </div><!-- end container-fluid -->
+    </div><!-- end  contentDiv -->
+
+    <script src="./js/popper.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/jquery.html5.hide-show.js"></script>
+
+    <script src="./js/common.js" charset="utf-8"></script>
+    <script src="./js/common-demo.js" charset="utf-8"></script>
+
+    <script src="./js/bootstrap-session-timeout.js"></script>
+</body>
+
+</html>
